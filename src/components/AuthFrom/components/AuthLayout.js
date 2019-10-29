@@ -7,11 +7,24 @@ const AuthLayout = props => {
   return (
     <div className="auth_layout text-18 flex justify-center items-center w-full h-full min-h-screen bg-blue-400">
       <div className="auth_form mx-auto w-full bg-white rounded">
-        <div className="auth_form_title text-28 inline-block">
+        <div className="auth_form_title text-blue-600 text-28 inline-block">
           {props.title}
         </div>
         {props.children}
-        <Link to={props.linkTo}>{props.link}</Link>
+        <Link
+          className="auth_bottom_link text-blue-600 text-14 block"
+          to={props.linkTo}
+        >
+          {props.link}
+        </Link>
+        <span
+          className={`main_btn btn-active btn-sm inline-block${
+            props.buttonEnable ? "" : " disable"
+          }`}
+          onClick={props.handleSubmit}
+        >
+          {props.submitButtom}
+        </span>
       </div>
     </div>
   );

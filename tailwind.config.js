@@ -1,6 +1,17 @@
 module.exports = {
   theme: {
     extend: {
+      colors: {
+        main: "#3492eb",
+        "main-hover": "#3489eb",
+        "main-active": "#3483eb",
+        "main-disable": "#7f9394",
+        cancel: "#d8d8d8",
+        "cancel-hover": "#bfbfbf",
+        "cancel-active": "#b0b0b0",
+
+        333: "#333333"
+      },
       fontSize: {
         12: "1.2rem",
         14: "1.4rem",

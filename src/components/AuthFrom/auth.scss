@@ -2,18 +2,22 @@
 
 .auth_form {
   max-width: 500px;
-  padding: 20px;
+  padding: 30px;
 }
 .auth_layout {
   padding: 20px;
 }
 .auth_form_title {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .auth_input {
   margin: 5px;
 }
-.input_alert {
+.auth_input_alert {
   min-height: 1em;
   margin-bottom: 10px;
+  margin-left: 5px;
+}
+.auth_bottom_link {
+  margin-bottom: 20px;
 }

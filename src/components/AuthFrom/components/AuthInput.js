@@ -10,8 +10,11 @@ const AuthInput = props => {
         onChange={props.onChange}
         value={props.value}
         placeholder={props.placeholder}
+        onBlur={props.onblur}
       />
-      <div className="input_alert text-16">{props.alertMessage}</div>
+      <div className="auth_input_alert text-14 text-red-600">
+        {props.alertMessage}
+      </div>
     </div>
   );
 };

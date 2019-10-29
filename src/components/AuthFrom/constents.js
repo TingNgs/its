@@ -1,9 +1,12 @@
 export const LOGIN_TITLE = "Login";
 export const REGISTER_TITLE = "Register";
 
+export const LOGIN_BUTTON = "Login";
+export const REGISTER_BUTTON = "Register";
+
 export const EMAIL = "email";
 export const PASSOWRD = "password";
-export const CONFIRM_PASSOWRD = "username";
+export const CONFIRM_PASSOWRD = "confirm_username";
 export const USERNAME = "username";
 
 export const EMAIL_PLACEHOLDER = "Email";
