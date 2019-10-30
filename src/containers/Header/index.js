@@ -15,7 +15,7 @@ const Header = props => {
   };
 
   return (
-    <div className="header flex justify-between items-center">
+    <div className="header flex justify-between items-center bg-blue-300">
       <div className="text-28">
         <Link to={PATH.DASHBOARD}>ITS</Link>
       </div>

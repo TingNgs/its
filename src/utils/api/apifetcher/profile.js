@@ -13,4 +13,12 @@ ProfileAPI.getMyProfile = () => {
   });
 };
 
+ProfileAPI.getProfileById = profileId => {
+  const url = `${apihost}/profile?profileId=${profileId}`;
+  return api.fire({
+    url,
+    method: "GET"
+  });
+};
+
 export default ProfileAPI;
