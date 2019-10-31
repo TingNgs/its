@@ -1,16 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import * as PATH from "../../utils/pathConst";
+import AuthAPI from "../../../utils/api/apifetcher/auth";
+
+import * as action from "../../../containers/Auth/actions";
+import * as PATH from "../../../utils/pathConst";
 
 import "./header.scss";
 
 const Header = props => {
+  const dispatch = useDispatch();
   const { username } = useSelector(state => state.AuthReducer);
 
   const handleLogout = () => {
-    localStorage.removeItem("sessionId");
-    localStorage.removeItem("profileId");
+    AuthAPI.logout();
+    action.logout()(dispatch);
     props.history.push("/login");
   };
 
@@ -24,8 +28,6 @@ const Header = props => {
         <div className="header_link cursor-pointer" onClick={handleLogout}>
           Logout
         </div>
-        <div className="header_link">WorkBoard</div>
-        <div className="header_link">Task</div>
       </div>
     </div>
   );

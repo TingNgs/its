@@ -41,9 +41,7 @@ const LoginForm = props => {
     AuthAPI.login({ email, password: sha256(password) }).then(
       res => {
         const { data } = res;
-        localStorage.setItem("sessionId", data.sessionId);
-        localStorage.setItem("profileId", data.profileId);
-        actions.authSuccess({ username: data.username })(dispatch);
+        actions.authSuccess(data)(dispatch);
         props.history.push("/dashboard");
       },
       rej => {

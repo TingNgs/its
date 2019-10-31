@@ -21,6 +21,16 @@ AuthAPI.login = query => {
   });
 };
 
+AuthAPI.logout = () => {
+  const url = `${apihost}/session/logout?sessionId=${localStorage.getItem(
+    "sessionId"
+  )}`;
+  return api.fire({
+    url,
+    method: "DELETE"
+  });
+};
+
 AuthAPI.verifyEmail = email => {
   const url = `${apihost}/session/verify/email?email=${email}`;
   return api.fire({

@@ -1,8 +1,17 @@
-import { AUTH_SUCCESS } from "./constants";
+import { AUTH_SUCCESS, AUTH_LOGOUT } from "./constants";
 
-export const authSuccess = ({ username }) => dispatch => {
-  const data = {
-    username
+export const authSuccess = data => dispatch => {
+  const payload = {
+    username: data.username
   };
-  dispatch({ type: AUTH_SUCCESS, payload: data });
+  if (data.sessionId) localStorage.setItem("sessionId", data.sessionId);
+  if (data.profileId === 0 || data.profileId)
+    localStorage.setItem("profileId", data.profileId);
+  dispatch({ type: AUTH_SUCCESS, payload });
+};
+
+export const logout = () => dispatch => {
+  localStorage.removeItem("sessionId");
+  localStorage.removeItem("profileId");
+  dispatch({ type: AUTH_LOGOUT });
 };

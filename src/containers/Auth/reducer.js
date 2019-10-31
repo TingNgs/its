@@ -1,4 +1,4 @@
-import { AUTH_SUCCESS } from "./constants";
+import { AUTH_SUCCESS, AUTH_LOGOUT } from "./constants";
 
 const initialState = {
   username: ""
@@ -12,6 +12,8 @@ export default function reducer(state = initialState, actions) {
         ...state,
         username: payload.username
       };
+    case AUTH_LOGOUT:
+      return { ...state, ...initialState };
     default:
       return state;
   }

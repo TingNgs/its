@@ -6,7 +6,7 @@ const ProfileAPI = {};
 ProfileAPI.getMyProfile = () => {
   const url = `${apihost}/profile/me?sessionId=${localStorage.getItem(
     "sessionId"
-  )}`;
+  )}&profileId=${localStorage.getItem("profileId")}`;
   return api.fire({
     url,
     method: "GET"
