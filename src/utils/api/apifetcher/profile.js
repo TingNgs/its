@@ -4,7 +4,9 @@ import { apihost } from "../../configConst";
 const ProfileAPI = {};
 
 ProfileAPI.getMyProfile = () => {
-  const url = `${apihost}/profile/me?sessionId=${localStorage.getItem(
+  const url = `${
+    apihost[process.env.NODE_ENV]
+  }/profile/me?sessionId=${localStorage.getItem(
     "sessionId"
   )}&profileId=${localStorage.getItem("profileId")}`;
   return api.fire({
@@ -14,7 +16,7 @@ ProfileAPI.getMyProfile = () => {
 };
 
 ProfileAPI.getProfileById = profileId => {
-  const url = `${apihost}/profile?profileId=${profileId}`;
+  const url = `${apihost[process.env.NODE_ENV]}/profile?profileId=${profileId}`;
   return api.fire({
     url,
     method: "GET"

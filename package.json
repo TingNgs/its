@@ -2,6 +2,7 @@
   "name": "its",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://TingNgs.github.io/its",
   "dependencies": {
     "axios": "^0.19.0",
     "node-sass": "^4.12.0",
@@ -21,6 +22,8 @@
     "start": "npm run tailwind:css && react-scripts start",
     "tailwind:css": "tailwind build src/tailwind.css -c tailwind.config.js -o src/index.css",
     "build": "npm run tailwind:css && react-scripts build",
+    "stage": "serve -s build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,6 +44,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.7.0",
+    "gh-pages": "^2.1.1",
     "postcss-cli": "^6.1.3"
   }
 }
