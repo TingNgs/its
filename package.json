@@ -2,7 +2,7 @@
   "name": "its",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://TingNgs.github.io/its",
+  "homepage": "https://TingNgs.github.io/its/",
   "dependencies": {
     "axios": "^0.19.0",
     "node-sass": "^4.12.0",
