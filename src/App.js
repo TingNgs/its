@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Route path={PATH.LOGIN} component={LoginFrom} />
         <Route path={PATH.REGISTER} component={RegisterFrom} />
         <Route path={PATH.DASHBOARD} component={Dashboard} />
