@@ -4,7 +4,7 @@ import { apihost } from "../../configConst";
 const AuthAPI = {};
 
 AuthAPI.register = query => {
-  const url = `${apihost[process.env.NODE_ENV]}/session`;
+  const url = `${apihost[process.env.REACT_APP_ENV]}/session`;
   return api.fire({
     url,
     method: "POST",
@@ -13,7 +13,7 @@ AuthAPI.register = query => {
 };
 
 AuthAPI.login = query => {
-  const url = `${apihost[process.env.NODE_ENV]}/session/login`;
+  const url = `${apihost[process.env.REACT_APP_ENV]}/session/login`;
   return api.fire({
     url,
     method: "POST",
@@ -23,8 +23,8 @@ AuthAPI.login = query => {
 
 AuthAPI.logout = () => {
   const url = `${
-    apihost[process.env.NODE_ENV]
-  }/session/logout?sessionId=${localStorage.getItem("sessionId")}`;
+    apihost[process.env.REACT_APP_ENV]
+    }/session/logout?sessionId=${localStorage.getItem("sessionId")}`;
   return api.fire({
     url,
     method: "DELETE"
@@ -33,8 +33,8 @@ AuthAPI.logout = () => {
 
 AuthAPI.verifyEmail = email => {
   const url = `${
-    apihost[process.env.NODE_ENV]
-  }/session/verify/email?email=${email}`;
+    apihost[process.env.REACT_APP_ENV]
+    }/session/verify/email?email=${email}`;
   return api.fire({
     url,
     method: "GET"
@@ -43,8 +43,8 @@ AuthAPI.verifyEmail = email => {
 
 AuthAPI.verifyUsername = username => {
   const url = `${
-    apihost[process.env.NODE_ENV]
-  }/session/verify/username?username=${username}`;
+    apihost[process.env.REACT_APP_ENV]
+    }/session/verify/username?username=${username}`;
   return api.fire({
     url,
     method: "GET"

@@ -1,6 +1,7 @@
 export const apihost = {
-  development: "http://127.0.0.1:8080",
-  production: "https://its-api.herokuapp.com"
+  local: "http://127.0.0.1:8080",
+  dev: "https://its-api.herokuapp.com",
+  prod: "https://its-api.herokuapp.com"
 };
 
 export const red_alert = {

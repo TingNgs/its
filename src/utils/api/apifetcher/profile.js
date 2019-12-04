@@ -5,10 +5,10 @@ const ProfileAPI = {};
 
 ProfileAPI.getMyProfile = () => {
   const url = `${
-    apihost[process.env.NODE_ENV]
-  }/profile/me?sessionId=${localStorage.getItem(
-    "sessionId"
-  )}&profileId=${localStorage.getItem("profileId")}`;
+    apihost[process.env.REACT_APP_ENV]
+    }/profile/me?sessionId=${localStorage.getItem(
+      "sessionId"
+    )}&profileId=${localStorage.getItem("profileId")}`;
   return api.fire({
     url,
     method: "GET"
@@ -16,7 +16,7 @@ ProfileAPI.getMyProfile = () => {
 };
 
 ProfileAPI.getProfileById = profileId => {
-  const url = `${apihost[process.env.NODE_ENV]}/profile?profileId=${profileId}`;
+  const url = `${apihost[process.env.REACT_APP_ENV]}/profile?profileId=${profileId}`;
   return api.fire({
     url,
     method: "GET"

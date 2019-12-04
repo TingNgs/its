@@ -63,7 +63,7 @@ const LoginForm = props => {
       }
     );
   };
-  const handleInputOnblur = e => {};
+  const handleInputOnblur = e => { };
   const inputList = [
     {
       name: CONST.EMAIL,

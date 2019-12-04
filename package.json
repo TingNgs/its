@@ -16,14 +16,15 @@
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
     "sha256": "^0.2.0",
-    "tailwindcss": "^1.1.3"
+    "tailwindcss": "^1.1.4"
   },
   "scripts": {
     "start": "npm run tailwind:css && react-scripts start",
+    "dev": "cross-env REACT_APP_ENV=dev npm start",
+    "local": "cross-env REACT_APP_ENV=local npm start",
     "tailwind:css": "tailwind build src/tailwind.css -c tailwind.config.js -o src/index.css",
-    "build": "npm run tailwind:css && react-scripts build",
-    "stage": "npm run build && serve -s build",
-    "predeploy": "npm run build",
+    "build": " npm run tailwind:css && react-scripts build",
+    "predeploy": "cross-env REACT_APP_ENV=prod && npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.7.0",
+    "cross-env": "^6.0.3",
     "gh-pages": "^2.1.1",
     "postcss-cli": "^6.1.3"
   }

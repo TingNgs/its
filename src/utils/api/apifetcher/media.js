@@ -5,8 +5,8 @@ const MediaApi = {};
 
 MediaApi.uploadImage = file => {
   const url = `${
-    apihost[process.env.NODE_ENV]
-  }/media/image?sessionId=${localStorage.getItem("sessionId")}`;
+    apihost[process.env.REACT_APP_ENV]
+    }/media/image?sessionId=${localStorage.getItem("sessionId")}`;
   const formData = new FormData();
   formData.append("file", file);
   return api.fire({
