@@ -1,10 +1,18 @@
 import React from "react";
-import {} from "react-redux";
-import { Lin } from "react-router-dom";
-import * as PATH from "../../../utils/pathConst";
+import { Link } from "react-router-dom";
+import { SIDE_BAR_ITEMS } from "./constants";
+import "./index.scss";
 
 const NavSideBar = props => {
-  return <div className="navSideBar bg-333">asdasd</div>;
+  return (
+    <div className="nav_sidebar bg-333 flex flex-col">
+      {SIDE_BAR_ITEMS.map(item => (
+        <Link className="nav_sidebar_link text-white font-bold" to={item.path}>
+          {item.name}
+        </Link>
+      ))}
+    </div>
+  );
 };
 
 export default NavSideBar;

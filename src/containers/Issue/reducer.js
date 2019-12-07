@@ -1,16 +1,16 @@
-import { FETCH_TASKS_SUCCESS } from "./constants";
+import { FETCH_ISSUE_SUCCESS } from "./constants";
 
 const initialState = {
-  tasks: []
+  issueList: []
 };
 
 export default function reducer(state = initialState, actions) {
   const { type, payload } = actions;
   switch (type) {
-    case FETCH_TASKS_SUCCESS:
+    case FETCH_ISSUE_SUCCESS:
       return {
         ...state,
-        tasks: state.tasks.concat(payload)
+        issueList: state.issueList.concat(payload)
       };
     default:
       return state;

@@ -1,1 +1,0 @@
-export const FETCH_TASKS_SUCCESS = "Tasks/FETCH_TASK_SUCCESS";

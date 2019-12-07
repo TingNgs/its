@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import TasksReducer from "../containers/Tasks/reducer";
+import ProjectsReducer from "../containers/Projects/reducer";
+import IssueReducer from "../containers/Issue/reducer";
 import AuthReducer from "../containers/Auth/reducer";
 
-export default combineReducers({ TasksReducer, AuthReducer });
+export default combineReducers({ ProjectsReducer, AuthReducer, IssueReducer });
