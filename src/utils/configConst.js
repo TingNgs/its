@@ -11,5 +11,15 @@ export const red_alert = {
   REGISTER_FAIL: "Register fail. Please try again",
 
   REGISTER_EMAIL_EXIST: "This email address is already in use",
-  REGISTER_USERNAME_EXIST: "This username is already in use"
+  REGISTER_USERNAME_EXIST: "This username is already in use",
+
+  TRY_AGAIN_LATHER: "Something when wrong. Please try again later.",
+  PROJECT_NAME_REPEATED: "Project name repeated."
+};
+
+export const inputType = {
+  text_alert: "text_alert",
+  text: "text",
+  textarea: "textarea",
+  radio: "radio"
 };

@@ -7,7 +7,11 @@ const NavSideBar = props => {
   return (
     <div className="nav_sidebar bg-333 flex flex-col">
       {SIDE_BAR_ITEMS.map(item => (
-        <Link className="nav_sidebar_link text-white font-bold" to={item.path}>
+        <Link
+          key={`sliderBar_${item.name}`}
+          className="nav_sidebar_link text-white font-bold"
+          to={item.path}
+        >
           {item.name}
         </Link>
       ))}

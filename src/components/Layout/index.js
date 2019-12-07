@@ -8,13 +8,13 @@ import * as actions from "../../containers/Auth/actions";
 import Header from "./Header";
 import NavSideBar from "./NavSideBar";
 
-const Layout = props => {
+const Layout = ({ isLogined, history, children }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    if (props.isLogined) {
+    if (isLogined) {
       if (!localStorage.getItem("sessionId")) {
         actions.logout()(dispatch);
-        props.history.push("/login");
+        history.push("/login");
         return;
       }
       ProfileAPI.getMyProfile().then(
@@ -23,29 +23,29 @@ const Layout = props => {
         },
         () => {
           actions.logout()(dispatch);
-          props.history.push("/login");
+          history.push("/login");
           return;
         }
       );
     } else {
       if (localStorage.getItem("sessionId")) {
-        props.history.push("/dashboard");
+        history.push("/dashboard");
         return;
       }
     }
   }, []);
   return (
     <div className="layout min-h-screen flex flex-col">
-      {props.isLogined ? (
+      {isLogined ? (
         <React.Fragment>
           <Header />
           <div className="flex flex-grow">
             <NavSideBar />
-            {props.children}
+            {children}
           </div>
         </React.Fragment>
       ) : (
-        props.children
+        children
       )}
     </div>
   );

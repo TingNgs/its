@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import AuthInput from "./components/AuthInput";
-import AuthLayout from "./components/AuthLayout";
+import FormInput from "../FormInput";
+import AuthLayout from "./AuthLayout";
 
 import * as CONST from "./constents";
-import { red_alert } from "../../utils/configConst";
+import { red_alert, inputType } from "../../utils/configConst";
 import { LOGIN } from "../../utils/pathConst";
 
 import AuthAPI from "../../utils/api/apifetcher/auth";
@@ -123,28 +123,32 @@ const RegisterForm = props => {
       type: "text",
       value: email,
       placeholder: CONST.EMAIL_PLACEHOLDER,
-      alertMessage: emailAlertMsg
+      alertMessage: emailAlertMsg,
+      inputType: inputType.text_alert
     },
     {
       name: CONST.PASSOWRD,
       type: "password",
       value: password,
       placeholder: CONST.PASSWORD_PLACEHOLDER,
-      alertMessage: passwordAlertMsg
+      alertMessage: passwordAlertMsg,
+      inputType: inputType.text_alert
     },
     {
       name: CONST.CONFIRM_PASSOWRD,
       type: "password",
       value: confirmPassword,
       placeholder: CONST.CONFIRM_PASSOWRD_PLACEHOLDER,
-      alertMessage: confirmPasswordAlertMsg
+      alertMessage: confirmPasswordAlertMsg,
+      inputType: inputType.text_alert
     },
     {
       name: CONST.USERNAME,
       type: "text",
       value: username,
       placeholder: CONST.USERNAME_PLACEHOLDER,
-      alertMessage: usernameAlertMsg
+      alertMessage: usernameAlertMsg,
+      inputType: inputType.text_alert
     }
   ];
 
@@ -159,18 +163,11 @@ const RegisterForm = props => {
         email && password && password === confirmPassword && username
       }
     >
-      {inputList.map(e => (
-        <AuthInput
-          key={e.name}
-          name={e.name}
-          type={e.type}
-          onChange={handleInput}
-          value={e.value}
-          placeholder={e.placeholder}
-          alertMessage={e.alertMessage}
-          onblur={handleInputOnblur}
-        />
-      ))}
+      <FormInput
+        inputList={inputList}
+        handleInput={handleInput}
+        handleInputOnblur={handleInputOnblur}
+      />
     </AuthLayout>
   );
 };

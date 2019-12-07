@@ -5,24 +5,7 @@
 .main_btn {
   @apply text-16 cursor-pointer inline-block rounded-4 font-medium text-center;
   line-height: normal;
-}
-.btn-xsm {
-  width: 4.625em;
-  padding: 8.5px 0;
-}
-.btn-sm {
-  width: 6.19em;
-  padding: 8.5px 0;
-}
-.btn-md {
-  width: 15.75em;
-  padding: 14.5px 0;
-  max-width: 100%;
-}
-.btn-md-modal {
-  width: 8.75em;
-  padding: 14.5px 0;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+  padding: 8.5px 10px;
 }
 
 .btn-active {

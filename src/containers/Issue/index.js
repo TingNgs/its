@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Layout";
 import * as actions from "./actions";
 
-const Issue = props => {
+const Issue = () => {
   const issueList = useSelector(state => state.IssueReducer.issueList);
   const dispatch = useDispatch();
   useEffect(() => {

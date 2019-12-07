@@ -9,8 +9,8 @@ module.exports = {
         cancel: "#d8d8d8",
         "cancel-hover": "#bfbfbf",
         "cancel-active": "#b0b0b0",
-
-        333: "#333333"
+        333: "#333333",
+        popUp: "#00000080"
       },
       fontSize: {
         12: "1.2rem",

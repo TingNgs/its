@@ -1,1 +1,6 @@
 export const FETCH_PROJECTS_SUCCESS = "Projects/FETCH_TASK_SUCCESS";
+
+export const ADD_NEW_PROJECT = "Projects/ADD_NEW_PROJECT";
+export const ADD_NEW_PROJECT_SUCCESS = "Projects/ADD_NEW_PROJECT_SUCCESS";
+export const ADD_NEW_PROJECT_FAIL = "Projects/ADD_NEW_PROJECT_FAIL";
+export const SHOW_NEW_PROJECT_FORM = "Projects/SHOW_NEW_PROJECT_FORM";
