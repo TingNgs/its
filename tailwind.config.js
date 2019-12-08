@@ -21,7 +21,8 @@ module.exports = {
         24: "2.4rem",
         28: "2.8rem"
       },
-      borderRadius: { 4: "4px" }
+      borderRadius: { 4: "4px" },
+      border: { 5: "5px" }
     }
   },
   variants: {},

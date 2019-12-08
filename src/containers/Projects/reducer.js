@@ -1,13 +1,18 @@
 import {
+  FETCH_PROJECTS,
   FETCH_PROJECTS_SUCCESS,
+  FETCH_PROJECTS_BOTTOM,
   ADD_NEW_PROJECT_SUCCESS,
   ADD_NEW_PROJECT_FAIL,
   ADD_NEW_PROJECT,
-  SHOW_NEW_PROJECT_FORM
+  TOGGLE_NEW_PROJECT_FORM
 } from "./constants";
 
 const initialState = {
   projectList: [],
+  isFetchingProject: false,
+  isProjectFetchBottom: false,
+  projectTimestamp: null,
 
   showNewProjectForm: false,
   newProjectErrorMsg: null,
@@ -18,12 +23,22 @@ export default function reducer(state = initialState, actions) {
   const { type, payload } = actions;
   const { projectList } = state;
   switch (type) {
+    case FETCH_PROJECTS:
+      return { ...state, isFetchingProject: true };
     case FETCH_PROJECTS_SUCCESS:
       return {
         ...state,
-        projectList: projectList.concat(payload)
+        projectList: projectList.concat(payload),
+        projectTimestamp: payload[payload.length - 1].create_time,
+        isFetchingProject: false
       };
-    case SHOW_NEW_PROJECT_FORM:
+    case FETCH_PROJECTS_BOTTOM:
+      return {
+        ...state,
+        isProjectFetchBottom: true,
+        isFetchingProject: false
+      };
+    case TOGGLE_NEW_PROJECT_FORM:
       return {
         ...state,
         showNewProjectForm: payload,

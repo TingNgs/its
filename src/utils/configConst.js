@@ -4,6 +4,8 @@ export const apihost = {
   prod: "https://its-api.herokuapp.com"
 };
 
+export const FETCH_PROJECT_LIMIT = 15;
+
 export const red_alert = {
   LOGIN_EMAIL_NOT_EXIST:
     "We don't recognize this email, please sign up to get started",

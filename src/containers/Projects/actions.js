@@ -1,16 +1,14 @@
 import {
+  FETCH_PROJECTS,
   FETCH_PROJECTS_SUCCESS,
+  FETCH_PROJECTS_BOTTOM,
   ADD_NEW_PROJECT,
   ADD_NEW_PROJECT_SUCCESS,
   ADD_NEW_PROJECT_FAIL,
-  SHOW_NEW_PROJECT_FORM
+  TOGGLE_NEW_PROJECT_FORM
 } from "./constants";
 import ProjectApi from "../../utils/api/apifetcher/project";
-import { red_alert } from "../../utils/configConst";
-
-export const fetchProjects = () => dispatch => {
-  dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: [] });
-};
+import { red_alert, FETCH_PROJECT_LIMIT } from "../../utils/configConst";
 
 export const addNewProject = query => dispatch => {
   dispatch({ type: ADD_NEW_PROJECT });
@@ -31,7 +29,30 @@ export const addNewProject = query => dispatch => {
   );
 };
 
+export const fetchProjects = () => (dispatch, getState) => {
+  const { projectTimestamp, isFetchingProject } = getState().ProjectsReducer;
+  if (isFetchingProject) return;
+  dispatch({ type: FETCH_PROJECTS });
+  const query = {
+    timestamp: projectTimestamp,
+    user_id: localStorage.getItem("profileId"),
+    limit: FETCH_PROJECT_LIMIT,
+    isOwner: false
+  };
+  ProjectApi.getProject(query).then(
+    res => {
+      const { data } = res;
+      if (data.length)
+        dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: data });
+      else dispatch({ type: FETCH_PROJECTS_BOTTOM, payload: data });
+    },
+    rej => {
+      console.log(rej);
+    }
+  );
+};
+
 export const toggleNewProjectForm = () => (dispatch, getState) => {
   const { showNewProjectForm } = getState().ProjectsReducer;
-  dispatch({ type: SHOW_NEW_PROJECT_FORM, payload: !showNewProjectForm });
+  dispatch({ type: TOGGLE_NEW_PROJECT_FORM, payload: !showNewProjectForm });
 };

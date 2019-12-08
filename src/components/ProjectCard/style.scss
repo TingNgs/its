@@ -1,0 +1,27 @@
+$border_color: #d6d6d6;
+$box_shadow: rgba(0, 0, 0, 0.1);
+$box_shadow-hover: rgba(149, 191, 255, 0.952);
+
+.projectCard {
+  background-color: white;
+  border: solid 1px white;
+  border-bottom: solid 1px $border_color;
+  box-shadow: 0 1px 4px 0 $box_shadow;
+  margin-bottom: 15px;
+  padding: 20px;
+
+  &:hover {
+    border: solid 1px $border_color;
+    box-shadow: 0 1px 10px 0 $box_shadow-hover;
+  }
+}
+
+.projectCard_icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 10px;
+}
+
+.projectCard_title {
+  margin-bottom: 10px;
+}

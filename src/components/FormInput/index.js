@@ -20,7 +20,7 @@ const FormInput = ({ handleInput, inputList, handleInputOnblur }) => {
                 value={e.value}
                 placeholder={e.placeholder}
                 alertMessage={e.alertMessage}
-                onBlur={handleInputOnblur}
+                onblur={handleInputOnblur}
               />
             );
           if (e.inputType === inputType.text)
@@ -58,7 +58,7 @@ const FormInput = ({ handleInput, inputList, handleInputOnblur }) => {
                     >
                       <div
                         className={`formInput_radio  rounded-full border-main border-solid ${
-                          isChecked ? "border-4" : "border-2"
+                          isChecked ? "border-5" : "border-2"
                         }`}
                       >
                         <input
