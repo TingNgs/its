@@ -58,7 +58,7 @@ const FormInput = ({ handleInput, inputList, handleInputOnblur }) => {
                     >
                       <div
                         className={`formInput_radio  rounded-full border-main border-solid ${
-                          isChecked ? "border-5" : "border-2"
+                          isChecked ? "border-5 bg-white" : "border-2"
                         }`}
                       >
                         <input

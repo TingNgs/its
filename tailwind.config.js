@@ -22,7 +22,7 @@ module.exports = {
         28: "2.8rem"
       },
       borderRadius: { 4: "4px" },
-      border: { 5: "5px" }
+      borderWidth: { 5: "5px" }
     }
   },
   variants: {},

@@ -3541,6 +3541,10 @@ video {
   border-width: 4px;
 }
 
+.border-5 {
+  border-width: 5px;
+}
+
 .border-8 {
   border-width: 8px;
 }
@@ -3595,6 +3599,22 @@ video {
 
 .border-l-4 {
   border-left-width: 4px;
+}
+
+.border-t-5 {
+  border-top-width: 5px;
+}
+
+.border-r-5 {
+  border-right-width: 5px;
+}
+
+.border-b-5 {
+  border-bottom-width: 5px;
+}
+
+.border-l-5 {
+  border-left-width: 5px;
 }
 
 .border-t-8 {
@@ -15190,6 +15210,10 @@ table {
     border-width: 4px;
   }
 
+  .sm\:border-5 {
+    border-width: 5px;
+  }
+
   .sm\:border-8 {
     border-width: 8px;
   }
@@ -15244,6 +15268,22 @@ table {
 
   .sm\:border-l-4 {
     border-left-width: 4px;
+  }
+
+  .sm\:border-t-5 {
+    border-top-width: 5px;
+  }
+
+  .sm\:border-r-5 {
+    border-right-width: 5px;
+  }
+
+  .sm\:border-b-5 {
+    border-bottom-width: 5px;
+  }
+
+  .sm\:border-l-5 {
+    border-left-width: 5px;
   }
 
   .sm\:border-t-8 {
@@ -26704,6 +26744,10 @@ table {
     border-width: 4px;
   }
 
+  .md\:border-5 {
+    border-width: 5px;
+  }
+
   .md\:border-8 {
     border-width: 8px;
   }
@@ -26758,6 +26802,22 @@ table {
 
   .md\:border-l-4 {
     border-left-width: 4px;
+  }
+
+  .md\:border-t-5 {
+    border-top-width: 5px;
+  }
+
+  .md\:border-r-5 {
+    border-right-width: 5px;
+  }
+
+  .md\:border-b-5 {
+    border-bottom-width: 5px;
+  }
+
+  .md\:border-l-5 {
+    border-left-width: 5px;
   }
 
   .md\:border-t-8 {
@@ -38218,6 +38278,10 @@ table {
     border-width: 4px;
   }
 
+  .lg\:border-5 {
+    border-width: 5px;
+  }
+
   .lg\:border-8 {
     border-width: 8px;
   }
@@ -38272,6 +38336,22 @@ table {
 
   .lg\:border-l-4 {
     border-left-width: 4px;
+  }
+
+  .lg\:border-t-5 {
+    border-top-width: 5px;
+  }
+
+  .lg\:border-r-5 {
+    border-right-width: 5px;
+  }
+
+  .lg\:border-b-5 {
+    border-bottom-width: 5px;
+  }
+
+  .lg\:border-l-5 {
+    border-left-width: 5px;
   }
 
   .lg\:border-t-8 {
@@ -49732,6 +49812,10 @@ table {
     border-width: 4px;
   }
 
+  .xl\:border-5 {
+    border-width: 5px;
+  }
+
   .xl\:border-8 {
     border-width: 8px;
   }
@@ -49786,6 +49870,22 @@ table {
 
   .xl\:border-l-4 {
     border-left-width: 4px;
+  }
+
+  .xl\:border-t-5 {
+    border-top-width: 5px;
+  }
+
+  .xl\:border-r-5 {
+    border-right-width: 5px;
+  }
+
+  .xl\:border-b-5 {
+    border-bottom-width: 5px;
+  }
+
+  .xl\:border-l-5 {
+    border-left-width: 5px;
   }
 
   .xl\:border-t-8 {
