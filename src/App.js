@@ -7,11 +7,13 @@ import Dashboard from "./components/Dashboard";
 import ProjectDetail from "./containers/ProjectDetail";
 import Projects from "./containers/Projects";
 import Issue from "./containers/Issue";
+import { version } from "../package.json";
 
 import * as PATH from "./utils/pathConst";
 
 import "./App.css";
 function App() {
+  console.log("version " + version);
   console.log(process.env);
   return (
     <div className="App">
