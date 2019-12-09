@@ -25,4 +25,15 @@ ProjectApi.getProject = query => {
   });
 };
 
+ProjectApi.getProjectDetail = query => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/project/detail?sessionId=${localStorage.getItem("sessionId")}`;
+  return api.fire({
+    url,
+    method: "POST",
+    data: query
+  });
+};
+
 export default ProjectApi;

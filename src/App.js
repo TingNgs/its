@@ -4,6 +4,7 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import LoginFrom from "./components/AuthFrom/LoginForm";
 import RegisterFrom from "./components/AuthFrom/RegisterFrom";
 import Dashboard from "./components/Dashboard";
+import ProjectDetail from "./containers/ProjectDetail";
 import Projects from "./containers/Projects";
 import Issue from "./containers/Issue";
 
@@ -21,6 +22,7 @@ function App() {
         <Route path={PATH.PROJECT} component={Projects} />
         <Route path={PATH.ISSUE} component={Issue} />
         <Route path={PATH.SETTING} component={Dashboard} />
+        <Route path={PATH.PROJECT_DETIAL} component={ProjectDetail} />
         <Route path="/" exact component={LoginFrom} />
       </Router>
     </div>

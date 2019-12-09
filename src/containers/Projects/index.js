@@ -57,9 +57,9 @@ const Projects = () => {
 
   return (
     <Layout isLogined={true}>
-      <div className="project_container">
+      <div className="project_container w-full">
         <AddButton action={toggleNewProjectForm} wording="New Project" />
-        <div className="project_list">
+        <div className="project_list w-full">
           {projectList.map(e => {
             return (
               <ProjectCard
