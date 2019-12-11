@@ -78,6 +78,22 @@ const FormInput = ({ handleInput, inputList, handleInputOnblur }) => {
               </div>
             );
           }
+          if (e.inputType === inputType.select) {
+            return (
+              <select name={e.name} onChange={handleInput} value={e.value}>
+                {e.option.map((optionPlaceHolder, i) => {
+                  return (
+                    <option
+                      value={i}
+                      key={`${e.name}_${i}_${optionPlaceHolder}`}
+                    >
+                      {optionPlaceHolder}
+                    </option>
+                  );
+                })}
+              </select>
+            );
+          }
           return "";
         };
         return (

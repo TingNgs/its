@@ -52,7 +52,6 @@ export const fetchProjects = () => (dispatch, getState) => {
   );
 };
 
-export const toggleNewProjectForm = () => (dispatch, getState) => {
-  const { showNewProjectForm } = getState().ProjectsReducer;
-  dispatch({ type: TOGGLE_NEW_PROJECT_FORM, payload: !showNewProjectForm });
+export const toggleNewProjectForm = () => dispatch => {
+  dispatch({ type: TOGGLE_NEW_PROJECT_FORM });
 };

@@ -41,7 +41,7 @@ export default function reducer(state = initialState, actions) {
     case TOGGLE_NEW_PROJECT_FORM:
       return {
         ...state,
-        showNewProjectForm: payload,
+        showNewProjectForm: !state.showNewProjectForm,
         newProjectErrorMsg: null
       };
     case ADD_NEW_PROJECT:

@@ -8,6 +8,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import ProjectForm from "../../components/ProjectForm";
 import ProjectCard from "../../components/ProjectCard";
 
+import { NEW_PROJECT, TITLE } from "./constants";
 import * as actions from "./actions";
 import "./style.scss";
 
@@ -48,7 +49,7 @@ const Projects = () => {
   });
 
   const toggleNewProjectForm = () => {
-    actions.toggleNewProjectForm()(dispatch, getState);
+    actions.toggleNewProjectForm()(dispatch);
   };
 
   const handleSubmit = query => {
@@ -58,7 +59,11 @@ const Projects = () => {
   return (
     <Layout isLogined={true}>
       <div className="project_container w-full">
-        <AddButton action={toggleNewProjectForm} wording="New Project" />
+        <div className="project_header w-full flex justify-between items-center">
+          <p className=" text-20 font-semibold">{TITLE}</p>
+          <AddButton action={toggleNewProjectForm} wording={NEW_PROJECT} />
+        </div>
+
         <div className="project_list w-full">
           {projectList.map(e => {
             return (

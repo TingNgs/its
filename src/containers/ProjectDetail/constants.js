@@ -1,6 +1,13 @@
-export const FETCH_PROJECT_DETAIL = "Projects/FETCH_PROJECT_DETAIL";
+export const FETCH_PROJECT_DETAIL = "Project_DETAIL/FETCH_PROJECT_DETAIL";
 export const FETCH_PROJECT_DETAIL_SUCCESS =
-  "Projects/FETCH_PROJECT_DETAIL_SUCCESS";
+  "Project_DETAIL/FETCH_PROJECT_DETAIL_SUCCESS";
+export const FETCH_PROJECT_DETAIL_FAIL =
+  "Project_DETAIL/FETCH_PROJECT_DETAIL_FAIL";
+
+export const TOGGLE_NEW_ISSUE_FORM = "Project_DETAIL/TOGGLE_NEW_ISSUE_FORM";
+export const ADD_NEW_ISSUE = "Project_DETAIL/ADD_NEW_PROJECT";
+export const ADD_NEW_ISSUE_SUCCESS = "Project_DETAIL/ADD_NEW_ISSUE_SUCCESS";
+export const ADD_NEW_ISSUE_FAIL = "Project_DETAIL/ADD_NEW_ISSUE_FAIL";
 
 export const CONST = {
   projectName: " Project name : ",
@@ -10,5 +17,13 @@ export const CONST = {
   activeIssue: "Active Issue : ",
   closeIssue: "Closed Issue : ",
   memberCount: "Member : ",
-  TagCount: "Tags : "
+  TagCount: "Tags : ",
+  reportIssue: "Report A Issue"
 };
+
+export const TAB = [
+  { query: null, name: "Detail" },
+  { query: "issue", name: "Issue" },
+  { query: "tag", name: "Tag" },
+  { query: "member", name: "Member" }
+];

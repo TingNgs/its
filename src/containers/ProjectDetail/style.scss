@@ -1,7 +1,18 @@
 .projectDetail {
   padding: 20px;
 }
-.projectDetail_subtitle,
-.projectDetail_title {
+.projectDetail_subtitle {
   margin-bottom: 10px;
+}
+.projectDetail_header {
+  margin-bottom: 15px;
+}
+
+.projectDetail_tab {
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.projectDetail_tab_container {
+  margin-bottom: 20px;
 }

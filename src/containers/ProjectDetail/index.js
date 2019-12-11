@@ -1,88 +1,110 @@
-import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector, useStore } from "react-redux";
 
 import Layout from "../../components/Layout";
+import AddButton from "../../components/AddButton";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import IssueForm from "../../components/IssueForm";
+import PopUp from "../../components/PopUp";
+
+import Detail from "./Detail";
 
 import PRIVATE_ICON from "../../utils/image/locked_project.svg";
 import PUBLIC_ICON from "../../utils/image/project.svg";
 
 import { PROJECT_DETIAL_LINK } from "../../utils/pathConst";
-import { CONST } from "./constants";
-import { toLocalTime } from "../../utils/generalUtils";
+import { CONST, TAB } from "./constants";
+
 import * as actions from "./actions";
 
 import "./style.scss";
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
 const ProjectDetail = () => {
   const { user, project } = useParams();
+  const tab = useQuery().get("tab");
   const dispatch = useDispatch();
-  const { isFetchingProjectDetail, projectDetail } = useSelector(
-    state => state.ProjectDetailReducer
-  );
+  const {
+    isFetchingProjectDetail,
+    projectDetail,
+    showNewIssueForm,
+    newIssueErrorMsg,
+    isAddingIssue,
+    fetchProjectDetailError
+  } = useSelector(state => state.ProjectDetailReducer);
 
   useEffect(() => {
     actions.fetchProjectDetial(user, project)(dispatch);
-  }, []);
-  const renderProjectDetail = () => {
-    const {
-      create_time,
-      description,
-      finish_issue_count,
-      isPrivate,
-      issue_count,
-      member_count,
-      name,
-      owner,
-      tag_count
-    } = projectDetail;
+  }, [user, project]);
+
+  const toggleNewIssueForm = () => {
+    actions.toogleNewIssueForm()(dispatch);
+  };
+
+  const handleSubmit = query => {
+    query.projectId = projectDetail.id;
+    actions.addNewIssue(query)(dispatch);
+  };
+
+  const renderProjectHeader = () => {
     return (
-      <>
+      <div className="projectDetail_header flex justify-between flex-row items-center">
         <div className="projectDetail_title text-20 font-semibold flex">
           {CONST.projectName}
-          {name}
+          {project}
         </div>
-        <div className="projectDetail_subtitle text-18 font-semibold flex">
-          {CONST.owner}
-          {owner}
-        </div>
-        <div className="projectDetail_subtitle text-18 font-semibold flex">
-          {CONST.description}
-          {description}
-        </div>
-        <div className="projectDetail_subtitle text-18 font-semibold flex">
-          {CONST.createAT}
-          {toLocalTime(create_time)}
-        </div>
-        <div className="projectDetail_subtitle text-18 font-semibold flex">
-          {CONST.activeIssue}
-          {issue_count}
-        </div>
-        <div className="projectDetail_subtitle text-18 font-semibold flex">
-          {CONST.closeIssue}
-          {finish_issue_count}
-        </div>
-        <div className="projectDetail_subtitle text-18 font-semibold flex">
-          {CONST.memberCount}
-          {member_count}
-        </div>
-        <div className="projectDetail_subtitle text-18 font-semibold flex">
-          {CONST.TagCount}
-          {tag_count}
-        </div>
-      </>
+        <AddButton action={toggleNewIssueForm} wording={CONST.reportIssue} />
+      </div>
     );
   };
+  const renderProjectTab = () => {
+    return (
+      <div className="projectDetail_tab_container flex justify-between flex-row items-center text-18 text-center">
+        {TAB.map(e => (
+          <Link
+            to={`/p/${user}/${project}${e.query ? `?tab=${e.query}` : ""}`}
+            className={`projectDetail_tab flex-grow${
+              tab === e.query ? " bg-main text-white" : ""
+            }`}
+            key={`pd_tab${e.name}`}
+          >
+            <div>{e.name}</div>
+          </Link>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <Layout isLogined={true}>
       <div className="projectDetail w-full">
-        {isFetchingProjectDetail || !projectDetail ? (
-          <LoadingSpinner />
+        {fetchProjectDetailError ? (
+          fetchProjectDetailError
         ) : (
-          renderProjectDetail()
+          <>
+            {renderProjectHeader()}
+            {renderProjectTab()}
+            {isFetchingProjectDetail || !projectDetail ? (
+              <LoadingSpinner />
+            ) : (
+              <Detail projectDetail={projectDetail} />
+            )}
+          </>
         )}
       </div>
+      {showNewIssueForm ? (
+        <PopUp>
+          <IssueForm
+            handleCancel={isAddingIssue ? null : toggleNewIssueForm}
+            handleSubmit={handleSubmit}
+            errorMsg={newIssueErrorMsg}
+          />
+        </PopUp>
+      ) : null}
     </Layout>
   );
 };
