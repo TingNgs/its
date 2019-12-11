@@ -5,6 +5,9 @@ export const apihost = {
 };
 
 export const FETCH_PROJECT_LIMIT = 15;
+export const FETCH_ISSUE_LIMIT = 15;
+
+export const HIT_BOTTOM = "You already hit the bottom !";
 
 export const red_alert = {
   LOGIN_EMAIL_NOT_EXIST:

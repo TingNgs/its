@@ -5,7 +5,11 @@ import {
   TOGGLE_NEW_ISSUE_FORM,
   ADD_NEW_ISSUE,
   ADD_NEW_ISSUE_SUCCESS,
-  ADD_NEW_ISSUE_FAIL
+  ADD_NEW_ISSUE_FAIL,
+  FETCH_PROJECT_ISSUE,
+  FETCH_PROJECT_ISSUE_SUCCESS,
+  FETCH_PROJECT_ISSUE_FAIL,
+  FETCH_PROJECT_ISSUE_BOTTOM
 } from "./constants";
 
 const initialState = {
@@ -14,6 +18,9 @@ const initialState = {
   projectDetail: null,
 
   projectIssueList: [],
+  isFetchingProjectIssue: false,
+  isProjectIssueFetchBottom: false,
+  projectIssueTimestamp: null,
 
   showNewIssueForm: false,
   newIssueErrorMsg: null,
@@ -26,7 +33,7 @@ export default function reducer(state = initialState, actions) {
   switch (type) {
     case FETCH_PROJECT_DETAIL:
       return {
-        ...state,
+        ...initialState,
         isFetchingProjectDetail: true,
         fetchProjectDetailError: null
       };
@@ -65,6 +72,29 @@ export default function reducer(state = initialState, actions) {
       };
     case ADD_NEW_ISSUE_FAIL:
       return { ...state, isAddingIssue: false, newIssueErrorMsg: payload };
+    case FETCH_PROJECT_ISSUE:
+      return { ...state, isFetchingProjectIssue: true };
+    case FETCH_PROJECT_ISSUE_SUCCESS:
+      return {
+        ...state,
+        isFetchingProjectIssue: false,
+        projectIssueList: state.projectIssueTimestamp
+          ? state.projectIssueList.concat(payload)
+          : payload,
+        projectIssueTimestamp: payload[payload.length - 1].create_time
+      };
+    case FETCH_PROJECT_ISSUE_FAIL:
+      return {
+        ...state,
+        isFetchingProjectIssue: false,
+        fetchProjectDetailError: payload
+      };
+    case FETCH_PROJECT_ISSUE_BOTTOM:
+      return {
+        ...state,
+        isProjectIssueFetchBottom: true,
+        isFetchingProjectIssue: false
+      };
     default:
       return state;
   }

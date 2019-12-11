@@ -2,7 +2,7 @@ import React from "react";
 import { CONST } from "../constants";
 import { toLocalTime } from "../../../utils/generalUtils";
 
-const Detail = ({ projectDetail }) => {
+const DetailTab = ({ projectDetail }) => {
   const {
     create_time,
     description,
@@ -48,4 +48,4 @@ const Detail = ({ projectDetail }) => {
   );
 };
 
-export default Detail;
+export default DetailTab;

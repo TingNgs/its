@@ -14,4 +14,15 @@ IssueAPI.addNewIssue = query => {
   });
 };
 
+IssueAPI.getIssueByProjectId = query => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/issue/project?sessionId=${localStorage.getItem("sessionId")}`;
+  return api.fire({
+    url,
+    method: "POST",
+    data: query
+  });
+};
+
 export default IssueAPI;

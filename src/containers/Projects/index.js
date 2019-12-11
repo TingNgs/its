@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Layout from "../../components/Layout";
 import AddButton from "../../components/AddButton";
@@ -8,12 +8,12 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import ProjectForm from "../../components/ProjectForm";
 import ProjectCard from "../../components/ProjectCard";
 
+import { HIT_BOTTOM } from "../../utils/configConst";
 import { NEW_PROJECT, TITLE } from "./constants";
 import * as actions from "./actions";
 import "./style.scss";
 
 const Projects = () => {
-  const { getState } = useStore();
   const dispatch = useDispatch();
   const {
     projectList,
@@ -27,7 +27,7 @@ const Projects = () => {
   } = useSelector(state => state.ProjectsReducer);
 
   useEffect(() => {
-    if (projectTimestamp === null) actions.fetchProjects()(dispatch, getState);
+    if (projectTimestamp === null) actions.fetchProjects()(dispatch);
   }, []);
 
   const handleScroll = () => {
@@ -37,7 +37,7 @@ const Projects = () => {
       !isFetchingProject &&
       !isProjectFetchBottom
     ) {
-      actions.fetchProjects()(dispatch, getState);
+      actions.fetchProjects(projectTimestamp)(dispatch);
     }
   };
 
@@ -79,6 +79,7 @@ const Projects = () => {
             );
           })}
           {isFetchingProject ? <LoadingSpinner /> : null}
+          {isProjectFetchBottom ? HIT_BOTTOM : null}
         </div>
       </div>
       {showNewProjectForm ? (

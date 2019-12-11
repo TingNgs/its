@@ -8,7 +8,8 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import IssueForm from "../../components/IssueForm";
 import PopUp from "../../components/PopUp";
 
-import Detail from "./Detail";
+import DetailTab from "./DetailTab";
+import IssueTab from "./IssueTab";
 
 import PRIVATE_ICON from "../../utils/image/locked_project.svg";
 import PUBLIC_ICON from "../../utils/image/project.svg";
@@ -36,8 +37,16 @@ const ProjectDetail = () => {
     isAddingIssue,
     fetchProjectDetailError
   } = useSelector(state => state.ProjectDetailReducer);
-
+  let loadedProfile = projectDetail !== null;
   useEffect(() => {
+    if (
+      projectDetail &&
+      user === projectDetail.owner &&
+      project === projectDetail.name
+    ) {
+      loadedProfile = false;
+      return;
+    }
     actions.fetchProjectDetial(user, project)(dispatch);
   }, [user, project]);
 
@@ -79,6 +88,19 @@ const ProjectDetail = () => {
     );
   };
 
+  const renderMainContent = () => {
+    switch (tab) {
+      case TAB[1].query:
+        return <IssueTab />;
+      case TAB[2].query:
+        return "";
+      case TAB[3].query:
+        return "";
+      default:
+        return <DetailTab projectDetail={projectDetail} />;
+    }
+  };
+
   return (
     <Layout isLogined={true}>
       <div className="projectDetail w-full">
@@ -88,10 +110,10 @@ const ProjectDetail = () => {
           <>
             {renderProjectHeader()}
             {renderProjectTab()}
-            {isFetchingProjectDetail || !projectDetail ? (
+            {isFetchingProjectDetail || !loadedProfile ? (
               <LoadingSpinner />
             ) : (
-              <Detail projectDetail={projectDetail} />
+              renderMainContent()
             )}
           </>
         )}

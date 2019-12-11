@@ -29,9 +29,7 @@ export const addNewProject = query => dispatch => {
   );
 };
 
-export const fetchProjects = () => (dispatch, getState) => {
-  const { projectTimestamp, isFetchingProject } = getState().ProjectsReducer;
-  if (isFetchingProject) return;
+export const fetchProjects = projectTimestamp => dispatch => {
   dispatch({ type: FETCH_PROJECTS });
   const query = {
     timestamp: projectTimestamp,

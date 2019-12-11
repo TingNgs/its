@@ -8,10 +8,14 @@ import {
   TOGGLE_NEW_ISSUE_FORM,
   ADD_NEW_ISSUE,
   ADD_NEW_ISSUE_SUCCESS,
-  ADD_NEW_ISSUE_FAIL
+  ADD_NEW_ISSUE_FAIL,
+  FETCH_PROJECT_ISSUE,
+  FETCH_PROJECT_ISSUE_SUCCESS,
+  FETCH_PROJECT_ISSUE_FAIL,
+  FETCH_PROJECT_ISSUE_BOTTOM
 } from "./constants";
 
-import { red_alert } from "../../utils/configConst";
+import { red_alert, FETCH_ISSUE_LIMIT } from "../../utils/configConst";
 
 export const fetchProjectDetial = (user, project) => dispatch => {
   dispatch({ type: FETCH_PROJECT_DETAIL });
@@ -44,6 +48,25 @@ export const addNewIssue = query => dispatch => {
         type: ADD_NEW_ISSUE_FAIL,
         payload: red_alert.TRY_AGAIN_LATHER
       });
+    }
+  );
+};
+
+export const fetchProjectIssue = (projectId, timeStamp) => dispatch => {
+  dispatch({ type: FETCH_PROJECT_ISSUE });
+  const query = {
+    timestamp: timeStamp,
+    projectId: projectId,
+    limit: FETCH_ISSUE_LIMIT
+  };
+  IssueApi.getIssueByProjectId(query).then(
+    res => {
+      if (res.data.length)
+        dispatch({ type: FETCH_PROJECT_ISSUE_SUCCESS, payload: res.data });
+      else dispatch({ type: FETCH_PROJECT_ISSUE_BOTTOM, payload: res.data });
+    },
+    rej => {
+      dispatch({ type: FETCH_PROJECT_ISSUE_FAIL });
     }
   );
 };
