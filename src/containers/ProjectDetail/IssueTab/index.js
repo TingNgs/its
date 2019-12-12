@@ -56,19 +56,7 @@ const IssueTab = ({}) => {
       </div>
       <div className="IssueTab_Issues_container">
         {projectIssueList.map(e => (
-          <IssueCard
-            key={`pit${e.id}`}
-            id={e.id}
-            reportUser={e.reportUser}
-            create_time={e.create_time}
-            description={e.description}
-            isReproducible={e.isReproducible}
-            name={e.name}
-            priority={e.priority}
-            projectId={e.projectId}
-            severity={e.severity}
-            state={e.state}
-          />
+          <IssueCard key={`pit${e.id}`} issue={e} />
         ))}
         {isFetchingProjectIssue ? <LoadingSpinner /> : null}
         {isProjectIssueFetchBottom ? HIT_BOTTOM : null}
