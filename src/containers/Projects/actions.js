@@ -22,7 +22,7 @@ export const addNewProject = query => dispatch => {
       const errMsg =
         status === 409
           ? red_alert.PROJECT_NAME_REPEATED
-          : red_alert.TRY_AGAIN_LATHER;
+          : red_alert.TRY_AGAIN_LATER;
 
       dispatch({ type: ADD_NEW_PROJECT_FAIL, payload: errMsg });
     }
