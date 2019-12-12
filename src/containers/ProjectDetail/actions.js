@@ -61,9 +61,9 @@ export const fetchProjectIssue = (projectId, timeStamp) => dispatch => {
   };
   IssueApi.getIssueByProjectId(query).then(
     res => {
-      if (res.data.length)
-        dispatch({ type: FETCH_PROJECT_ISSUE_SUCCESS, payload: res.data });
-      else dispatch({ type: FETCH_PROJECT_ISSUE_BOTTOM, payload: res.data });
+      if (res.data.length < FETCH_ISSUE_LIMIT)
+        dispatch({ type: FETCH_PROJECT_ISSUE_BOTTOM, payload: res.data });
+      else dispatch({ type: FETCH_PROJECT_ISSUE_SUCCESS, payload: res.data });
     },
     rej => {
       dispatch({ type: FETCH_PROJECT_ISSUE_FAIL });

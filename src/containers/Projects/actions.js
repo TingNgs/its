@@ -40,9 +40,9 @@ export const fetchProjects = projectTimestamp => dispatch => {
   ProjectApi.getProject(query).then(
     res => {
       const { data } = res;
-      if (data.length)
-        dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: data });
-      else dispatch({ type: FETCH_PROJECTS_BOTTOM, payload: data });
+      if (data.length < FETCH_PROJECT_LIMIT)
+        dispatch({ type: FETCH_PROJECTS_BOTTOM, payload: data });
+      else dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: data });
     },
     rej => {
       console.log(rej);

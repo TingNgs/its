@@ -28,7 +28,9 @@ export default function reducer(state = initialState, actions) {
     case FETCH_PROJECTS_SUCCESS:
       return {
         ...state,
-        projectList: projectList.concat(payload),
+        projectList: state.projectTimestamp
+          ? state.projectList.concat(payload)
+          : payload,
         projectTimestamp: payload[payload.length - 1].create_time,
         isFetchingProject: false
       };
@@ -36,7 +38,10 @@ export default function reducer(state = initialState, actions) {
       return {
         ...state,
         isProjectFetchBottom: true,
-        isFetchingProject: false
+        isFetchingProject: false,
+        projectList: state.projectTimestamp
+          ? state.projectList.concat(payload)
+          : payload
       };
     case TOGGLE_NEW_PROJECT_FORM:
       return {

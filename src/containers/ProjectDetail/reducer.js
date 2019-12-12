@@ -93,6 +93,9 @@ export default function reducer(state = initialState, actions) {
       return {
         ...state,
         isProjectIssueFetchBottom: true,
+        projectIssueList: state.projectIssueTimestamp
+          ? state.projectIssueList.concat(payload)
+          : payload,
         isFetchingProjectIssue: false
       };
     default:
