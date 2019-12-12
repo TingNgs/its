@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import FormInput from "../FormInput";
 import FormFooterBtn from "../FormFooterBtn";
+import TagInput from "../TagInput";
 
 import { ISSUE_FORM_CONST } from "./constant";
 import {
@@ -20,6 +21,7 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
   const [severity, setSeverity] = useState(0);
   const [priority, setPriority] = useState(0);
   const [isReproducible, setIsReproducible] = useState(0);
+  const [tags, setTag] = useState([]);
 
   const handleSubmitForm = () => {
     handleSubmit({
@@ -31,6 +33,27 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       isReproducible: isReproducible === 0
     });
   };
+
+  const handleAddTag = newTag => {
+    const newTagList = [...tags, newTag];
+    const uniqueTagList = newTagList.filter(
+      (item, pos) => newTagList.indexOf(item) === pos
+    );
+    setTag(uniqueTagList);
+  };
+
+  const handleRemoveTag = e => {
+    let index;
+    if (!e) {
+      index = tags.length - 1;
+    } else {
+      index = e.currentTarget.dataset.index;
+    }
+    const newTagList = [...tags];
+    newTagList.splice(index, 1);
+    setTag(newTagList);
+  };
+
   const handleInput = e => {
     const { name } = e.target;
     const { value } = e.target;
@@ -113,6 +136,11 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
         {ISSUE_FORM_CONST.newTitle}
       </div>
       <FormInput inputList={inputList} handleInput={handleInput} />
+      <TagInput
+        tags={tags}
+        handleAddTag={handleAddTag}
+        handleRemove={handleRemoveTag}
+      />
       <FormFooterBtn
         handleLeftOption={handleCancel}
         handleRightOption={handleSubmitForm}
