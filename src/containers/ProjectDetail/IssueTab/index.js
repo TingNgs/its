@@ -59,7 +59,7 @@ const IssueTab = ({}) => {
           <IssueCard
             key={`pit${e.id}`}
             id={e.id}
-            ReportUser={e.ReportUser}
+            reportUser={e.reportUser}
             create_time={e.create_time}
             description={e.description}
             isReproducible={e.isReproducible}

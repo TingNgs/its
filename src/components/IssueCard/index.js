@@ -6,7 +6,7 @@ import "./style.scss";
 
 const IssueCard = ({
   id,
-  ReportUser,
+  reportUser,
   create_time,
   description,
   isReproducible,
