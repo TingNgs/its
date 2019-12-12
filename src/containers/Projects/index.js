@@ -33,7 +33,7 @@ const Projects = () => {
   const handleScroll = () => {
     if (
       window.innerHeight + Math.ceil(window.scrollY) >=
-        document.body.offsetHeight &&
+      document.body.offsetHeight &&
       !isFetchingProject &&
       !isProjectFetchBottom
     ) {

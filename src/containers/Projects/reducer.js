@@ -39,6 +39,7 @@ export default function reducer(state = initialState, actions) {
         ...state,
         isProjectFetchBottom: true,
         isFetchingProject: false,
+        projectTimestamp: payload.length ? payload[payload.length - 1].create_time : null,
         projectList: state.projectTimestamp
           ? state.projectList.concat(payload)
           : payload
