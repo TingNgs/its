@@ -1,57 +1,61 @@
 export const apihost = {
-    local: 'http://127.0.0.1:8080',
-    dev: 'https://its-api.herokuapp.com',
-    prod: 'https://its-api.herokuapp.com'
+  local: "http://127.0.0.1:8080",
+  dev: "https://its-api.herokuapp.com",
+  prod: "https://its-api.herokuapp.com"
 };
 
 export const FETCH_PROJECT_LIMIT = 15;
 export const FETCH_ISSUE_LIMIT = 15;
-export const FETCH_TAG_LIMIT = 15;
+export const FETCH_MEMBER_LIMIT = 15;
 
-export const HIT_BOTTOM = 'You already hit the bottom !';
+export const HIT_BOTTOM = "You already hit the bottom !";
 
 export const red_alert = {
-    LOGIN_EMAIL_NOT_EXIST:
-        "We don't recognize this email, please sign up to get started",
-    LOGIN_FAIL: 'Login fail. Please try again',
-    REGISTER_FAIL: 'Register fail. Please try again',
+  LOGIN_EMAIL_NOT_EXIST:
+    "We don't recognize this email, please sign up to get started",
+  LOGIN_FAIL: "Login fail. Please try again",
+  REGISTER_FAIL: "Register fail. Please try again",
 
-    REGISTER_EMAIL_EXIST: 'This email address is already in use',
-    REGISTER_USERNAME_EXIST: 'This username is already in use',
+  REGISTER_EMAIL_EXIST: "This email address is already in use",
+  REGISTER_USERNAME_EXIST: "This username is already in use",
 
-    TRY_AGAIN_LATHER: 'Something when wrong. Please try again later.',
-    PROJECT_NAME_REPEATED: 'Project name repeated.',
+  TRY_AGAIN_LATER: "Something when wrong. Please try again later.",
+  PROJECT_NAME_REPEATED: "Project name repeated.",
 
-    NOT_FOUND: '404 NOT FOUND'
+  NOT_FOUND: "404 NOT FOUND",
+
+  PERMISSION_DEIED: "Permission denied",
+  USER_NOT_FOUND: "User not found",
+  USER_ALREADY_JOIN: "User already in project"
 };
 
 export const STATE_OPTION = [
-    'Open',
-    'In Progress',
-    'Ready To Test',
-    'Resolve',
-    "Won't fix",
-    'Abandoned'
+  "Open",
+  "In Progress",
+  "Ready To Test",
+  "Resolve",
+  "Won't fix",
+  "Abandoned"
 ];
 export const SEVERITY_OPTION = [
-    'Critical',
-    'Major',
-    'Moderate',
-    'Minor',
-    'Low'
+  "Critical",
+  "Major",
+  "Moderate",
+  "Minor",
+  "Low"
 ];
 export const PRIORITY_OPTION = [
-    'Wish List',
-    'Low',
-    'Mideum',
-    'High',
-    'Unbreak Now'
+  "Wish List",
+  "Low",
+  "Mideum",
+  "High",
+  "Unbreak Now"
 ];
 
 export const inputType = {
-    text_alert: 'text_alert',
-    text: 'text',
-    textarea: 'textarea',
-    radio: 'radio',
-    select: 'select'
+  text_alert: "text_alert",
+  text: "text",
+  textarea: "textarea",
+  radio: "radio",
+  select: "select"
 };
