@@ -7,8 +7,9 @@ $box_shadow-hover: rgba(149, 191, 255, 0.952);
   border: solid 1px white;
   border-bottom: solid 1px $border_color;
   box-shadow: 0 1px 4px 0 $box_shadow;
-  margin-bottom: 15px;
+  margin-top: 15px;
   padding: 20px;
+  border-radius: 10px;
 
   &:hover {
     border: solid 1px $border_color;
