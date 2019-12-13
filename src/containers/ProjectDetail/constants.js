@@ -21,8 +21,11 @@ export const FETCH_PROJECT_TAG = 'Project_DETAIL/FETCH_PROJECT_TAG';
 export const FETCH_PROJECT_TAG_SUCCESS =
     'Project_DETAIL/FETCH_PROJECT_TAG_SUCCESS';
 export const FETCH_PROJECT_TAG_FAIL = 'Project_DETAIL/FETCH_PROJECT_TAG_FAIL';
-export const FETCH_PROJECT_TAG_BOTTOM =
-    'Project_DETAIL/FETCH_PROJECT_TAG_BOTTOM';
+
+export const ADD_PROJECT_MEMBER = 'Project_DETAIL/ADD_NEW_PROJECT';
+export const ADD_PROJECT_MEMBER_SUCCESS =
+    'Project_DETAIL/ADD_NEW_ISSUE_SUCCESS';
+export const ADD_PROJECT_MEMBER_FAIL = 'Project_DETAIL/ADD_NEW_ISSUE_FAIL';
 
 export const CONST = {
     projectName: ' Project name : ',

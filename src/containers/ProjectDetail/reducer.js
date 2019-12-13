@@ -12,8 +12,7 @@ import {
     FETCH_PROJECT_ISSUE_BOTTOM,
     FETCH_PROJECT_TAG,
     FETCH_PROJECT_TAG_SUCCESS,
-    FETCH_PROJECT_TAG_FAIL,
-    FETCH_PROJECT_TAG_BOTTOM
+    FETCH_PROJECT_TAG_FAIL
 } from './constants';
 
 const initialState = {
@@ -25,6 +24,15 @@ const initialState = {
     isFetchingProjectIssue: false,
     isProjectIssueFetchBottom: false,
     projectIssueTimestamp: null,
+
+    projectTagList: [],
+    isFetchingProjectTag: false,
+    fetchProjectTagError: null,
+
+    projectMemberList: [],
+    isFetchingProjectMember: false,
+    isProjectMemberFetchBottom: false,
+    projectMemberTimestamp: null,
 
     showNewIssueForm: false,
     newIssueErrorMsg: null,
@@ -163,7 +171,7 @@ export default function reducer(state = initialState, actions) {
 
         case FETCH_PROJECT_TAG:
             return {
-                ...initialState,
+                ...state,
                 isFetchingProjectTag: true,
                 fetchProjectTagError: null
             };
@@ -171,22 +179,13 @@ export default function reducer(state = initialState, actions) {
             return {
                 ...state,
                 isFetchingProjectTag: false,
-                projectTag: payload
+                projectTagList: payload
             };
         case FETCH_PROJECT_TAG_FAIL:
             return {
                 ...state,
                 isFetchingProjectTag: false,
-                fetchProjectTagError: payload,
-                projectTag: {}
-            };
-        case FETCH_PROJECT_TAG_BOTTOM:
-            return {
-                ...state,
-                isProjectTagFetchBottom: true
-                    ? state.projectTagList.concat(payload)
-                    : payload,
-                isFetchingProjectTag: false
+                fetchProjectTagError: payload
             };
         default:
             return state;

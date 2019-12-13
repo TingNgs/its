@@ -1,6 +1,6 @@
 import ProjectApi from '../../utils/api/apifetcher/project';
 import IssueApi from '../../utils/api/apifetcher/issue';
-import TagApi from '../../utils/api/apifetcher/tag';
+
 import {
     FETCH_PROJECT_DETAIL,
     FETCH_PROJECT_DETAIL_SUCCESS,
@@ -16,7 +16,9 @@ import {
     FETCH_PROJECT_TAG,
     FETCH_PROJECT_TAG_SUCCESS,
     FETCH_PROJECT_TAG_FAIL,
-    FETCH_PROJECT_TAG_BOTTOM
+    ADD_PROJECT_MEMBER,
+    ADD_PROJECT_MEMBER_SUCCESS,
+    ADD_PROJECT_MEMBER_FAIL
 } from './constants';
 
 import {
@@ -91,21 +93,42 @@ export const fetchProjectIssue = (projectId, timeStamp) => dispatch => {
 export const fetchProjectTag = projectId => dispatch => {
     dispatch({ type: FETCH_PROJECT_TAG });
     const query = {
-        projectId: projectId,
-        limit: FETCH_TAG_LIMIT
+        projectId
     };
-    TagApi.getTagByProjectId(query).then(
+    ProjectApi.getProjectTags(query).then(
         res => {
-            if (res.data.length < FETCH_TAG_LIMIT)
-                dispatch({ type: FETCH_PROJECT_TAG_BOTTOM, payload: res.data });
-            else
-                dispatch({
-                    type: FETCH_PROJECT_TAG_SUCCESS,
-                    payload: res.data
-                });
+            dispatch({
+                type: FETCH_PROJECT_TAG_SUCCESS,
+                payload: res.data
+            });
         },
         rej => {
             dispatch({ type: FETCH_PROJECT_TAG_FAIL });
+        }
+    );
+};
+
+export const addProjectMember = (projectId, username, identity) => dispatch => {
+    dispatch({ type: ADD_PROJECT_MEMBER });
+    const query = {
+        projectId,
+        username,
+        identity
+    };
+    ProjectApi.addProjectMember(query).then(
+        res => {
+            dispatch({
+                type: ADD_PROJECT_MEMBER_SUCCESS,
+                payload: res.data
+            });
+        },
+        rej => {
+            const { response } = rej;
+            const { status } = response;
+            let errMsg;
+            /*if (status === 403) {
+            }*/
+            dispatch({ type: ADD_PROJECT_MEMBER_FAIL, payload: errMsg });
         }
     );
 };

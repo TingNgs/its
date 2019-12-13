@@ -11,46 +11,26 @@ import * as actions from '../actions';
 
 const TagTab = ({}) => {
     const dispatch = useDispatch();
-    const {
-        projectDetail,
-        projectTagList,
-        isFetchingProjectTag,
-        isProjectTagFetchBottom
-    } = useSelector(state => state.projectDetailReducer);
-
-    const handleFetchTag = () => {
-        actions.fetchProjectIssue(projectDetail.id)(dispatch);
-    };
-
-    const handleScroll = () => {
-        if (
-            window.innerHeight + Math.ceil(window.scrollY) >=
-                document.body.offsetHeight &&
-            !isFetchingProjectTag &&
-            !isProjectTagFetchBottom
-        ) {
-            handleFetchTag();
-        }
-    };
+    const { projectDetail, projectTagList, isFetchingProjectTag } = useSelector(
+        state => state.ProjectDetailReducer
+    );
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    });
+        actions.fetchProjectTag(projectDetail.id)(dispatch);
+    }, []);
 
     return (
-        <div className="IssueTab_container w-full">
-            <div className="IssueTab_title text-20 font-semibold">
+        <div className="TagTab_container w-full">
+            <div className="TagTab_title text-20 font-semibold">
                 {CONST.tagTab_title}
             </div>
-            <div className="IssueTab_Issues_container">
+            <div className="TagTab_Tags_container">
                 {projectTagList.map(e => (
-                    <IssueCard key={`pit${e.id}`} issue={e} />
+                    <div key={`TagTab_Tag${e}`} className="TagTab_Tag">
+                        {e}
+                    </div>
                 ))}
                 {isFetchingProjectTag ? <LoadingSpinner /> : null}
-                {isProjectTagFetchBottom ? HIT_BOTTOM : null}
             </div>
         </div>
     );
