@@ -30,7 +30,8 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       state,
       severity,
       priority,
-      isReproducible: isReproducible === 0
+      isReproducible: isReproducible === 0,
+      tags,
     });
   };
 

@@ -40,30 +40,17 @@ const Issue = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     });
-
     return (
         <Layout isLogined={true}>
             <div className="issue_container w-full">
                 <div className="issue_header w-full flex justify-between items-center">
-                    <p className=" text-20 font-semibold ">{TITLE}</p>
+                    <p className=" text-20 font-semibold">{TITLE}</p>
                 </div>
                 <div className="issue_list w-full">
                     {issueList.map((e, i) => {
                         return (
                             <div key={`issueList${i}${e.id}`}>
-                                <IssueCard
-                                    key={`pit${e.id}`}
-                                    id={e.id}
-                                    reportUser={e.reportUser}
-                                    create_time={e.create_time}
-                                    description={e.description}
-                                    isReproducible={e.isReproducible}
-                                    name={e.name}
-                                    priority={e.priority}
-                                    projectId={e.projectId}
-                                    severity={e.severity}
-                                    state={e.state}
-                                />
+                                <IssueCard key={`pit${e.id}`} issue={e} />
                             </div>
                         );
                     })}
