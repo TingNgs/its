@@ -6,6 +6,7 @@ export const apihost = {
 
 export const FETCH_PROJECT_LIMIT = 15;
 export const FETCH_ISSUE_LIMIT = 15;
+export const FETCH_TAG_LIMIT = 15;
 
 export const HIT_BOTTOM = 'You already hit the bottom !';
 
