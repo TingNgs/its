@@ -42,7 +42,7 @@ const Issue = () => {
     });
     return (
         <Layout isLogined={true}>
-            <div className="issue_container w-full">
+            <div className="issue_container w-full bg-gray-200">
                 <div className="issue_header w-full flex justify-between items-center">
                     <p className=" text-20 font-semibold">{TITLE}</p>
                 </div>
