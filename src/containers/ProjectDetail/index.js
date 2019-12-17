@@ -15,8 +15,10 @@ import MemberTab from './MemberTab';
 
 import PRIVATE_ICON from '../../utils/image/locked_project.svg';
 import PUBLIC_ICON from '../../utils/image/project.svg';
+import PROFILE_IMAGE from '../../utils/image/piclogo.png';
 
 import { PROJECT_DETIAL_LINK } from '../../utils/pathConst';
+import { toLocalTime } from '../../utils/generalUtils';
 import { CONST, TAB } from './constants';
 
 import * as actions from './actions';
@@ -62,10 +64,11 @@ const ProjectDetail = () => {
     };
 
     const renderProjectHeader = () => {
+        console.log(projectDetail);
         return (
-            <div class="max-w-sm w-full lg:max-w-full lg:flex">
-                <div class="border-r border-b border-l border-gray-400  lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                    <div class="mb-8">
+            <div className="max-w-sm w-full max-w-full flex">
+                <div className="w-full border-r border-b border-l border-gray-400 border-t border-gray-400 bg-white rounded rounded-b-none rounded-lg border-solid border-gray-100 p-8 flex flex-col justify-between leading-normal">
+                    <div className="mb-4">
                         <div className="projectDetail_header flex justify-between flex-row items-center">
                             <div className="projectDetail_title text-20 font-semibold flex">
                                 {CONST.projectName}
@@ -76,18 +79,38 @@ const ProjectDetail = () => {
                                 wording={CONST.newIssue}
                             />
                         </div>
-                        <div class="flex items-center">
-                            <div class="text-sm">
-                                <p class="text-gray-900 leading-none">
-                                    Jonathan Reinink
-                                </p>
-                                <p class="text-gray-600">Aug 18</p>
+                        {projectDetail ? (
+                            <div className="flex items-center">
+                                <div className="text-lg ">
+                                    <div className="projectDetail_icon flex items-center text-18 ">
+                                        <img src={PROFILE_IMAGE} />
+                                        <p className="text-gray-900 leading-none">
+                                            {projectDetail.owner}
+                                        </p>
+                                    </div>
+                                    <p className="text-gray-600">
+                                        {toLocalTime(projectDetail.create_time)}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        ) : null}
                     </div>
                 </div>
             </div>
         );
+    };
+
+    const getTabCount = name => {
+        switch (name) {
+            case TAB[1].name:
+                return projectDetail.issue_count;
+            case TAB[2].name:
+                return projectDetail.tag_count;
+            case TAB[3].name:
+                return projectDetail.member_count;
+            default:
+                return '';
+        }
     };
     const renderProjectTab = () => {
         return (
@@ -102,7 +125,9 @@ const ProjectDetail = () => {
                         }`}
                         key={`pd_tab${e.name}`}
                     >
-                        <div>{e.name}</div>
+                        <div>
+                            {e.name}({projectDetail ? getTabCount(e.name) : ''})
+                        </div>
                     </Link>
                 ))}
             </div>

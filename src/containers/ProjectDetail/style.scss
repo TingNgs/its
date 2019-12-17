@@ -1,9 +1,11 @@
 .projectDetail {
   padding: 20px;
 }
+
 .projectDetail_subtitle {
   margin-bottom: 10px;
 }
+
 .projectDetail_header {
   margin-bottom: 15px;
 }
@@ -14,12 +16,20 @@
 }
 
 .projectDetail_tab_container {
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
-.IssueTab_title {
-  margin-bottom: 15px;
-}
+
+
 .memberTab_identity {
   height: fit-content;
+}
+
+.projectDetail_icon {
+  margin-bottom: 10px;
+
+  img {
+    width: 2em;
+    margin-right: 10px;
+  }
 }

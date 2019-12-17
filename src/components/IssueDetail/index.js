@@ -81,25 +81,6 @@ const IssueDetail = () => {
                     <React.Fragment>
                         {renderIssueDetail()}
                         {renderIssueActivity()}
-                        <IssueActivityForm issueDetail={issueDetail} />
-                    </React.Fragment>
-                ) : (
-                    <LoadingSpinner />
-                )}
-            </div>
-        </Layout>
-    );
-
-    console.log('Here is the issue detail', issueDetail);
-    return (
-        <Layout isLogined={true}>
-            <div className="issueDetail_container">
-                {fetchingError ? (
-                    fetchingError
-                ) : issueDetail ? (
-                    <React.Fragment>
-                        {renderIssueDetail()}
-                        {renderIssueActivity()}
                         <IssueActivityForm
                             issueDetail={issueDetail}
                             handleSubmit={handleAddIssueActivity}

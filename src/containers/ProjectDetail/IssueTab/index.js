@@ -50,16 +50,22 @@ const IssueTab = ({}) => {
         }
     }, []);
     return (
-        <div className="IssueTab_container w-full">
-            <div className="IssueTab_title text-20 font-semibold">
-                {CONST.issueTab_title}
-            </div>
-            <div className="IssueTab_Issues_container">
-                {projectIssueList.map(e => (
-                    <IssueCard key={`pit${e.id}`} issue={e} />
-                ))}
-                {isFetchingProjectIssue ? <LoadingSpinner /> : null}
-                {isProjectIssueFetchBottom ? HIT_BOTTOM : null}
+        <div className="max-w-sm w-full max-w-full flex">
+            <div className="w-full border-r border-b border-l border-t border-gray-400 bg-white rounded rounded-b-none rounded-lg border-solid p-8 flex flex-col justify-between leading-normal">
+                <div className="mb-4">
+                    <div className=" flex justify-between flex-row items-center">
+                        <div className="IssueTab_title text-20 font-semibold">
+                            {CONST.issueTab_title}
+                        </div>
+                    </div>
+                    <div className="IssueTab_Issues_container">
+                        {projectIssueList.map(e => (
+                            <IssueCard key={`pit${e.id}`} issue={e} />
+                        ))}
+                        {isFetchingProjectIssue ? <LoadingSpinner /> : null}
+                        {isProjectIssueFetchBottom ? HIT_BOTTOM : null}
+                    </div>
+                </div>
             </div>
         </div>
     );
