@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FormInput from "../FormInput";
 import { ISSUE_FORM_CONST } from "./contents";
 import {
@@ -8,7 +8,7 @@ import {
   PRIORITY_OPTION
 } from "../../utils/configConst";
 
-const IssueActivityForm = ({ issueDetail }) => {
+const IssueActivityForm = ({ issueDetail, handleSubmit }) => {
   const [comment, setComment] = useState("");
   const [isReproducible, setIsReproducible] = useState(
     issueDetail.isReproducible ? 0 : 1
@@ -54,6 +54,18 @@ const IssueActivityForm = ({ issueDetail }) => {
       inputType: inputType.textarea
     }
   ];
+
+  useEffect(() => {
+    setComment("");
+    setIsReproducible(issueDetail.isReproducible ? 0 : 1);
+    setState(issueDetail.state);
+    setSeverity(issueDetail.severity);
+    setPriority(issueDetail.priority);
+    setShowReproducible(false);
+    setShowState(false);
+    setShowSeverity(false);
+    setShowPriority(false);
+  }, [issueDetail]);
 
   if (isShowReproducible)
     inputList.unshift({
@@ -101,8 +113,7 @@ const IssueActivityForm = ({ issueDetail }) => {
           type="checkbox"
           checked={isChecked}
           onChange={() => {
-            if (isChecked) setInitValue(initValue);
-
+            setInitValue(initValue);
             setFunction(!isChecked);
           }}
         />
@@ -146,11 +157,27 @@ const IssueActivityForm = ({ issueDetail }) => {
     );
   };
 
+  const handleFormSubmit = () => {
+    const query = {
+      issueId: issueDetail.id,
+      state,
+      severity,
+      priority,
+      isReproducible: isReproducible === 0,
+      content: comment,
+      imgUrls: [],
+      fileUrls: []
+    };
+    handleSubmit(query);
+  };
+
   return (
     <div className="issueActivityForm">
       {renderCheckList()}
       <FormInput inputList={inputList} handleInput={handleInput} />
-      <div className="main_btn btn-active btn-sm">Submit</div>
+      <div className="main_btn btn-active btn-sm" onClick={handleFormSubmit}>
+        Submit
+      </div>
     </div>
   );
 };

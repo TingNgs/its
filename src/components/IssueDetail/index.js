@@ -30,6 +30,19 @@ const IssueDetail = () => {
     );
   }, [issueId]);
 
+  const handleAddIssueActivity = query => {
+    IssueAPI.addIssueActivity(query).then(
+      res => {
+        setIssueDetail(res.data);
+      },
+      rej => {
+        const { status } = rej.response;
+        if (status === 404) setFetchingError(red_alert.NOT_FOUND);
+        else setFetchingError(red_alert.TRY_AGAIN_LATER);
+      }
+    );
+  };
+
   const renderIssueDetail = () => {
     return (
       <div className="issueDetail">
@@ -68,7 +81,10 @@ const IssueDetail = () => {
           <React.Fragment>
             {renderIssueDetail()}
             {renderIssueActivity()}
-            <IssueActivityForm issueDetail={issueDetail} />
+            <IssueActivityForm
+              issueDetail={issueDetail}
+              handleSubmit={handleAddIssueActivity}
+            />
           </React.Fragment>
         ) : (
           <LoadingSpinner />
