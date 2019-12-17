@@ -6,4 +6,6 @@ export const ISSUE = "/issue";
 export const SETTING = "/setting";
 export const PROFILE = "/:user";
 export const PROJECT_DETIAL = "/p/:user/:project";
+export const ISSUE_DETIAL = "/i/:issueId";
 export const PROJECT_DETIAL_LINK = (user, project) => `/p/${user}/${project}`;
+export const ISSUE_DETAIL_LINK = issueId => `/i/${issueId}`;
