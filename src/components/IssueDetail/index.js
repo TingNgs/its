@@ -30,11 +30,30 @@ const IssueDetail = () => {
         );
     }, [issueId]);
 
+    const handleAddIssueActivity = query => {
+        IssueAPI.addIssueActivity(query).then(
+            res => {
+                setIssueDetail(res.data);
+            },
+            rej => {
+                const { status } = rej.response;
+                if (status === 404) setFetchingError(red_alert.NOT_FOUND);
+                else setFetchingError(red_alert.TRY_AGAIN_LATER);
+            }
+        );
+    };
+
     const renderIssueDetail = () => {
         return (
             <div className="issueDetail">
-                <div>Name:{issueDetail.name}</div>
-                <div>Name:{issueDetail.description}</div>
+                <div>:{issueDetail.name}</div>
+                <div>{issueDetail.description}</div>
+                <div>{issueDetail.isReproducible}</div>
+                <div>{issueDetail.priority}</div>
+                <div>{issueDetail.projectId}</div>
+                <div>{issueDetail.description}</div>
+                <div>{issueDetail.name}</div>
+                <div>{issueDetail.description}</div>
             </div>
         );
     };
@@ -63,6 +82,28 @@ const IssueDetail = () => {
                         {renderIssueDetail()}
                         {renderIssueActivity()}
                         <IssueActivityForm issueDetail={issueDetail} />
+                    </React.Fragment>
+                ) : (
+                    <LoadingSpinner />
+                )}
+            </div>
+        </Layout>
+    );
+
+    console.log('Here is the issue detail', issueDetail);
+    return (
+        <Layout isLogined={true}>
+            <div className="issueDetail_container">
+                {fetchingError ? (
+                    fetchingError
+                ) : issueDetail ? (
+                    <React.Fragment>
+                        {renderIssueDetail()}
+                        {renderIssueActivity()}
+                        <IssueActivityForm
+                            issueDetail={issueDetail}
+                            handleSubmit={handleAddIssueActivity}
+                        />
                     </React.Fragment>
                 ) : (
                     <LoadingSpinner />

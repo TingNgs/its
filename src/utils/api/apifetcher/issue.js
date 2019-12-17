@@ -48,4 +48,15 @@ IssueAPI.getIssueByIssueId = issueId => {
   });
 };
 
+IssueAPI.addIssueActivity = query => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/issue/activity?sessionId=${localStorage.getItem("sessionId")}`;
+  return api.fire({
+    url,
+    method: "POST",
+    data: query
+  });
+};
+
 export default IssueAPI;
