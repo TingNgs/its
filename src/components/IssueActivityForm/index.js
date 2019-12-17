@@ -158,17 +158,25 @@ const IssueActivityForm = ({ issueDetail, handleSubmit }) => {
   };
 
   const handleFormSubmit = () => {
-    const query = {
-      issueId: issueDetail.id,
-      state,
-      severity,
-      priority,
-      isReproducible: isReproducible === 0,
-      content: comment,
-      imgUrls: [],
-      fileUrls: []
-    };
-    handleSubmit(query);
+    if (
+      isShowPriority ||
+      isReproducible ||
+      isShowState ||
+      isShowSeverity ||
+      comment.length > 0
+    ) {
+      const query = {
+        issueId: issueDetail.id,
+        state,
+        severity,
+        priority,
+        isReproducible: isReproducible === 0,
+        content: comment,
+        imgUrls: [],
+        fileUrls: []
+      };
+      handleSubmit(query);
+    }
   };
 
   return (
