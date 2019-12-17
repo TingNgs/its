@@ -6,7 +6,9 @@ import IssueAPI from "../../utils/api/apifetcher/issue";
 
 import LoadingSpinner from "../LoadingSpinner";
 import IssueActivity from "../IssueActivity";
+import IssueActivityForm from "../IssueActivityForm";
 
+import { red_alert } from "../../utils/configConst";
 import "./style.scss";
 
 const IssueDetail = () => {
@@ -21,11 +23,12 @@ const IssueDetail = () => {
         setIssueDetail(res.data);
       },
       rej => {
-        console.log(rej);
+        const { status } = rej.response;
+        if (status === 404) setFetchingError(red_alert.NOT_FOUND);
+        else setFetchingError(red_alert.TRY_AGAIN_LATER);
       }
     );
   }, [issueId]);
-  console.log(issueDetail);
 
   const renderIssueDetail = () => {
     return (
@@ -59,10 +62,13 @@ const IssueDetail = () => {
   return (
     <Layout isLogined={true}>
       <div className="issueDetail_container">
-        {issueDetail ? (
+        {fetchingError ? (
+          fetchingError
+        ) : issueDetail ? (
           <React.Fragment>
             {renderIssueDetail()}
             {renderIssueActivity()}
+            <IssueActivityForm issueDetail={issueDetail} />
           </React.Fragment>
         ) : (
           <LoadingSpinner />
