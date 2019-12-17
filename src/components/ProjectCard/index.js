@@ -20,15 +20,23 @@ const ProjectCard = ({
     return (
         <Link to={PROJECT_DETIAL_LINK(owner, name)}>
             <div className="projectCard w-full">
-                <div className="projectCard_title text-20 font-semibold flex">
-                    <img
-                        className="projectCard_icon"
-                        src={isPrivate ? PRIVATE_ICON : PUBLIC_ICON}
-                    />
-                    {`${CONST.title}${owner}/${name}`}
+                <div className="projectCard_title flex justify-between">
+                    <div className="font-semibold text-20 flex justify-start">
+                        <img
+                            className="projectCard_icon"
+                            src={isPrivate ? PRIVATE_ICON : PUBLIC_ICON}
+                        />
+                        {`${CONST.title}${name}`}
+                    </div>
+
+                    <div className=" text-16 flex justify-end text-gray-800">
+                        {`${toLocalTime(create_time)}`}
+                    </div>
                 </div>
-                <div className="projectCard_createAt text-16">
-                    {`${CONST.createAT}${toLocalTime(create_time)}`}
+                <div className="text-20 flex justify-between">
+                    <div className=" text-16 flex justify-start">
+                        {`${CONST.createdBy}${name}`}
+                    </div>
                 </div>
             </div>
         </Link>

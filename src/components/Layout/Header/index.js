@@ -20,7 +20,7 @@ const Header = props => {
     };
 
     return (
-        <div className="header flex flex-wrap justify-between items-center border_custom sticky top-0 ">
+        <div className="header flex flex-wrap justify-between items-center border_custom sticky top-0 bg-white">
             <div className="w-1/5">
                 <Link to={PATH.DASHBOARD}>
                     <img src={logo} width="45%" />
