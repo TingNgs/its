@@ -58,7 +58,7 @@ const IssueDetail = () => {
       </div>
     );
   };
-
+  console.log("Here is the issue detail", issueDetail);
   return (
     <Layout isLogined={true}>
       <div className="issueDetail_container">
