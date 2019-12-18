@@ -8,7 +8,11 @@ import LoadingSpinner from "../../../components/LoadingSpinner";
 import { CONST } from "../constants";
 import { HIT_BOTTOM } from "../../../utils/configConst";
 import { toLocalTime } from "../../../utils/generalUtils";
+
+import PROFILE_IMAGE from "../../../utils/image/user_icon.svg";
 import * as actions from "../actions";
+
+import "./style.scss";
 
 const MemberTab = ({}) => {
   const dispatch = useDispatch();
@@ -78,39 +82,45 @@ const MemberTab = ({}) => {
         <div className="MemberTab_title text-20 font-semibold">
           {CONST.memberTab_title}
         </div>
-        <div className="MemberTab_add_continaer flex text-20">
-          <TextInput
-            type="text"
-            name="searchMember"
-            onChange={handleInput}
-            value={searchMember}
-            placeholder={CONST.searchMember_placeholder}
-            alertMessage={addMemberErrMsg}
-          />
-          <select
-            className="memberTab_identity"
-            name={CONST.identity}
-            onChange={handleInput}
-            value={identity}
-          >
-            {CONST.identity_option.map((optionPlaceHolder, i) => {
-              return (
-                <option
-                  value={i + 1}
-                  key={`${CONST.identity}_${i}_${optionPlaceHolder}`}
-                >
-                  {optionPlaceHolder}
-                </option>
-              );
-            })}
-          </select>
-          <AddButton action={handleAddMember} wording={CONST.addMember} />
-        </div>
+        {projectDetail.identity <= 1 ? (
+          <div className="MemberTab_add_continaer flex text-20">
+            <TextInput
+              type="text"
+              name="searchMember"
+              onChange={handleInput}
+              value={searchMember}
+              placeholder={CONST.searchMember_placeholder}
+              alertMessage={addMemberErrMsg}
+            />
+            <select
+              className="memberTab_identity"
+              name={CONST.identity}
+              onChange={handleInput}
+              value={identity}
+            >
+              {CONST.identity_option.map((optionPlaceHolder, i) => {
+                return (
+                  <option
+                    value={i + 1}
+                    key={`${CONST.identity}_${i}_${optionPlaceHolder}`}
+                  >
+                    {optionPlaceHolder}
+                  </option>
+                );
+              })}
+            </select>
+            <AddButton action={handleAddMember} wording={CONST.addMember} />
+          </div>
+        ) : null}
       </div>
 
       <div className="MemberTab_members_container">
         {projectMemberList.map(e => (
-          <div key={`memberTab_member${e.id}`} className="MemberTab_Tag">
+          <div key={`memberTab_member${e.id}`} className="MemberTab_Tag flex">
+            <img
+              className="memberTab_member_avatar"
+              src={e.avatarUrl || PROFILE_IMAGE}
+            />
             {e.username}--
             {toLocalTime(e.join_time)}---
             {e.id}---{e.identity}

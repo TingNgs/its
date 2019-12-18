@@ -2,14 +2,16 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
 import ProfileAPI from "../../utils/api/apifetcher/profile";
-
+import * as PATH from "../../utils/pathConst";
 import * as actions from "../../containers/Auth/actions";
 
 import Header from "./Header";
 import NavSideBar from "./NavSideBar";
 
-const Layout = ({ isLogined, history, children }) => {
+const Layout = ({ history, children, location }) => {
+  const { pathname } = location;
   const dispatch = useDispatch();
+  const isLogined = pathname !== PATH.LOGIN && pathname !== PATH.REGISTER;
   useEffect(() => {
     if (isLogined) {
       if (!localStorage.getItem("sessionId")) {
@@ -33,7 +35,7 @@ const Layout = ({ isLogined, history, children }) => {
         return;
       }
     }
-  }, []);
+  }, [pathname]);
   return (
     <div className="layout min-h-screen flex flex-col">
       {isLogined ? (

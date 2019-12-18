@@ -12,7 +12,7 @@ import IssueActivityForm from '../IssueActivityForm';
 import { red_alert } from '../../utils/configConst';
 import './style.scss';
 import MARK_ICON from '../../utils/image/exclamation-mark.svg';
-import { PRIORITY_OPTION } from '../../utils/configConst';
+
 const IssueDetail = () => {
     const { issueId } = useParams();
     const [issueDetail, setIssueDetail] = useState(null);
@@ -44,13 +44,12 @@ const IssueDetail = () => {
             }
         );
     };
-
     const renderIssueDetail = () => {
         return (
             <CardLayout>
-                <div className="issueDetail  ">
+                <div className="issueDetail">
                     <img src={MARK_ICON} className="issueDetail_icon flex " />
-                    {issueDetail.name}
+                    <div className="flex">{issueDetail.name}</div>
                     <div className="hl" />
                     <div>
                         Description

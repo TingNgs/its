@@ -386,14 +386,12 @@ const Setting = ({}) => {
   };
 
   return (
-    <Layout isLogined={true}>
-      <div className="setting">
-        {renderAvatarSection()}
-        {renderNameSection()}
-        {renderPasswordSection()}
-        {renderLineSection()}
-      </div>
-    </Layout>
+    <div className="setting">
+      {renderAvatarSection()}
+      {renderNameSection()}
+      {renderPasswordSection()}
+      {renderLineSection()}
+    </div>
   );
 };
 

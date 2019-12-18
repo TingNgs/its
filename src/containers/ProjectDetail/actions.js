@@ -154,6 +154,7 @@ export const fetchProjectMember = (projectId, timeStamp) => dispatch => {
   };
   ProjectApi.getProjectMember(query).then(
     res => {
+      console.log("here is the project member", res.data);
       if (res.data.length < FETCH_MEMBER_LIMIT)
         dispatch({
           type: FETCH_PROJECT_MEMBER_BOTTOM,
