@@ -24,7 +24,7 @@ AuthAPI.login = query => {
 AuthAPI.logout = () => {
   const url = `${
     apihost[process.env.REACT_APP_ENV]
-    }/session/logout?sessionId=${localStorage.getItem("sessionId")}`;
+  }/session/logout?sessionId=${localStorage.getItem("sessionId")}`;
   return api.fire({
     url,
     method: "DELETE"
@@ -34,7 +34,7 @@ AuthAPI.logout = () => {
 AuthAPI.verifyEmail = email => {
   const url = `${
     apihost[process.env.REACT_APP_ENV]
-    }/session/verify/email?email=${email}`;
+  }/session/verify/email?email=${email}`;
   return api.fire({
     url,
     method: "GET"
@@ -44,7 +44,7 @@ AuthAPI.verifyEmail = email => {
 AuthAPI.verifyUsername = username => {
   const url = `${
     apihost[process.env.REACT_APP_ENV]
-    }/session/verify/username?username=${username}`;
+  }/session/verify/username?username=${username}`;
   return api.fire({
     url,
     method: "GET"

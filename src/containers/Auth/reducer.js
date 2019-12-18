@@ -2,7 +2,9 @@ import { AUTH_SUCCESS, AUTH_LOGOUT } from "./constants";
 
 const initialState = {
   username: "",
-  avatarUrl: ""
+  avatarUrl: null,
+  lineId: null,
+  isRevice: null
 };
 
 export default function reducer(state = initialState, actions) {
@@ -11,7 +13,7 @@ export default function reducer(state = initialState, actions) {
     case AUTH_SUCCESS:
       return {
         ...state,
-        username: payload.username
+        ...payload
       };
     case AUTH_LOGOUT:
       return { ...state, ...initialState };
