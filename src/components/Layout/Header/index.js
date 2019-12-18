@@ -1,27 +1,26 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
-import AuthAPI from "../../../utils/api/apifetcher/auth";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+import AuthAPI from '../../../utils/api/apifetcher/auth';
 
-import * as action from "../../../containers/Auth/actions";
-import * as PATH from "../../../utils/pathConst";
-import logo from "../../../cover.png";
+import * as action from '../../../containers/Auth/actions';
+import * as PATH from '../../../utils/pathConst';
+import logo from '../../../cover.png';
 
-import USERICON from "../../../utils/image/user_icon.svg";
+import USERICON from '../../../utils/image/user_icon.svg';
 
-import "./header.scss";
+import './header.scss';
 
 const Header = props => {
-  const dispatch = useDispatch();
-  const { username, avatarUrl } = useSelector(state => state.AuthReducer);
+    const dispatch = useDispatch();
+    const { username, avatarUrl } = useSelector(state => state.AuthReducer);
 
-  const handleLogout = () => {
-    AuthAPI.logout();
-    action.logout()(dispatch);
-    props.history.push("/login");
-  };
+    const handleLogout = () => {
+        AuthAPI.logout();
+        action.logout()(dispatch);
+        props.history.push('/login');
+    };
 
-<<<<<<< HEAD
     return (
         <div className="header flex justify-between items-center border_custom sticky top-0 bg-white">
             <div className="w-1/5">
@@ -45,33 +44,8 @@ const Header = props => {
                     Logout
                 </div>
             </div>
-=======
-  return (
-    <div className="header flex justify-between items-center border_custom sticky top-0 bg-white">
-      <div className="w-1/5">
-        <Link to={PATH.DASHBOARD}>
-          <img src={logo} width="45%" />
-        </Link>
-      </div>
-      <div className="header_link_container flex text-16 justify-end">
-        <div className="header_link_user flex justify-center items-center bg-white hover:bg-gray-100 text-gray-800">
-          <img
-            src={avatarUrl || USERICON}
-            className="w-1/12 header_user_icon"
-          />
-          <p className="header_link text-center ">{`${username}`}</p>
->>>>>>> 4ff737666bf198bc474c35c7c4a97026833a9923
         </div>
-        <div className="vl"></div>
-        <div className="bg-white flex justify-center items-center hover:bg-gray-100 text-gray-800 py-2 px-4 border-l border-gray-400">
-          <Link to={PATH.SETTING}>Setting</Link>
-        </div>
-        <div className="main_btn btn-active" onClick={handleLogout}>
-          Logout
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default withRouter(Header);

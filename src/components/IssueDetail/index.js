@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Layout from '../Layout';
+import CardLayout from '../CardLayout';
 import IssueAPI from '../../utils/api/apifetcher/issue';
 
 import LoadingSpinner from '../LoadingSpinner';
@@ -45,7 +46,7 @@ const IssueDetail = () => {
 
     const renderIssueDetail = () => {
         return (
-            <div className="issueDetail">
+            <div className="issueDetail ">
                 <div>:{issueDetail.name}</div>
                 <div>{issueDetail.description}</div>
                 <div>{issueDetail.isReproducible}</div>
