@@ -9,6 +9,7 @@ import IssueDetail from "./components/IssueDetail";
 import Setting from "./components/Setting";
 import Projects from "./containers/Projects";
 import Issue from "./containers/Issue";
+import Layout from "./components/Layout";
 import { version } from "../package.json";
 
 import * as PATH from "./utils/pathConst";
@@ -20,15 +21,17 @@ function App() {
   return (
     <div className="App">
       <Router basename="/">
-        <Route path={PATH.LOGIN} component={LoginFrom} />
-        <Route path={PATH.REGISTER} component={RegisterFrom} />
-        <Route path={PATH.DASHBOARD} component={Dashboard} />
-        <Route path={PATH.PROJECT} component={Projects} />
-        <Route path={PATH.ISSUE} component={Issue} />
-        <Route path={PATH.SETTING} component={Setting} />
-        <Route path={PATH.PROJECT_DETIAL} component={ProjectDetail} />
-        <Route path={PATH.ISSUE_DETIAL} component={IssueDetail} />
-        <Route path="/" exact component={LoginFrom} />
+        <Layout>
+          <Route path={PATH.LOGIN} component={LoginFrom} />
+          <Route path={PATH.REGISTER} component={RegisterFrom} />
+          <Route path={PATH.DASHBOARD} component={Dashboard} />
+          <Route path={PATH.PROJECT} component={Projects} />
+          <Route path={PATH.ISSUE} component={Issue} />
+          <Route path={PATH.SETTING} component={Setting} />
+          <Route path={PATH.PROJECT_DETIAL} component={ProjectDetail} />
+          <Route path={PATH.ISSUE_DETIAL} component={IssueDetail} />
+          <Route path="/" exact component={LoginFrom} />
+        </Layout>
       </Router>
     </div>
   );
