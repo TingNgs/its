@@ -36,4 +36,15 @@ ProfileAPI.updateUser = query => {
   });
 };
 
+ProfileAPI.checkOldPassword = password => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/profile/checkpassword?sessionId=${localStorage.getItem("sessionId")}`;
+  return api.fire({
+    url,
+    method: "POST",
+    data: password
+  });
+};
+
 export default ProfileAPI;
