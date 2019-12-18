@@ -28,7 +28,7 @@ const IssueActivity = ({ activity }) => {
   if (activity.prevState === -1) {
     return (
       <div className="issueActivity text-16 mt-3 mb-3">
-        {activity.username} start issue with {type[activity.type - 1]}{" "}
+        {activity.username} start issue with {type[activity.type - 1]}
         {typeValue[activity.type - 1][activity.nextState]}
       </div>
     );

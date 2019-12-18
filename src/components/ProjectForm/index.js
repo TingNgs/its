@@ -39,7 +39,6 @@ const ProjectForm = ({ handleCancel, handleSubmit, errorMsg }) => {
   const handleEditorInput = value => {
     setDescription(value === "<p><br></p>" ? "" : value);
   };
-
   const inputList = [
     {
       name: PROJECT_FORM_CONST.name,
