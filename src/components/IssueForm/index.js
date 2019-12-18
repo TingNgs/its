@@ -31,7 +31,7 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       severity,
       priority,
       isReproducible: isReproducible === 0,
-      tags,
+      tags
     });
   };
 
@@ -63,9 +63,6 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       case ISSUE_FORM_CONST.name:
         setName(value);
         break;
-      case ISSUE_FORM_CONST.description:
-        setDescription(value);
-        break;
       case ISSUE_FORM_CONST.state:
         setState(value);
         break;
@@ -83,6 +80,10 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
     }
   };
 
+  const handleEditorInput = value => {
+    setDescription(value === "<p><br></p>" ? "" : value);
+  };
+
   const inputList = [
     {
       name: ISSUE_FORM_CONST.name,
@@ -97,7 +98,8 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       title: ISSUE_FORM_CONST.description_placeholder,
       value: description,
       placeholder: ISSUE_FORM_CONST.description_placeholder,
-      inputType: inputType.textarea
+      handleInput: handleEditorInput,
+      inputType: inputType.editor
     },
     {
       name: ISSUE_FORM_CONST.state,

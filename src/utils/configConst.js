@@ -60,5 +60,6 @@ export const inputType = {
   text: "text",
   textarea: "textarea",
   radio: "radio",
-  select: "select"
+  select: "select",
+  editor: "editor"
 };

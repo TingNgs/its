@@ -8,9 +8,9 @@ import PP from "../../utils/image/user_icon.svg";
 import EDIT_ICON from "../../utils/image/pencil-edit-button.svg";
 import LINE_QR from "../../utils/image/line_qr.png";
 
-import MediaAPI from "../../utils/api/apifetcher/media";
 import * as actions from "../../containers/Auth/actions";
 import { red_alert } from "../../utils/configConst";
+import { handleUploadImage } from "../../utils/generalUtils";
 
 import "./style.scss";
 import ProfileAPI from "../../utils/api/apifetcher/profile";
@@ -118,8 +118,8 @@ const Setting = ({}) => {
   };
 
   const handleAvatarSubmit = async () => {
-    const res = await MediaAPI.uploadImage(newAvatarFile);
-    if (res.data) {
+    const imageUrl = await handleUploadImage(newAvatarFile);
+    if (imageUrl) {
       const defaultQuery = {
         avatarUrl,
         username,
@@ -127,7 +127,7 @@ const Setting = ({}) => {
         lineId,
         isRevice
       };
-      handleUpdateSubmit({ ...defaultQuery, avatarUrl: res.data }, () => {
+      handleUpdateSubmit({ ...defaultQuery, avatarUrl: imageUrl }, () => {
         setAvatarFile(null);
         setAvatarUrl(null);
       });

@@ -28,15 +28,16 @@ const ProjectForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       case PROJECT_FORM_CONST.name:
         setName(value);
         break;
-      case PROJECT_FORM_CONST.description:
-        setDescription(value);
-        break;
       case PROJECT_FORM_CONST.isPrivate:
         setIsPrivate(value);
         break;
       default:
         break;
     }
+  };
+
+  const handleEditorInput = value => {
+    setDescription(value === "<p><br></p>" ? "" : value);
   };
 
   const inputList = [
@@ -53,7 +54,8 @@ const ProjectForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       title: PROJECT_FORM_CONST.description_placeholder,
       value: description,
       placeholder: PROJECT_FORM_CONST.description_placeholder,
-      inputType: inputType.textarea
+      handleInput: handleEditorInput,
+      inputType: inputType.editor
     },
     {
       name: PROJECT_FORM_CONST.isPrivate,
