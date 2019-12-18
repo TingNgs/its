@@ -16,7 +16,7 @@ import MemberTab from './MemberTab';
 
 import PRIVATE_ICON from '../../utils/image/locked_project.svg';
 import PUBLIC_ICON from '../../utils/image/project.svg';
-import PROFILE_IMAGE from '../../utils/image/piclogo.png';
+import PROFILE_IMAGE from '../../utils/image/user_icon.svg';
 
 import { PROJECT_DETIAL_LINK } from '../../utils/pathConst';
 import { toLocalTime } from '../../utils/generalUtils';
