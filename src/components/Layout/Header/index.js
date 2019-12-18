@@ -36,7 +36,7 @@ const Header = props => {
                     />
                     <p className="header_link text-center ">{`${username}`}</p>
                 </div>
-                <div class="vl"></div>
+                <div className="vl"></div>
                 <div className="bg-white flex justify-center items-center hover:bg-gray-100 text-gray-800 py-2 px-4 border-l border-gray-400">
                     <Link to={PATH.SETTING}>Setting</Link>
                 </div>
