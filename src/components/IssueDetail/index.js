@@ -13,6 +13,12 @@ import { red_alert } from '../../utils/configConst';
 import './style.scss';
 import MARK_ICON from '../../utils/image/exclamation-mark.svg';
 
+import {
+    STATE_OPTION,
+    SEVERITY_OPTION,
+    PRIORITY_OPTION
+} from '../../utils/configConst';
+
 const IssueDetail = () => {
     const { issueId } = useParams();
     const [issueDetail, setIssueDetail] = useState(null);
@@ -59,9 +65,9 @@ const IssueDetail = () => {
                         </div>
                     </div>
                     <div className="hl " />
-                    <div>{issueDetail.isReproducible}</div>
-                    <div>{issueDetail.priority}</div>
-                    <div>{issueDetail.projectId}</div>
+                    <div>{STATE_OPTION[issueDetail.state]}</div>
+                    <div>{PRIORITY_OPTION[issueDetail.priority]}</div>
+                    <div>{SEVERITY_OPTION[issueDetail.projectId]}</div>
                 </div>
             </CardLayout>
         );
@@ -82,26 +88,24 @@ const IssueDetail = () => {
     };
     console.log('Here is the issue detail', issueDetail);
     return (
-        <Layout isLogined={true}>
-            <div className="issueDetail_container w-full bg-gray-200">
-                {fetchingError ? (
-                    fetchingError
-                ) : issueDetail ? (
-                    <React.Fragment>
-                        {renderIssueDetail()}
-                        {renderIssueActivity()}
-                        <CardLayout>
-                            <IssueActivityForm
-                                issueDetail={issueDetail}
-                                handleSubmit={handleAddIssueActivity}
-                            />
-                        </CardLayout>
-                    </React.Fragment>
-                ) : (
-                    <LoadingSpinner />
-                )}
-            </div>
-        </Layout>
+        <div className="issueDetail_container w-full bg-gray-200">
+            {fetchingError ? (
+                fetchingError
+            ) : issueDetail ? (
+                <React.Fragment>
+                    {renderIssueDetail()}
+                    {renderIssueActivity()}
+                    <CardLayout>
+                        <IssueActivityForm
+                            issueDetail={issueDetail}
+                            handleSubmit={handleAddIssueActivity}
+                        />
+                    </CardLayout>
+                </React.Fragment>
+            ) : (
+                <LoadingSpinner />
+            )}
+        </div>
     );
 };
 

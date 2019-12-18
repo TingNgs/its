@@ -152,7 +152,7 @@ const ProjectDetail = () => {
         }
     };
     return (
-        <Layout isLogined={true}>
+        <>
             <div className="projectDetail w-full bg-gray-200">
                 {fetchProjectDetailError ? (
                     fetchProjectDetailError
@@ -177,7 +177,7 @@ const ProjectDetail = () => {
                     />
                 </PopUp>
             ) : null}
-        </Layout>
+        </>
     );
 };
 
