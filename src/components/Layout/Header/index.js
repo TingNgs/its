@@ -29,15 +29,20 @@ const Header = props => {
                 </Link>
             </div>
             <div className="header_link_container flex text-16 justify-end">
-                <img src={avatarUrl || USERICON} className="w-1/12" />
-                <p className="header_link text-center ">{`${username}`}</p>
-                <button
-                    className="bg-white hover:bg-gray-100 text-gray-800 font-sans font-semibold py-2 px-4 border border-gray-400 rounded "
-                    onClick={handleLogout}
-                >
+                <div className="header_link_user flex justify-center items-center bg-white hover:bg-gray-100 text-gray-800">
+                    <img
+                        src={avatarUrl || USERICON}
+                        className="w-1/12 header_user_icon"
+                    />
+                    <p className="header_link text-center ">{`${username}`}</p>
+                </div>
+                <div class="vl"></div>
+                <div className="bg-white flex justify-center items-center hover:bg-gray-100 text-gray-800 py-2 px-4 border-l border-gray-400">
+                    <Link to={PATH.SETTING}>Setting</Link>
+                </div>
+                <div className="main_btn btn-active" onClick={handleLogout}>
                     Logout
-                </button>
-                <Link to={PATH.SETTING}>Setting</Link>
+                </div>
             </div>
         </div>
     );

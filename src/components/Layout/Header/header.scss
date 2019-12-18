@@ -9,3 +9,14 @@
 .border_custom {
   border-bottom: solid #cbd5e0 1px;
 }
+
+.vl {
+  border-left: 1px solid #cbd5e0;
+  height: auto;
+}
+
+.header_user_icon {
+  object-fit: contain;
+  width: 2.3em;
+  border-radius: 50%;
+}
