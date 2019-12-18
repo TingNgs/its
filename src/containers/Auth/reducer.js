@@ -1,7 +1,8 @@
 import { AUTH_SUCCESS, AUTH_LOGOUT } from "./constants";
 
 const initialState = {
-  username: ""
+  username: "",
+  avatarUrl: ""
 };
 
 export default function reducer(state = initialState, actions) {
