@@ -8,6 +8,7 @@ import LoadingSpinner from '../../../components/LoadingSpinner';
 import { CONST } from '../constants';
 import { HIT_BOTTOM } from '../../../utils/configConst';
 import * as actions from '../actions';
+import './style.scss';
 
 const TagTab = ({}) => {
     const dispatch = useDispatch();
@@ -24,13 +25,18 @@ const TagTab = ({}) => {
             <div className="TagTab_title text-20 font-semibold">
                 {CONST.tagTab_title}
             </div>
-            <div className="TagTab_Tags_container">
-                {projectTagList.map(e => (
-                    <div key={`TagTab_Tag${e}`} className="TagTab_Tag">
-                        {e}
-                    </div>
-                ))}
-                {isFetchingProjectTag ? <LoadingSpinner /> : null}
+            <div className="TagTab_Tags text-12 ">
+                <span>
+                    {projectTagList.map(e => (
+                        <div
+                            key={`TagTab_Tag${e}`}
+                            className="TagTab_Tags_container bg-green-200"
+                        >
+                            {e}
+                        </div>
+                    ))}
+                    {isFetchingProjectTag ? <LoadingSpinner /> : null}
+                </span>
             </div>
         </div>
     );

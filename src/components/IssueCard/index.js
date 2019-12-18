@@ -33,7 +33,14 @@ const IssueCard = ({ issue }) => {
                     {SEVERITY_OPTION[severity]}
                 </div>
                 <div>create at : {toLocalTime(create_time)}</div>
-                <div>Tags : {tags.map(e => `${e} `)}</div>
+                <div>
+                    {tags.map(e => (
+                        <div className="IssueCard_Tags_container bg-green-200">
+                            {' '}
+                            {e}{' '}
+                        </div>
+                    ))}
+                </div>
             </div>
         </Link>
     );

@@ -7,6 +7,7 @@ import AddButton from '../../components/AddButton';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import IssueForm from '../../components/IssueForm';
 import PopUp from '../../components/PopUp';
+import CardLayout from '../../components/CardLayout';
 
 import DetailTab from './DetailTab';
 import IssueTab from './IssueTab';
@@ -159,7 +160,7 @@ const ProjectDetail = () => {
                         {isFetchingProjectDetail || !loadedProfile ? (
                             <LoadingSpinner />
                         ) : (
-                            renderMainContent()
+                            <CardLayout>{renderMainContent()}</CardLayout>
                         )}
                     </>
                 )}

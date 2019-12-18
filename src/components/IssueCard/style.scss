@@ -5,8 +5,8 @@ $box_shadow-hover: rgba(149, 191, 255, 0.952);
 .IssueCard {
     background-color: white;
     border: solid 1px white;
-    border-bottom: solid 1px $border_color;
-    box-shadow: 0 1px 4px 0 $box_shadow;
+    border-bottom: solid 2px $border_color;
+    box-shadow: 0 3px 20px 0 $box_shadow;
     margin-top: 15px;
     padding: 20px;
     border-radius: 10px;
@@ -15,4 +15,12 @@ $box_shadow-hover: rgba(149, 191, 255, 0.952);
         border: solid 1px $border_color;
         box-shadow: 0 1px 10px 0 $box_shadow-hover;
     }
+}
+
+.IssueCard_Tags_container {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 3px 10px;
+    border: 1px solid black;
+    border-radius: 3px;
 }
