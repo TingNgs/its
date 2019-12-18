@@ -3,7 +3,10 @@
   height: 7em;
   padding: 0.4em 0;
   resize: none;
+  border: 1px solid black;
+  outline: none;
 }
+
 .formInput_text,
 .formInput_title,
 .formInput_radio_container {
@@ -13,6 +16,7 @@
 .formInput_radio_layout {
   margin-right: 1em;
 }
+
 .formInput_radio {
   width: 0.8em;
   height: 0.8em;

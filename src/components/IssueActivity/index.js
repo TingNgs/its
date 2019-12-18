@@ -19,22 +19,21 @@ const IssueActivity = ({ activity }) => {
 
     if (activity.type === 0) {
         return (
-            <div className="issueActivity">
-                {activity.username} Added a comment
-                {activity.content}
+            <div className="issueActivity text-16 mt-3 mb-3">
+                {activity.username} added a comment {activity.content}
             </div>
         );
     }
     if (activity.prevState === -1) {
         return (
-            <div className="issueActivity">
+            <div className="issueActivity text-16 mt-3 mb-3">
                 {activity.username} start issue with {type[activity.type - 1]}{' '}
                 {typeValue[activity.type - 1][activity.nextState]}
             </div>
         );
     }
     return (
-        <div className="issueActivity">
+        <div className="issueActivity text-16 mt-3 mb-3">
             {activity.username} changed {type[activity.type - 1]} from
             {typeValue[activity.type - 1][activity.prevState]} to
             {typeValue[activity.type - 1][activity.nextState]}

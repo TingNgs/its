@@ -11,7 +11,8 @@ import IssueActivityForm from '../IssueActivityForm';
 
 import { red_alert } from '../../utils/configConst';
 import './style.scss';
-
+import MARK_ICON from '../../utils/image/exclamation-mark.svg';
+import { PRIORITY_OPTION } from '../../utils/configConst';
 const IssueDetail = () => {
     const { issueId } = useParams();
     const [issueDetail, setIssueDetail] = useState(null);
@@ -46,16 +47,24 @@ const IssueDetail = () => {
 
     const renderIssueDetail = () => {
         return (
-            <div className="issueDetail ">
-                <div>:{issueDetail.name}</div>
-                <div>{issueDetail.description}</div>
-                <div>{issueDetail.isReproducible}</div>
-                <div>{issueDetail.priority}</div>
-                <div>{issueDetail.projectId}</div>
-                <div>{issueDetail.description}</div>
-                <div>{issueDetail.name}</div>
-                <div>{issueDetail.description}</div>
-            </div>
+            <CardLayout>
+                <div className="issueDetail  ">
+                    <img src={MARK_ICON} className="issueDetail_icon flex " />
+                    {issueDetail.name}
+                    <div className="hl" />
+                    <div>
+                        Description
+                        <br />
+                        <div className="font-thin text-14">
+                            {issueDetail.description}
+                        </div>
+                    </div>
+                    <div className="hl " />
+                    <div>{issueDetail.isReproducible}</div>
+                    <div>{issueDetail.priority}</div>
+                    <div>{issueDetail.projectId}</div>
+                </div>
+            </CardLayout>
         );
     };
 
@@ -75,17 +84,19 @@ const IssueDetail = () => {
     console.log('Here is the issue detail', issueDetail);
     return (
         <Layout isLogined={true}>
-            <div className="issueDetail_container">
+            <div className="issueDetail_container w-full bg-gray-200">
                 {fetchingError ? (
                     fetchingError
                 ) : issueDetail ? (
                     <React.Fragment>
                         {renderIssueDetail()}
                         {renderIssueActivity()}
-                        <IssueActivityForm
-                            issueDetail={issueDetail}
-                            handleSubmit={handleAddIssueActivity}
-                        />
+                        <CardLayout>
+                            <IssueActivityForm
+                                issueDetail={issueDetail}
+                                handleSubmit={handleAddIssueActivity}
+                            />
+                        </CardLayout>
                     </React.Fragment>
                 ) : (
                     <LoadingSpinner />
