@@ -16,5 +16,7 @@ export const ISSUE_FORM_CONST = {
   yes: "Yes",
   no: "No",
 
+  assignList_title: "Re Assign",
+
   newSubmit: "Add"
 };
