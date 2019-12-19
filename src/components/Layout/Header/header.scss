@@ -14,10 +14,17 @@
 .vl {
   border-left: 1px solid #cbd5e0;
   height: auto;
+
 }
 
 .header_user_icon {
   object-fit: contain;
   width: 2.3em;
   border-radius: 50%;
+  border: 1.5px solid black;
+
+  img {
+    object-fit: contain;
+    border-radius: 50%;
+  }
 }

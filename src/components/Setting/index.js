@@ -31,9 +31,9 @@ const Setting = ({}) => {
         isRevice || lineId === null ? 0 : 1
     );
 
-    const [oldPassword, setOldPassowrd] = useState('');
-    const [newPassword, setNewPassowrd] = useState('');
-    const [confirmPassword, setConfirmPassowrd] = useState('');
+    const [oldPassword, setOldPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordAlert, setPasswordAlert] = useState(null);
 
     const [isEditUsername, setEditUsername] = useState(false);
@@ -102,12 +102,12 @@ const Setting = ({}) => {
             return;
 
         if (newPassword !== confirmPassword) {
-            setPasswordAlert(red_alert.PASSOWRD_NOT_CONFIRM);
+            setPasswordAlert(red_alert.PASSWORD_NOT_CONFIRM);
             return;
         }
-        const isOldPassowrd = await checkOldPassword();
-        if (!isOldPassowrd) {
-            setPasswordAlert(red_alert.OLD_PASSOWRD_NOT_CORRECT);
+        const isOldPassword = await checkOldPassword();
+        if (!isOldPassword) {
+            setPasswordAlert(red_alert.OLD_PASSWORD_NOT_CORRECT);
             return;
         }
         handleUpdateSubmit(
@@ -119,9 +119,9 @@ const Setting = ({}) => {
                 password: sha256(newPassword)
             },
             () => {
-                setOldPassowrd('');
-                setNewPassowrd('');
-                setConfirmPassowrd('');
+                setOldPassword('');
+                setNewPassword('');
+                setConfirmPassword('');
                 setEditPassword(false);
             }
         );
@@ -158,13 +158,13 @@ const Setting = ({}) => {
                 setIsRevice(parseInt(value));
                 break;
             case 'oldPassword':
-                setOldPassowrd(value);
+                setOldPassword(value);
                 break;
             case 'newPassword':
-                setNewPassowrd(value);
+                setNewPassword(value);
                 break;
             case 'confirmPassword':
-                setConfirmPassowrd(value);
+                setConfirmPassword(value);
                 break;
             default:
                 break;
@@ -271,7 +271,7 @@ const Setting = ({}) => {
                 <div className="setting_avatar relative w-full mb-10">
                     <img
                         src={newAvatarURl || avatarUrl || PP}
-                        className=" w-full h-full absolute mx-auto rounded-full "
+                        className=" w-full h-full absolute mx-auto  "
                     />
                 </div>
                 <input type="file" onChange={avatarOnChange} />
@@ -341,7 +341,7 @@ const Setting = ({}) => {
         return (
             <div>
                 <div className="flex">
-                    <div>line Id : {lineId || 'You have no line id.'}</div>
+                    <div>Line id : {lineId || 'You have no Line id'}</div>
                     <img
                         className="setting_editIcon"
                         src={EDIT_ICON}
@@ -384,9 +384,9 @@ const Setting = ({}) => {
                     {renderSubmitButton(
                         {},
                         () => {
-                            setOldPassowrd('');
-                            setNewPassowrd('');
-                            setConfirmPassowrd('');
+                            setOldPassword('');
+                            setNewPassword('');
+                            setConfirmPassword('');
                             setEditPassword(false);
                         },
                         handlePasswordSubmit
@@ -395,7 +395,7 @@ const Setting = ({}) => {
             );
         return (
             <div className="flex">
-                <div>Passowrd : **********</div>
+                <div>Password : **********</div>
                 <img
                     className="setting_editIcon"
                     src={EDIT_ICON}

@@ -1,3 +1,12 @@
 .memberTab_member_avatar {
+
+  object-fit: contain;
   width: 2em;
+  border-radius: 50%;
+  border: 1.5px solid black;
+
+  img {
+    object-fit: contain;
+    border-radius: 50%;
+  }
 }

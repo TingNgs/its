@@ -25,12 +25,16 @@
 
 .projectDetail_icon {
   margin-bottom: 10px;
+  width: 2.3em;
+  border-radius: 50%;
+  border: 1.5px solid black;
 
   img {
-    width: 2em;
+
     margin-right: 10px;
     object-fit: contain;
     width: 2.3em;
     border-radius: 50%;
+
   }
 }

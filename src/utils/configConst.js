@@ -22,8 +22,8 @@ export const red_alert = {
     TRY_AGAIN_LATER: 'Something when wrong. Please try again later.',
     PROJECT_NAME_REPEATED: 'Project name repeated.',
 
-    OLD_PASSOWRD_NOT_CORRECT: 'Your old password is not correct.',
-    PASSOWRD_NOT_CONFIRM: 'Your new password and confirm password is not same.',
+    OLD_PASSWORD_NOT_CORRECT: 'Your old password is not correct.',
+    PASSWORD_NOT_CONFIRM: 'Your new password and confirm password is not same.',
 
     NOT_FOUND: '404 NOT FOUND',
 

@@ -35,7 +35,7 @@ const ProjectCard = ({
                 </div>
                 <div className="text-20 flex justify-between">
                     <div className=" text-16 flex justify-start">
-                        {`${CONST.createdBy}${name}`}
+                        {`${CONST.createdBy}${owner}`}
                     </div>
                 </div>
             </div>
