@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
             <div className="w-full border-r border-b border-l border-t border-gray-400 bg-white rounded rounded-b-none rounded-lg border-solid p-8 flex flex-col justify-between leading-normal">
                 <div className="mb-4">
                     <div className="cardLayout_header  justify-between  items-center">
-                        <div className="cardLayout_title text-20 font-semibold">
+                        <div className="cardLayout_title text-20 ">
                             {children}
                         </div>
                     </div>

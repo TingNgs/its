@@ -11,4 +11,13 @@
 
 .nav_sidebar_link {
   margin-bottom: 1em;
+
+  &:active {
+    color: red;
+  }
+}
+
+.nav_sidebar_link:active {
+  color: red;
+  ;
 }

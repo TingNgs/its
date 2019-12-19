@@ -5,12 +5,12 @@ import './index.scss';
 
 const NavSideBar = props => {
     return (
-        <div className="nav_sidebar bg-gray-300">
+        <div className="nav_sidebar bg-gray-300 ">
             <div className="nav_sidebar_container fixed flex flex-col">
                 {SIDE_BAR_ITEMS.map(item => (
                     <Link
                         key={`sliderBar_${item.name}`}
-                        className="nav_sidebar_link text-black font-bold hover:bg-gray-400 "
+                        className="nav_sidebar_link text-black font-bold hover:bg-gray-400 visited"
                         to={item.path}
                     >
                         <div className="">{item.name}</div>

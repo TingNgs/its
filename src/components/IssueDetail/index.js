@@ -54,11 +54,16 @@ const IssueDetail = () => {
         return (
             <CardLayout>
                 <div className="issueDetail">
-                    <img src={MARK_ICON} className="issueDetail_icon flex " />
-                    <div className="flex">{issueDetail.name}</div>
+                    <div className="flex">
+                        <img
+                            src={MARK_ICON}
+                            className="issueDetail_icon flex "
+                        />
+                        <div className="flex font-bold">{issueDetail.name}</div>
+                    </div>
                     <div className="hl" />
                     <div>
-                        Description
+                        <div className="font-bold">Description</div>
                         <br />
                         <div
                             dangerouslySetInnerHTML={{
@@ -66,10 +71,21 @@ const IssueDetail = () => {
                             }}
                         />
                     </div>
-                    <div className="hl " />
-                    <div>{STATE_OPTION[issueDetail.state]}</div>
-                    <div>{PRIORITY_OPTION[issueDetail.priority]}</div>
-                    <div>{SEVERITY_OPTION[issueDetail.projectId]}</div>
+                    <div className="hl" />
+                    <div className="issueDetail_state">
+                        <div>
+                            Issue state:{' '}
+                            <b>{STATE_OPTION[issueDetail.state]}</b>
+                        </div>
+                        <div>
+                            Issue severity:{' '}
+                            <b>{PRIORITY_OPTION[issueDetail.priority]}</b>
+                        </div>
+                        <div>
+                            Issue priority:{' '}
+                            <b>{SEVERITY_OPTION[issueDetail.projectId]}</b>
+                        </div>
+                    </div>
                 </div>
             </CardLayout>
         );
