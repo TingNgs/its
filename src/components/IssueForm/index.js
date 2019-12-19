@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import FormInput from "../FormInput";
 import FormFooterBtn from "../FormFooterBtn";
 import TagInput from "../TagInput";
+import NameSelector from "../NameSelector";
 
 import { ISSUE_FORM_CONST } from "./constant";
 import {
@@ -22,6 +23,7 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
   const [priority, setPriority] = useState(0);
   const [isReproducible, setIsReproducible] = useState(0);
   const [tags, setTag] = useState([]);
+  const [assignList, setAssignList] = useState([]);
 
   const handleSubmitForm = () => {
     handleSubmit({
@@ -31,7 +33,8 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       severity,
       priority,
       isReproducible: isReproducible === 0,
-      tags
+      tags,
+      assignList
     });
   };
 
@@ -53,6 +56,26 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
     const newTagList = [...tags];
     newTagList.splice(index, 1);
     setTag(newTagList);
+  };
+
+  const handleAddAssign = newAssign => {
+    const newAssignList = [...assignList, newAssign];
+    const uniqueList = newAssignList.filter(
+      (item, pos) => newAssignList.indexOf(item) === pos
+    );
+    setAssignList(uniqueList);
+  };
+
+  const handleRemoveAssign = e => {
+    let index;
+    if (!e) {
+      index = assignList.length - 1;
+    } else {
+      index = e.currentTarget.dataset.index;
+    }
+    const newAssignList = [...assignList];
+    newAssignList.splice(index, 1);
+    setAssignList(newAssignList);
   };
 
   const handleInput = e => {
@@ -143,6 +166,11 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
         tags={tags}
         handleAddTag={handleAddTag}
         handleRemove={handleRemoveTag}
+      />
+      <NameSelector
+        nameList={assignList}
+        handleAdd={handleAddAssign}
+        handleRemove={handleRemoveAssign}
       />
       <FormFooterBtn
         handleLeftOption={handleCancel}

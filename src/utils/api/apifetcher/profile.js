@@ -47,4 +47,16 @@ ProfileAPI.checkOldPassword = password => {
   });
 };
 
+ProfileAPI.searchLikeUsername = username => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/profile/username?username=${username}&sessionId=${localStorage.getItem(
+    "sessionId"
+  )}`;
+  return api.fire({
+    url,
+    method: "GET"
+  });
+};
+
 export default ProfileAPI;

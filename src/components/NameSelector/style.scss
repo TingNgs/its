@@ -1,0 +1,37 @@
+.nameselector_serachList {
+  transform: translateY(-100%);
+  min-width: 200px;
+  background-color: rgb(204, 166, 166);
+  padding-top: 10px 0;
+}
+.nameselector_serachList_item {
+  padding: 5px;
+}
+.nameselector_serachList_item:hover,
+.nameselector_serachList_item-select {
+  background-color: wheat;
+}
+.nameselector_close {
+  width: 1em;
+  height: 1em;
+  opacity: 0.3;
+  position: relative;
+}
+.nameselector_close:hover {
+  opacity: 1;
+}
+.nameselector_close:before,
+.nameselector_close:after {
+  position: absolute;
+  left: 0.5em;
+  content: " ";
+  height: 1em;
+  width: 2px;
+  background-color: #333;
+}
+.nameselector_close:before {
+  transform: rotate(45deg);
+}
+.nameselector_close:after {
+  transform: rotate(-45deg);
+}
