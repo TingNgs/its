@@ -29,11 +29,13 @@ const IssueActivity = ({ activity }) => {
     return (
       <div className="issueActivity text-16 mt-3 mb-3">
         {activity.username} assigned:
-        {activity.assignList.map(e => {
+        {activity.assignList.map((e, i) => {
           return e.isAdd ? (
-            <div>{e.username}</div>
+            <div key={`issueActivity_assign${e}_${i}`}>{e.username}</div>
           ) : (
-            <div className="line-through">{e.username}</div>
+            <div key={`issueActivity_assign${e}_${i}`} className="line-through">
+              {e.username}
+            </div>
           );
         })}
       </div>

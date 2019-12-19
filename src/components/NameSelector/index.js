@@ -23,9 +23,7 @@ const NameSelector = ({ nameList, handleAdd, handleRemove }) => {
               setSearchList(res.data);
               setSelectIndex(res.data.length - 1);
             },
-            rej => {
-              console.log(rej);
-            }
+            rej => {}
           );
         }, 300)
       );

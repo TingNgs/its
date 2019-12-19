@@ -1,14 +1,20 @@
-.nameselector_serachList {
-  transform: translateY(-100%);
+.nameselector_serachList,
+.ql-mention-list-container {
   min-width: 200px;
   background-color: rgb(204, 166, 166);
   padding-top: 10px 0;
 }
-.nameselector_serachList_item {
+.nameselector_serachList {
+  transform: translateY(-100%);
+}
+
+.nameselector_serachList_item,
+.ql-mention-list-item {
   padding: 5px;
 }
 .nameselector_serachList_item:hover,
-.nameselector_serachList_item-select {
+.nameselector_serachList_item-select,
+.ql-mention-list-item.selected {
   background-color: wheat;
 }
 .nameselector_close {

@@ -24,6 +24,7 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
   const [isReproducible, setIsReproducible] = useState(0);
   const [tags, setTag] = useState([]);
   const [assignList, setAssignList] = useState([]);
+  const [mentionList, setMentionList] = useState([]);
 
   const handleSubmitForm = () => {
     handleSubmit({
@@ -34,7 +35,8 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
       priority,
       isReproducible: isReproducible === 0,
       tags,
-      assignList
+      assignList,
+      mentionList
     });
   };
 
@@ -105,6 +107,16 @@ const IssueForm = ({ handleCancel, handleSubmit, errorMsg }) => {
 
   const handleEditorInput = value => {
     setDescription(value === "<p><br></p>" ? "" : value);
+    const doc = document.createElement("div");
+    doc.innerHTML = value;
+    const mentionDomList = doc.getElementsByClassName("mention");
+    const newMentionList = Array.from(mentionDomList).map(e => {
+      return e.dataset.value;
+    });
+
+    setMentionList(
+      newMentionList.filter((item, pos) => newMentionList.indexOf(item) === pos)
+    );
   };
 
   const inputList = [
