@@ -11,8 +11,12 @@ import NavSideBar from "./NavSideBar";
 const Layout = ({ history, children, location }) => {
   const { pathname } = location;
   const dispatch = useDispatch();
+  console.log(pathname);
   const isLogined =
-    pathname !== PATH.LOGIN && pathname !== PATH.REGISTER && pathname !== "";
+    pathname !== PATH.LOGIN &&
+    pathname !== PATH.REGISTER &&
+    pathname !== "" &&
+    pathname !== "/";
   useEffect(() => {
     if (isLogined) {
       if (!localStorage.getItem("sessionId")) {
