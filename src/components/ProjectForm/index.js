@@ -8,10 +8,19 @@ import { inputType } from "../../utils/configConst";
 
 import "./style.scss";
 
-const ProjectForm = ({ handleCancel, handleSubmit, errorMsg }) => {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [isPrivate, setIsPrivate] = useState(0);
+const ProjectForm = ({
+  handleCancel,
+  handleSubmit,
+  errorMsg,
+  projectDetail
+}) => {
+  const [name, setName] = useState(projectDetail ? projectDetail.name : "");
+  const [description, setDescription] = useState(
+    projectDetail ? projectDetail.description : ""
+  );
+  const [isPrivate, setIsPrivate] = useState(
+    projectDetail ? (projectDetail.isPrivate ? 1 : 0) : 0
+  );
 
   const handleSubmitForm = () => {
     handleSubmit({
@@ -68,13 +77,19 @@ const ProjectForm = ({ handleCancel, handleSubmit, errorMsg }) => {
   return (
     <div className="projectForm_container bg-white rounded-4 max-h-full w-full overflow-y-auto text-18">
       <div className="projectForm_title text-20 font-bold">
-        {PROJECT_FORM_CONST.newTitle}
+        {projectDetail
+          ? PROJECT_FORM_CONST.editTitle
+          : PROJECT_FORM_CONST.newTitle}
       </div>
       <FormInput inputList={inputList} handleInput={handleInput} />
       <FormFooterBtn
         handleLeftOption={handleCancel}
         handleRightOption={handleSubmitForm}
-        rightOption={PROJECT_FORM_CONST.newSubmit}
+        rightOption={
+          projectDetail
+            ? PROJECT_FORM_CONST.editSubmit
+            : PROJECT_FORM_CONST.newSubmit
+        }
         isActive={name.length > 0}
       />
       <div className="text-red-600">{errorMsg}</div>

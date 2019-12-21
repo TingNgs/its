@@ -19,6 +19,7 @@ const Header = () => {
     AuthAPI.logout();
     action.logout()(dispatch);
     window.location.href = "/#/login";
+    window.location.reload();
   };
 
   return (

@@ -7,8 +7,6 @@ import {
 } from "../../utils/configConst";
 
 const IssueActivity = ({ activity }) => {
-  console.log("Here is a issue activity", activity);
-
   const type = ["state", "severity", "priority", "Reproducible"];
   const typeValue = [
     STATE_OPTION,

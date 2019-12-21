@@ -22,7 +22,8 @@ import {
   FETCH_PROJECT_MEMBER,
   FETCH_PROJECT_MEMBER_SUCCESS,
   FETCH_PROJECT_MEMBER_FAIL,
-  FETCH_PROJECT_MEMBER_BOTTOM
+  FETCH_PROJECT_MEMBER_BOTTOM,
+  UPDATE_PROJECT_DETAIL
 } from "./constants";
 
 import {
@@ -173,4 +174,11 @@ export const fetchProjectMember = (projectId, timeStamp) => dispatch => {
       });
     }
   );
+};
+
+export const updateProjectDetail = projectDetail => dispatch => {
+  dispatch({
+    type: UPDATE_PROJECT_DETAIL,
+    payload: projectDetail
+  });
 };

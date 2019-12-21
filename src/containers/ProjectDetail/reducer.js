@@ -19,7 +19,8 @@ import {
   FETCH_PROJECT_MEMBER,
   FETCH_PROJECT_MEMBER_SUCCESS,
   FETCH_PROJECT_MEMBER_FAIL,
-  FETCH_PROJECT_MEMBER_BOTTOM
+  FETCH_PROJECT_MEMBER_BOTTOM,
+  UPDATE_PROJECT_DETAIL
 } from "./constants";
 
 const initialState = {
@@ -253,6 +254,8 @@ export default function reducer(state = initialState, actions) {
         isFetchingProjectMember: false,
         fetchProjectDetailError: payload
       };
+    case UPDATE_PROJECT_DETAIL:
+      return { ...state, projectDetail: payload };
     default:
       return state;
   }
