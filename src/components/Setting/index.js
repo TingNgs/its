@@ -296,7 +296,8 @@ const Setting = ({}) => {
               }
             />
             Scan qr code add line to get line id (Send 'Get id' to get your Line
-            Id).
+            Id). Or search by id :{" "}
+            {process.env.REACT_APP_ENV === "local" ? "@353zmckj" : "@231culmf"}
           </div>
           <div>
             Line Id:
