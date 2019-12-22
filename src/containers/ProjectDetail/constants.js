@@ -71,5 +71,6 @@ export const TAB = [
   { query: null, name: "Detail" },
   { query: "issue", name: "Issue" },
   { query: "tag", name: "Tag" },
-  { query: "member", name: "Member" }
+  { query: "member", name: "Member" },
+  { query: "report", name: "Report" }
 ];

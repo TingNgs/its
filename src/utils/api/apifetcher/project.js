@@ -102,4 +102,16 @@ ProjectApi.getProjectMember = query => {
   });
 };
 
+ProjectApi.getProjectReport = query => {
+  const url = `${apihost[process.env.REACT_APP_ENV]}/project/report?projectId=${
+    query.projectId
+  }&day=${query.day}&priority=${query.priority}&closed=${
+    query.closed ? "true" : "false"
+  }&sessionId=${localStorage.getItem("sessionId")}`;
+  return api.fire({
+    url,
+    method: "GET"
+  });
+};
+
 export default ProjectApi;

@@ -13,6 +13,7 @@ import DetailTab from "./DetailTab";
 import IssueTab from "./IssueTab";
 import TagTab from "./TagTab";
 import MemberTab from "./MemberTab";
+import ReportTab from "./ReportTab";
 
 import PRIVATE_ICON from "../../utils/image/locked_project.svg";
 import PUBLIC_ICON from "../../utils/image/project.svg";
@@ -100,11 +101,11 @@ const ProjectDetail = () => {
   const getTabCount = name => {
     switch (name) {
       case TAB[1].name:
-        return projectDetail.issue_count;
+        return `(${projectDetail.issue_count})`;
       case TAB[2].name:
-        return projectDetail.tag_count;
+        return `(${projectDetail.tag_count})`;
       case TAB[3].name:
-        return projectDetail.member_count;
+        return `(${projectDetail.member_count})`;
       default:
         return "";
     }
@@ -112,19 +113,23 @@ const ProjectDetail = () => {
   const renderProjectTab = () => {
     return (
       <div className="projectDetail_tab_container flex justify-between flex-row items-center text-18 text-center">
-        {TAB.map(e => (
-          <Link
-            to={`/p/${user}/${project}${e.query ? `?tab=${e.query}` : ""}`}
-            className={`projectDetail_tab flex-grow${
-              tab === e.query ? " bg-main text-white" : ""
-            }`}
-            key={`pd_tab${e.name}`}
-          >
-            <div>
-              {e.name}({projectDetail ? getTabCount(e.name) : ""})
-            </div>
-          </Link>
-        ))}
+        {TAB.map((e, i) => {
+          if (i == 4 && projectDetail.identity >= 2) return null;
+          return (
+            <Link
+              to={`/p/${user}/${project}${e.query ? `?tab=${e.query}` : ""}`}
+              className={`projectDetail_tab flex-grow${
+                tab === e.query ? " bg-main text-white" : ""
+              }`}
+              key={`pd_tab${e.name}`}
+            >
+              <div>
+                {e.name}
+                {projectDetail ? getTabCount(e.name) : ""}
+              </div>
+            </Link>
+          );
+        })}
       </div>
     );
   };
@@ -137,6 +142,9 @@ const ProjectDetail = () => {
         return <TagTab />;
       case TAB[3].query:
         return <MemberTab />;
+      case TAB[4].query:
+        if (projectDetail.identity < 2)
+          return <ReportTab projectDetail={projectDetail} />;
       default:
         return <DetailTab projectDetail={projectDetail} />;
     }
@@ -149,11 +157,14 @@ const ProjectDetail = () => {
         ) : (
           <>
             {renderProjectHeader()}
-            {renderProjectTab()}
+
             {isFetchingProjectDetail || !loadedProfile ? (
               <LoadingSpinner />
             ) : (
-              <CardLayout>{renderMainContent()}</CardLayout>
+              <>
+                {renderProjectTab()}
+                <CardLayout>{renderMainContent()}</CardLayout>
+              </>
             )}
           </>
         )}
