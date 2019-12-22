@@ -62,18 +62,25 @@ const EditIssueForm = ({
         break;
     }
   };
-
-  const handleEditorInput = value => {
-    setDescription(value === "<p><br></p>" ? "" : value);
+  const getMentionList = value => {
     const doc = document.createElement("div");
     doc.innerHTML = value;
     const mentionDomList = doc.getElementsByClassName("mention");
-    const newMentionList = Array.from(mentionDomList).map(e => {
+    return Array.from(mentionDomList).map(e => {
       return e.dataset.value;
     });
+  };
+  const handleEditorInput = value => {
+    setDescription(value === "<p><br></p>" ? "" : value);
+    const oldMentionList = getMentionList(issueDetail.description);
+    const newMentionList = getMentionList(value);
 
     setMentionList(
-      newMentionList.filter((item, pos) => newMentionList.indexOf(item) === pos)
+      newMentionList.filter(
+        (item, pos) =>
+          newMentionList.indexOf(item) === pos &&
+          oldMentionList.indexOf(item) === -1
+      )
     );
   };
 

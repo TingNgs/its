@@ -70,4 +70,15 @@ IssueAPI.addIssueActivity = query => {
   });
 };
 
+IssueAPI.editIssueActivity = query => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/issue/activity?sessionId=${localStorage.getItem("sessionId")}`;
+  return api.fire({
+    url,
+    method: "PUT",
+    data: query
+  });
+};
+
 export default IssueAPI;
