@@ -57,7 +57,7 @@ const IssueDetail = () => {
       res => {
         setIssueDetail(res.data);
         console.log("Here is the issue detail", res.data);
-        if (projectDetail.id === issueDetail.projectId)
+        if (projectDetail && projectDetail.id === issueDetail.projectId)
           projectAction.reset()(dispatch);
       },
       rej => {
