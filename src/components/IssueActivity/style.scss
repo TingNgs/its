@@ -1,0 +1,36 @@
+.issueActivity_profileIcon {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 2.3em;
+    border-radius: 50%;
+    border: 1.5px solid black;
+
+    img {
+        object-fit: contain;
+        width: 2.3em;
+        border-radius: 50%;
+
+    }
+}
+
+.issueActivity_statusIcon {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 2.3em;
+    background-color: #3492eb;
+    border: 3px solid #3492eb;
+
+    img {
+        object-fit: contain;
+        width: 2.3em;
+    }
+}
+
+.issueActivity {
+    .hl {
+        border-top: 1px solid rgb(159, 167, 175);
+        margin: 1em 0;
+
+        width: 50px;
+    }
+}
