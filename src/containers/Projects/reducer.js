@@ -8,6 +8,8 @@ import {
   TOGGLE_NEW_PROJECT_FORM
 } from "./constants";
 
+import { RESET_DATA_FLOW } from "../Auth/constants";
+
 const initialState = {
   projectList: [],
   isFetchingProject: false,
@@ -39,7 +41,9 @@ export default function reducer(state = initialState, actions) {
         ...state,
         isProjectFetchBottom: true,
         isFetchingProject: false,
-        projectTimestamp: payload.length ? payload[payload.length - 1].create_time : null,
+        projectTimestamp: payload.length
+          ? payload[payload.length - 1].create_time
+          : null,
         projectList: state.projectTimestamp
           ? state.projectList.concat(payload)
           : payload
@@ -61,6 +65,8 @@ export default function reducer(state = initialState, actions) {
       };
     case ADD_NEW_PROJECT_FAIL:
       return { ...state, isAddingProject: false, newProjectErrorMsg: payload };
+    case RESET_DATA_FLOW:
+      return initialState;
     default:
       return state;
   }

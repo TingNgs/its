@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AuthAPI from "../../../utils/api/apifetcher/auth";
 
 import * as action from "../../../containers/Auth/actions";
+import { RESET_DATA_FLOW } from "../../../containers/Auth/constants";
 import * as PATH from "../../../utils/pathConst";
 import logo from "../../../cover.png";
 
@@ -19,7 +20,7 @@ const Header = () => {
     AuthAPI.logout();
     action.logout()(dispatch);
     window.location.href = "/#/login";
-    window.location.reload();
+    dispatch({ type: RESET_DATA_FLOW });
   };
 
   return (

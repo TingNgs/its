@@ -25,6 +25,8 @@ import {
   UPDATE_PROJECT_MEMBER
 } from "./constants";
 
+import { RESET_DATA_FLOW } from "../Auth/constants";
+
 const initialState = {
   isFetchingProjectDetail: false,
   fetchProjectDetailError: null,
@@ -273,6 +275,8 @@ export default function reducer(state = initialState, actions) {
           return { ...e, identity: payload.identity };
         })
       };
+    case RESET_DATA_FLOW:
+      return initialState;
     default:
       return state;
   }

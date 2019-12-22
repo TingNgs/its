@@ -11,6 +11,7 @@ import DELETE from "../../../utils/image/delete.svg";
 import EDIT from "../../../utils/image/pencil-edit-button.svg";
 import * as actions from "../actions";
 import ProjectApi from "../../../utils/api/apifetcher/project";
+import { RESET_DATA_FLOW } from "../../Auth/constants";
 
 import "./style.scss";
 
@@ -46,10 +47,10 @@ const MemberCard = ({ memberDetail, projectDetail, history }) => {
     }).then(() => {
       setShowEdit(false);
       setShowTransfer(false);
+      dispatch({ type: RESET_DATA_FLOW });
       history.push(
         `/p/${memberDetail.username}/${projectDetail.name}?tab=member`
       );
-      window.location.reload();
     });
   };
 
