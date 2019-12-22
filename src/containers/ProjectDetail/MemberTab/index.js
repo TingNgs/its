@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import AddButton from "../../../components/AddButton";
 import TextInput from "../../../components/TextInput";
 import LoadingSpinner from "../../../components/LoadingSpinner";
+import MemberCard from "./MemberCard";
 
 import { CONST } from "../constants";
-import { HIT_BOTTOM } from "../../../utils/configConst";
+import { HIT_BOTTOM, IDENTITY_OPTION } from "../../../utils/configConst";
 import { toLocalTime } from "../../../utils/generalUtils";
 
 import PROFILE_IMAGE from "../../../utils/image/user_icon.svg";
@@ -98,10 +99,11 @@ const MemberTab = ({}) => {
               onChange={handleInput}
               value={identity}
             >
-              {CONST.identity_option.map((optionPlaceHolder, i) => {
+              {IDENTITY_OPTION.map((optionPlaceHolder, i) => {
+                if (i === 0) return null;
                 return (
                   <option
-                    value={i + 1}
+                    value={i}
                     key={`${CONST.identity}_${i}_${optionPlaceHolder}`}
                   >
                     {optionPlaceHolder}
@@ -116,15 +118,11 @@ const MemberTab = ({}) => {
 
       <div className="MemberTab_members_container">
         {projectMemberList.map(e => (
-          <div key={`memberTab_member${e.id}`} className="MemberTab_Tag flex">
-            <img
-              className="memberTab_member_avatar"
-              src={e.avatarUrl || PROFILE_IMAGE}
-            />
-            {e.username}--
-            {toLocalTime(e.join_time)}---
-            {e.id}---{e.identity}
-          </div>
+          <MemberCard
+            key={`memberTab_member${e.id}`}
+            projectDetail={projectDetail}
+            memberDetail={e}
+          />
         ))}
         {isFetchingProjectMember ? <LoadingSpinner /> : null}
         {isProjectMemberFetchBottom ? HIT_BOTTOM : null}

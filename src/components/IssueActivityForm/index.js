@@ -141,7 +141,10 @@ const IssueActivityForm = ({ issueDetail, handleSubmit }) => {
       name: ISSUE_FORM_CONST.state,
       title: ISSUE_FORM_CONST.state_title,
       value: state,
-      option: STATE_OPTION,
+      option:
+        issueDetail.projectIdentity < 3
+          ? STATE_OPTION
+          : STATE_OPTION.slice(0, 3),
       inputType: inputType.select
     });
 

@@ -52,8 +52,7 @@ export const CONST = {
   addMember: "Add Member",
   searchMember: "searchMember",
   searchMember_placeholder: "Search by username/email",
-  identity: "identity",
-  identity_option: ["Admin", "Member"]
+  identity: "identity"
 };
 
 export const TAB = [

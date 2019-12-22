@@ -1,5 +1,4 @@
-.memberTab_member_avatar {
-
+.memberCard_avatar {
   object-fit: contain;
   width: 2em;
   border-radius: 50%;
@@ -8,5 +7,13 @@
   img {
     object-fit: contain;
     border-radius: 50%;
+  }
+}
+.memberCard_btn_container {
+  img {
+    object-fit: contain;
+    width: 1em;
+    cursor: pointer;
+    margin-left: 1em;
   }
 }
