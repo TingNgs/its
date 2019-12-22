@@ -25,8 +25,14 @@ import {
   FETCH_PROJECT_MEMBER_BOTTOM,
   UPDATE_PROJECT_DETAIL,
   REMOVE_PROJECT_MEMBER,
-  UPDATE_PROJECT_MEMBER
+  UPDATE_PROJECT_MEMBER,
+  FETCH_PROJECT_CLOSED_ISSUE,
+  FETCH_PROJECT_CLOSED_ISSUE_SUCCESS,
+  FETCH_PROJECT_CLOSED_ISSUE_FAIL,
+  FETCH_PROJECT_CLOSED_ISSUE_BOTTOM
 } from "./constants";
+
+import { RESET_DATA_FLOW } from "../Auth/constants";
 
 import {
   red_alert,
@@ -71,29 +77,40 @@ export const addNewIssue = query => dispatch => {
   );
 };
 
-export const fetchProjectIssue = (projectId, timeStamp) => dispatch => {
-  dispatch({ type: FETCH_PROJECT_ISSUE });
+export const fetchProjectIssue = (
+  projectId,
+  timeStamp,
+  closed = false
+) => dispatch => {
+  dispatch({ type: closed ? FETCH_PROJECT_CLOSED_ISSUE : FETCH_PROJECT_ISSUE });
   const query = {
     timestamp: timeStamp,
     projectId: projectId,
-    limit: FETCH_ISSUE_LIMIT
+    limit: FETCH_ISSUE_LIMIT,
+    closed
   };
   IssueApi.getIssueByProjectId(query).then(
     res => {
       if (res.data.length < FETCH_ISSUE_LIMIT)
         dispatch({
-          type: FETCH_PROJECT_ISSUE_BOTTOM,
+          type: closed
+            ? FETCH_PROJECT_CLOSED_ISSUE_BOTTOM
+            : FETCH_PROJECT_ISSUE_BOTTOM,
           payload: res.data
         });
       else
         dispatch({
-          type: FETCH_PROJECT_ISSUE_SUCCESS,
+          type: closed
+            ? FETCH_PROJECT_CLOSED_ISSUE_SUCCESS
+            : FETCH_PROJECT_ISSUE_SUCCESS,
           payload: res.data
         });
     },
-    rej => {
+    () => {
       dispatch({
-        type: FETCH_PROJECT_ISSUE_FAIL,
+        type: closed
+          ? FETCH_PROJECT_CLOSED_ISSUE_FAIL
+          : FETCH_PROJECT_ISSUE_FAIL,
         payload: red_alert.TRY_AGAIN_LATER
       });
     }
@@ -203,4 +220,8 @@ export const updateProjectMember = (userId, identity) => dispatch => {
     type: UPDATE_PROJECT_MEMBER,
     payload: { userId, identity }
   });
+};
+
+export const reset = () => dispatch => {
+  dispatch({ type: RESET_DATA_FLOW });
 };

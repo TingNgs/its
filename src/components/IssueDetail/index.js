@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Layout from "../Layout";
@@ -16,6 +17,8 @@ import { red_alert } from "../../utils/configConst";
 import "./style.scss";
 import MARK_ICON from "../../utils/image/exclamation-mark.svg";
 
+import * as projectAction from "../../containers/ProjectDetail/actions";
+
 import {
   STATE_OPTION,
   SEVERITY_OPTION,
@@ -23,6 +26,7 @@ import {
 } from "../../utils/configConst";
 
 const IssueDetail = () => {
+  const dispatch = useDispatch();
   const { issueId } = useParams();
   const [issueDetail, setIssueDetail] = useState(null);
   const [fetchingError, setFetchingError] = useState(null);
@@ -31,6 +35,7 @@ const IssueDetail = () => {
   const [editErrorMsg, setErrorMsg] = useState(null);
 
   const { username } = useSelector(state => state.AuthReducer);
+  const { projectDetail } = useSelector(state => state.ProjectDetailReducer);
 
   useEffect(() => {
     if (issueDetail != null) setIssueDetail(null);
@@ -52,6 +57,8 @@ const IssueDetail = () => {
       res => {
         setIssueDetail(res.data);
         console.log("Here is the issue detail", res.data);
+        if (projectDetail.id === issueDetail.projectId)
+          projectAction.reset()(dispatch);
       },
       rej => {
         const { status } = rej.response;

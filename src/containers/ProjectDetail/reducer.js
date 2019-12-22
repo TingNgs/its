@@ -22,7 +22,11 @@ import {
   FETCH_PROJECT_MEMBER_BOTTOM,
   UPDATE_PROJECT_DETAIL,
   REMOVE_PROJECT_MEMBER,
-  UPDATE_PROJECT_MEMBER
+  UPDATE_PROJECT_MEMBER,
+  FETCH_PROJECT_CLOSED_ISSUE,
+  FETCH_PROJECT_CLOSED_ISSUE_SUCCESS,
+  FETCH_PROJECT_CLOSED_ISSUE_FAIL,
+  FETCH_PROJECT_CLOSED_ISSUE_BOTTOM
 } from "./constants";
 
 import { RESET_DATA_FLOW } from "../Auth/constants";
@@ -36,6 +40,11 @@ const initialState = {
   isFetchingProjectIssue: false,
   isProjectIssueFetchBottom: false,
   projectIssueTimestamp: null,
+
+  projectClosedIssueList: [],
+  isFetchingProjectClosedIssue: false,
+  isProjectClosedIssueFetchBottom: false,
+  projectClosedIssueTimestamp: null,
 
   projectTagList: [],
   isFetchingProjectTag: false,
@@ -130,6 +139,35 @@ export default function reducer(state = initialState, actions) {
           ? state.projectIssueList.concat(payload)
           : payload,
         isFetchingProjectIssue: false
+      };
+    case FETCH_PROJECT_CLOSED_ISSUE:
+      return { ...state, isFetchingProjectClosedIssue: true };
+    case FETCH_PROJECT_CLOSED_ISSUE_SUCCESS:
+      return {
+        ...state,
+        isFetchingProjectClosedIssue: false,
+        projectClosedIssueList: state.projectClosedIssueTimestamp
+          ? state.projectClosedIssueList.concat(payload)
+          : payload,
+        projectClosedIssueTimestamp: payload[payload.length - 1].create_time
+      };
+    case FETCH_PROJECT_CLOSED_ISSUE_FAIL:
+      return {
+        ...state,
+        isFetchingProjectClosedIssue: false,
+        fetchProjectDetailError: payload
+      };
+    case FETCH_PROJECT_CLOSED_ISSUE_BOTTOM:
+      return {
+        ...state,
+        isProjectClosedIssueFetchBottom: true,
+        projectClosedIssueTimestamp: payload.length
+          ? payload[payload.length - 1].create_time
+          : null,
+        projectClosedIssueList: state.projectClosedIssueTimestamp
+          ? state.projectIssueList.concat(payload)
+          : payload,
+        isFetchingProjectClosedIssue: false
       };
     case FETCH_PROJECT_DETAIL:
       return {
