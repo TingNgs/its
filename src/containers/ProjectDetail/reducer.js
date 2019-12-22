@@ -20,7 +20,9 @@ import {
   FETCH_PROJECT_MEMBER_SUCCESS,
   FETCH_PROJECT_MEMBER_FAIL,
   FETCH_PROJECT_MEMBER_BOTTOM,
-  UPDATE_PROJECT_DETAIL
+  UPDATE_PROJECT_DETAIL,
+  REMOVE_PROJECT_MEMBER,
+  UPDATE_PROJECT_MEMBER
 } from "./constants";
 
 const initialState = {
@@ -256,6 +258,21 @@ export default function reducer(state = initialState, actions) {
       };
     case UPDATE_PROJECT_DETAIL:
       return { ...state, projectDetail: payload };
+    case REMOVE_PROJECT_MEMBER:
+      return {
+        ...state,
+        projectMemberList: state.projectMemberList.filter(e => e.id != payload)
+      };
+    case UPDATE_PROJECT_MEMBER:
+      return {
+        ...state,
+        projectMemberList: state.projectMemberList.map(e => {
+          if (e.id != payload.userId) {
+            return e;
+          }
+          return { ...e, identity: payload.identity };
+        })
+      };
     default:
       return state;
   }

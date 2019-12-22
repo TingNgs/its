@@ -23,7 +23,9 @@ import {
   FETCH_PROJECT_MEMBER_SUCCESS,
   FETCH_PROJECT_MEMBER_FAIL,
   FETCH_PROJECT_MEMBER_BOTTOM,
-  UPDATE_PROJECT_DETAIL
+  UPDATE_PROJECT_DETAIL,
+  REMOVE_PROJECT_MEMBER,
+  UPDATE_PROJECT_MEMBER
 } from "./constants";
 
 import {
@@ -119,7 +121,12 @@ export const fetchProjectTag = projectId => dispatch => {
   );
 };
 
-export const addProjectMember = (projectId, username, identity) => dispatch => {
+export const addProjectMember = (
+  projectId,
+  username,
+  identity,
+  setInput
+) => dispatch => {
   dispatch({ type: ADD_PROJECT_MEMBER });
   const query = {
     projectId,
@@ -132,6 +139,7 @@ export const addProjectMember = (projectId, username, identity) => dispatch => {
         type: ADD_PROJECT_MEMBER_SUCCESS,
         payload: res.data
       });
+      setInput("");
     },
     rej => {
       const { response } = rej;
@@ -180,5 +188,19 @@ export const updateProjectDetail = projectDetail => dispatch => {
   dispatch({
     type: UPDATE_PROJECT_DETAIL,
     payload: projectDetail
+  });
+};
+
+export const removeProjecctMember = userId => dispatch => {
+  dispatch({
+    type: REMOVE_PROJECT_MEMBER,
+    payload: userId
+  });
+};
+
+export const updateProjectMember = (userId, identity) => dispatch => {
+  dispatch({
+    type: UPDATE_PROJECT_MEMBER,
+    payload: { userId, identity }
   });
 };

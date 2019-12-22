@@ -72,7 +72,8 @@ const MemberTab = ({}) => {
       actions.addProjectMember(
         projectDetail.id,
         searchMember,
-        identity
+        identity,
+        setSerachMember
       )(dispatch);
     }
   };

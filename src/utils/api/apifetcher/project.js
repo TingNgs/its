@@ -69,6 +69,28 @@ ProjectApi.addProjectMember = query => {
   });
 };
 
+ProjectApi.removeProjectMember = query => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/project/member?sessionId=${localStorage.getItem("sessionId")}`;
+  return api.fire({
+    url,
+    method: "DELETE",
+    data: query
+  });
+};
+
+ProjectApi.updateProjectMember = query => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/project/member?sessionId=${localStorage.getItem("sessionId")}`;
+  return api.fire({
+    url,
+    method: "PUT",
+    data: query
+  });
+};
+
 ProjectApi.getProjectMember = query => {
   const url = `${
     apihost[process.env.REACT_APP_ENV]
