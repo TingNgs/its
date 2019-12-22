@@ -49,6 +49,7 @@ const MemberCard = ({ memberDetail, projectDetail, history }) => {
       history.push(
         `/p/${memberDetail.username}/${projectDetail.name}?tab=member`
       );
+      window.location.reload();
     });
   };
 
