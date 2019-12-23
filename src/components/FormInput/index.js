@@ -87,6 +87,7 @@ const FormInput = ({ handleInput, inputList, handleInputOnblur }) => {
                                 name={e.name}
                                 onChange={handleInput}
                                 value={e.value}
+                                className="select_style"
                             >
                                 {e.option.map((optionPlaceHolder, i) => {
                                     return (

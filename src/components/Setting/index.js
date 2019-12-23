@@ -200,9 +200,6 @@ const Setting = ({}) => {
         };
         return (
             <>
-                <div onClick={handleCancel} className="main_btn btn-cancel">
-                    Cancel
-                </div>
                 <div
                     onClick={() => {
                         handleSubmit(
@@ -210,9 +207,12 @@ const Setting = ({}) => {
                             handleCancel
                         );
                     }}
-                    className="main_btn btn-active"
+                    className="main_btn btn-active mt-4 mr-4"
                 >
                     Submit
+                </div>
+                <div onClick={handleCancel} className="main_btn btn-cancel">
+                    Cancel
                 </div>
             </>
         );
@@ -269,13 +269,13 @@ const Setting = ({}) => {
     const renderAvatarSection = () => {
         return (
             <div className="setting_avatar_container w-full mx-auto ">
-                <div className="setting_avatar relative w-full mb-10">
+                <div className="setting_avatar relative w-full mb-10 ">
                     <img
                         src={newAvatarURl || avatarUrl || PP}
-                        className=" w-full h-full absolute mx-auto  "
+                        className=" w-full h-full absolute mx-auto"
                     />
                 </div>
-                <input type="file" onChange={avatarOnChange} />
+                <input type="file" onChange={avatarOnChange} className=" " />
                 {newAvatarURl
                     ? renderSubmitButton(
                           {},
