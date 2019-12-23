@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "98f6813711faebada3ed2a7f5b689d30",
+    "revision": "d0af2a0803c9b1f0c492eb8c42e0309f",
     "url": "/its/index.html"
   },
   {
-    "revision": "73abf4fa9821c05a9a55",
+    "revision": "ad96f6760608ddd30db0",
     "url": "/its/static/css/2.4b3ccb6c.chunk.css"
   },
   {
-    "revision": "e7b669688656a09f30a5",
-    "url": "/its/static/css/main.885ca7a0.chunk.css"
+    "revision": "1532c0eca8f6d4dc38af",
+    "url": "/its/static/css/main.d966dea0.chunk.css"
   },
   {
-    "revision": "73abf4fa9821c05a9a55",
-    "url": "/its/static/js/2.e4b14af7.chunk.js"
+    "revision": "ad96f6760608ddd30db0",
+    "url": "/its/static/js/2.2187a48d.chunk.js"
   },
   {
-    "revision": "e7b669688656a09f30a5",
-    "url": "/its/static/js/main.27da6f5f.chunk.js"
+    "revision": "1532c0eca8f6d4dc38af",
+    "url": "/its/static/js/main.2c8b3132.chunk.js"
   },
   {
     "revision": "8ea195272be48c5bd2ce",
@@ -28,16 +28,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/its/static/media/add.151f63a5.svg"
   },
   {
+    "revision": "a5513207d8d6f6953f68ab9a915d7ad9",
+    "url": "/its/static/media/add_member.a5513207.svg"
+  },
+  {
+    "revision": "7877a854477f90dd5c5ac5cd9e972b5b",
+    "url": "/its/static/media/comment.7877a854.svg"
+  },
+  {
     "revision": "bdba94fd79218be6a49384f0ad42289d",
     "url": "/its/static/media/cover.bdba94fd.png"
+  },
+  {
+    "revision": "e294a389fe724ecc470f555ef1fdd766",
+    "url": "/its/static/media/delete.e294a389.svg"
   },
   {
     "revision": "fbd33943c5eced63b7e566de16f88bc7",
     "url": "/its/static/media/exclamation-mark.fbd33943.svg"
   },
   {
+    "revision": "eb7d8158d28ecada952ff09bf5a37cf0",
+    "url": "/its/static/media/light_bulb.eb7d8158.svg"
+  },
+  {
     "revision": "cdd8dc1ea3f6d05055982e5a88413c2d",
     "url": "/its/static/media/locked_project.cdd8dc1e.svg"
+  },
+  {
+    "revision": "055eafcc2d85e52e6ce22c69452dfda6",
+    "url": "/its/static/media/mark.055eafcc.svg"
   },
   {
     "revision": "d37d94008347a67f103811601107af7f",
