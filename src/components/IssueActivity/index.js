@@ -156,7 +156,7 @@ const IssueActivity = ({ activity, handleEditComment }) => {
                             return e.isAdd ? (
                                 <div key={`issueActivity_assign${e}_${i}`}>
                                     <span className="font-bold">
-                                        <span className="font-bold">
+                                        <span className="font-bold mr-2">
                                             {e.username}
                                         </span>
                                     </span>
@@ -166,7 +166,7 @@ const IssueActivity = ({ activity, handleEditComment }) => {
                                     key={`issueActivity_assign${e}_${i}`}
                                     className="line-through"
                                 >
-                                    <span className="font-bold">
+                                    <span className="font-bold mr-2">
                                         {e.username}
                                     </span>
                                 </div>
@@ -177,6 +177,7 @@ const IssueActivity = ({ activity, handleEditComment }) => {
             </div>
         );
     }
+    console.log(activity);
     if (activity.prevState === -1) {
         return (
             <div className="issueActivity text-16 pl-10 flex items-center">

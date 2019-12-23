@@ -18,6 +18,7 @@ $box_shadow-hover: rgba(149, 191, 255, 0.952);
 }
 
 .IssueCard_Tags_container {
+    filter: saturate(90%);
     display: inline-block;
     margin-top: 0.7rem;
     margin-right: 5px;

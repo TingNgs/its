@@ -21,7 +21,7 @@ const ProjectCard = ({
         <Link to={PROJECT_DETIAL_LINK(owner, name)}>
             <div className="projectCard w-full">
                 <div className="projectCard_title flex justify-between">
-                    <div className="font-semibold text-20 flex justify-start">
+                    <div className="font-semibold text-20 flex justify-start items-center">
                         <img
                             className="projectCard_icon"
                             src={isPrivate ? PRIVATE_ICON : PUBLIC_ICON}

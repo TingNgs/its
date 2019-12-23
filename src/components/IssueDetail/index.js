@@ -100,7 +100,7 @@ const IssueDetail = () => {
         return (
             <CardLayout>
                 <div className="issueDetail">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                         <div className="flex">
                             <img
                                 src={MARK_ICON}

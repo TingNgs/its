@@ -85,33 +85,35 @@ const MemberTab = ({}) => {
                     {CONST.memberTab_title}
                 </div>
                 {projectDetail.identity <= 1 ? (
-                    <div className="MemberTab_add_continaer flex text-20">
-                        <TextInput
-                            type="text"
-                            name="searchMember"
-                            onChange={handleInput}
-                            value={searchMember}
-                            placeholder={CONST.searchMember_placeholder}
-                            alertMessage={addMemberErrMsg}
-                        />
-                        <select
-                            className="memberTab_identity"
-                            name={CONST.identity}
-                            onChange={handleInput}
-                            value={identity}
-                        >
-                            {IDENTITY_OPTION.map((optionPlaceHolder, i) => {
-                                if (i === 0) return null;
-                                return (
-                                    <option
-                                        value={i}
-                                        key={`${CONST.identity}_${i}_${optionPlaceHolder}`}
-                                    >
-                                        {optionPlaceHolder}
-                                    </option>
-                                );
-                            })}
-                        </select>
+                    <div className="MemberTab_add_container flex text-20 items-center ">
+                        <div className="MemberTab_add_container_border flex justify-between ">
+                            <TextInput
+                                type="text"
+                                name="searchMember"
+                                onChange={handleInput}
+                                value={searchMember}
+                                placeholder={CONST.searchMember_placeholder}
+                                alertMessage={addMemberErrMsg}
+                            />
+                            <select
+                                className="memberTab_identity"
+                                name={CONST.identity}
+                                onChange={handleInput}
+                                value={identity}
+                            >
+                                {IDENTITY_OPTION.map((optionPlaceHolder, i) => {
+                                    if (i === 0) return null;
+                                    return (
+                                        <option
+                                            value={i}
+                                            key={`${CONST.identity}_${i}_${optionPlaceHolder}`}
+                                        >
+                                            {optionPlaceHolder}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
                         <AddButton
                             action={handleAddMember}
                             wording={CONST.addMember}
