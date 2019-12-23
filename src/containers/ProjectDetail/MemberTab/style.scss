@@ -1,19 +1,29 @@
+.memberCard {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 10em;
+    margin-right: 2rem;
+    padding: 2rem;
+}
 .memberCard_avatar {
-  object-fit: contain;
-  width: 2em;
-  border-radius: 50%;
-  border: 1.5px solid black;
-
-  img {
-    object-fit: contain;
+    width: 5em;
+    height: 5em;
     border-radius: 50%;
-  }
+    border: 1.5px solid black;
+    margin: auto;
+
+    img {
+        border-radius: 50%;
+    }
 }
 .memberCard_btn_container {
-  img {
-    object-fit: contain;
-    width: 1em;
-    cursor: pointer;
-    margin-left: 1em;
-  }
+    img {
+        object-fit: contain;
+        width: 1em;
+        cursor: pointer;
+        margin-left: 0.5em;
+    }
+}
+.memberCard_identity {
+    border: 1px solid black;
 }
