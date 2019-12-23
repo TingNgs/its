@@ -87,11 +87,11 @@ const TagTab = ({}) => {
     return (
       <div>
         {projectTagList.map(e => (
-          <Link to={`/p/${user}/${project}?tab=tag&tag=${e}`}>
-            <div
-              key={`TagTab_Tag${e}`}
-              className="TagTab_Tags_container bg-green-200 cursor-pointer"
-            >
+          <Link
+            to={`/p/${user}/${project}?tab=tag&tag=${e}`}
+            key={`TagTab_Tag${e}`}
+          >
+            <div className="TagTab_Tags_container bg-green-200 cursor-pointer">
               {e}
             </div>
           </Link>
