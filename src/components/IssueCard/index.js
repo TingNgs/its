@@ -14,11 +14,7 @@ import {
     SEVERITY_OPTION,
     PRIORITY_OPTION
 } from '../../utils/configConst';
-const styles = {
-    title: {
-        fontSize: 48
-    }
-};
+
 const IssueCard = ({ issue }) => {
     const {
         id,
@@ -33,7 +29,7 @@ const IssueCard = ({ issue }) => {
         state,
         tags
     } = issue;
-    console.log(STATE_OPTION[state]);
+
     return (
         <Link to={ISSUE_DETAIL_LINK(id)}>
             <div className="IssueCard w-full">
@@ -71,9 +67,9 @@ const IssueCard = ({ issue }) => {
                     <div
                         className={`flex IssueCard_Tags_container bg-green-200 text-14 font-hairline ${
                             STATE_OPTION[state] === 'Open'
-                                ? 'yellow'
-                                : STATE_OPTION[state] === 'In Progress'
                                 ? 'blue'
+                                : STATE_OPTION[state] === 'In Progress'
+                                ? 'yellow'
                                 : STATE_OPTION[state] === 'Ready To Test'
                                 ? 'green'
                                 : STATE_OPTION[state] === 'Resolved'

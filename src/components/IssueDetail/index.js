@@ -15,8 +15,14 @@ import PopUp from '../PopUp';
 
 import { red_alert } from '../../utils/configConst';
 import './style.scss';
-import MARK_ICON from '../../utils/image/exclamation-mark.svg';
+
 import EDIT from '../../utils/image/pencil-edit-button.svg';
+import OPEN_ICON from '../../utils/image/exclamation-mark.svg';
+import IN_PROGRESS_ICON from '../../utils/image/in_progress.svg';
+import READY_TO_TEST_ICON from '../../utils/image/ready_to_test.svg';
+import RESOLVED_ICON from '../../utils/image/resolved.svg';
+import WONT_FIX_ICON from '../../utils/image/wont_fix.svg';
+import ABANDONED_ICON from '../../utils/image/abandon.svg';
 import * as projectAction from '../../containers/ProjectDetail/actions';
 
 import {
@@ -25,7 +31,7 @@ import {
     PRIORITY_OPTION
 } from '../../utils/configConst';
 
-const IssueDetail = () => {
+const IssueDetail = ({ issue }) => {
     const dispatch = useDispatch();
     const { issueId } = useParams();
     const [issueDetail, setIssueDetail] = useState(null);
@@ -101,13 +107,30 @@ const IssueDetail = () => {
             <CardLayout>
                 <div className="issueDetail">
                     <div className="flex justify-between items-center">
-                        <div className="flex">
+                        <div className="flex items-center">
                             <img
-                                src={MARK_ICON}
-                                className="issueDetail_icon flex "
+                                className="projectCard_icon"
+                                src={(function() {
+                                    switch (STATE_OPTION[issueDetail.state]) {
+                                        case 'Open':
+                                            return OPEN_ICON;
+                                        case 'In Progress':
+                                            return IN_PROGRESS_ICON;
+                                        case 'Ready To Test':
+                                            return READY_TO_TEST_ICON;
+                                        case 'Resolved':
+                                            return RESOLVED_ICON;
+                                        case "Won't fix":
+                                            return WONT_FIX_ICON;
+                                        case 'Abandoned':
+                                            return ABANDONED_ICON;
+                                        default:
+                                            return null;
+                                    }
+                                })()}
                             />
-                            <div className="flex font-bold">
-                                {issueDetail.name} {issueDetail.assignList}
+                            <div className="flex text-28 font-bold">
+                                {issueDetail.name}
                             </div>
                         </div>
                         {issueDetail.reportUser === username ? (
@@ -121,6 +144,12 @@ const IssueDetail = () => {
                                 <img src={EDIT} className="invert flex" />
                             </div>
                         ) : null}
+                    </div>
+                    <div className=" text-28 font-bold">
+                        assign: {issueDetail.assignList}
+                    </div>
+                    <div className=" text-28 font-bold">
+                        report: {issueDetail.reportUser}
                     </div>
                     <div className="hl" />
                     <div>
