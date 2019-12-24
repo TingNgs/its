@@ -14,4 +14,4 @@ COPY . .
 RUN npm run build-prod
 
 # Running the app
-CMD [ "npm", "start-prod" ]
+CMD [ "npm","run", "start-prod" ]
