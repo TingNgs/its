@@ -85,15 +85,15 @@ const IssueCard = ({ issue }) => {
                     </div>
                     <div
                         className={`flex IssueCard_Tags_container bg-green-200 text-14 font-hairline ${
-                            PRIORITY_OPTION[priority] === 'Wish List'
+                            SEVERITY_OPTION[priority] === 'Wish List'
                                 ? 'purple'
-                                : STATE_OPTION[state] === 'Low'
+                                : SEVERITY_OPTION[state] === 'Low'
                                 ? 'green'
-                                : STATE_OPTION[state] === 'Medium'
+                                : SEVERITY_OPTION[state] === 'Medium'
                                 ? 'yellow'
-                                : STATE_OPTION[state] === 'High'
+                                : SEVERITY_OPTION[state] === 'High'
                                 ? 'blue'
-                                : STATE_OPTION[state] === 'Unbreak Now'
+                                : SEVERITY_OPTION[state] === 'Unbreak Now'
                                 ? 'red'
                                 : null
                         }`}
@@ -102,15 +102,15 @@ const IssueCard = ({ issue }) => {
                     </div>
                     <div
                         className={`flex IssueCard_Tags_container bg-green-200 text-14 font-hairline ${
-                            SEVERITY_OPTION[severity] === 'Critical'
+                            PRIORITY_OPTION[severity] === 'Critical'
                                 ? 'red'
-                                : STATE_OPTION[state] === 'Major'
+                                : PRIORITY_OPTION[state] === 'Major'
                                 ? 'purple'
-                                : STATE_OPTION[state] === 'Moderate'
+                                : PRIORITY_OPTION[state] === 'Moderate'
                                 ? 'blue'
-                                : STATE_OPTION[state] === 'Minor'
+                                : PRIORITY_OPTION[state] === 'Minor'
                                 ? 'green'
-                                : STATE_OPTION[state] === 'Low'
+                                : PRIORITY_OPTION[state] === 'Low'
                                 ? 'yellow'
                                 : null
                         }`}

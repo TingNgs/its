@@ -28,7 +28,8 @@ import * as projectAction from '../../containers/ProjectDetail/actions';
 import {
     STATE_OPTION,
     SEVERITY_OPTION,
-    PRIORITY_OPTION
+    PRIORITY_OPTION,
+    REPRODUCIBLE_OPTION
 } from '../../utils/configConst';
 
 const IssueDetail = ({ issue }) => {
@@ -132,6 +133,16 @@ const IssueDetail = ({ issue }) => {
                             <div className="flex text-24 font-bold">
                                 {issueDetail.name}
                             </div>
+                            <div className="ml-4">
+                                {issueDetail.tags.map(e => (
+                                    <div
+                                        key={`issueCardtag${e}`}
+                                        className=" flex IssueCard_Tags_container bg-green-200 text-14 "
+                                    >
+                                        {e}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                         {issueDetail.reportUser === username ? (
                             <div
@@ -172,11 +183,15 @@ const IssueDetail = ({ issue }) => {
                         </div>
                         <div>
                             Issue severity:{' '}
-                            <b>{PRIORITY_OPTION[issueDetail.priority]}</b>
+                            <b>{SEVERITY_OPTION[issueDetail.severity]}</b>
                         </div>
                         <div>
                             Issue priority:{' '}
-                            <b>{SEVERITY_OPTION[issueDetail.projectId]}</b>
+                            <b>{PRIORITY_OPTION[issueDetail.priority]}</b>
+                        </div>
+                        <div>
+                            Is reproducible:{' '}
+                            <b>{REPRODUCIBLE_OPTION[issueDetail.projectId]}</b>
                         </div>
                     </div>
                 </div>
