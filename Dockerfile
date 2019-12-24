@@ -11,7 +11,7 @@ RUN npm install
 COPY . .
 
 # Building app
-RUN cross-env REACT_APP_ENV=prod npm run build
+RUN npm run build-prod
 
 # Running the app
 CMD [ "npm", "start" ]

@@ -29,6 +29,7 @@
     "local": "cross-env REACT_APP_ENV=local npm start",
     "tailwind:css": "tailwind build src/tailwind.css -c tailwind.config.js -o src/index.css",
     "build": " npm run tailwind:css && react-scripts build",
+    "build-prod": "cross-env REACT_APP_ENV=prod npm run build",
     "predeploy": "cross-env REACT_APP_ENV=dev npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
