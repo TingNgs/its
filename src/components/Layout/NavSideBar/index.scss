@@ -1,14 +1,14 @@
 .nav_sidebar {
-  font-size: 1.5rem;
-  width: 10em;
-  padding: 1em;
-
+    padding: 3em;
 }
 
 .nav_sidebar_color {
-  color: black;
+    color: black;
 }
 
 .nav_sidebar_link {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
+}
+.active_line {
+    border-bottom: 3px gray solid;
 }

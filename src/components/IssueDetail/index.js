@@ -107,7 +107,7 @@ const IssueDetail = () => {
                                 className="issueDetail_icon flex "
                             />
                             <div className="flex font-bold">
-                                {issueDetail.name}
+                                {issueDetail.name} {issueDetail.assignList}
                             </div>
                         </div>
                         {issueDetail.reportUser === username ? (
