@@ -11,6 +11,7 @@ import { NEW_PROJECT, TITLE } from './constants';
 import * as actions from './actions';
 import './style.scss';
 
+import CardLayout from '../../components/CardLayout';
 const Projects = () => {
     const dispatch = useDispatch();
     const {
@@ -57,32 +58,35 @@ const Projects = () => {
     return (
         <>
             <div className="project_container w-full bg-gray-200">
-                <div className="project_header w-full flex justify-between items-center">
-                    <p className=" text-20 font-semibold">{TITLE}</p>
-                    <AddButton
-                        action={toggleNewProjectForm}
-                        wording={NEW_PROJECT}
-                    />
-                </div>
+                <CardLayout>
+                    <div className="project_header w-full flex justify-between items-center">
+                        <p className=" text-20 font-semibold">{TITLE}</p>
+                        <AddButton
+                            action={toggleNewProjectForm}
+                            wording={NEW_PROJECT}
+                        />
+                    </div>
 
-                <div className="project_list w-full">
-                    {projectList.map(e => {
-                        return (
-                            <ProjectCard
-                                key={`$projectCard${e.id}`}
-                                id={e.id}
-                                name={e.name}
-                                description={e.description}
-                                create_time={e.create_time}
-                                isPrivate={e.isPrivate}
-                                owner={e.owner}
-                            />
-                        );
-                    })}
-                    {isFetchingProject ? <LoadingSpinner /> : null}
-                    {isProjectFetchBottom ? HIT_BOTTOM : null}
-                </div>
+                    <div className="project_list w-full">
+                        {projectList.map(e => {
+                            return (
+                                <ProjectCard
+                                    key={`$projectCard${e.id}`}
+                                    id={e.id}
+                                    name={e.name}
+                                    description={e.description}
+                                    create_time={e.create_time}
+                                    isPrivate={e.isPrivate}
+                                    owner={e.owner}
+                                />
+                            );
+                        })}
+                        {isFetchingProject ? <LoadingSpinner /> : null}
+                        {isProjectFetchBottom ? HIT_BOTTOM : null}
+                    </div>
+                </CardLayout>
             </div>
+
             {showNewProjectForm ? (
                 <PopUp>
                     <ProjectForm

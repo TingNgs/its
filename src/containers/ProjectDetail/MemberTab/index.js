@@ -80,7 +80,7 @@ const MemberTab = ({}) => {
 
     return (
         <div className="MemberTab_container w-full">
-            <div className="MemberTab_header flex justify-between">
+            <div className="MemberTab_header flex justify-between mb-6">
                 <div className="MemberTab_title text-20 font-semibold">
                     {CONST.memberTab_title}
                 </div>

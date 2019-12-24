@@ -14,6 +14,11 @@ import {
     SEVERITY_OPTION,
     PRIORITY_OPTION
 } from '../../utils/configConst';
+const styles = {
+    title: {
+        fontSize: 48
+    }
+};
 const IssueCard = ({ issue }) => {
     const {
         id,
@@ -64,61 +69,55 @@ const IssueCard = ({ issue }) => {
                 </div>
                 <div className="flex  ">
                     <div
-                        className="flex IssueCard_Tags_container bg-green-200 text-14"
-                        style={{
-                            'background-color':
-                                STATE_OPTION[state] === 'Open'
-                                    ? 'red'
-                                    : STATE_OPTION[state] === 'In Progress'
-                                    ? 'orange'
-                                    : STATE_OPTION[state] === 'Ready To Test'
-                                    ? 'yellow'
-                                    : STATE_OPTION[state] === 'Resolved'
-                                    ? 'green'
-                                    : STATE_OPTION[state] === "Won't fix"
-                                    ? 'blue'
-                                    : STATE_OPTION[state] === 'Abandoned'
-                                    ? 'purple'
-                                    : null
-                        }}
+                        className={`flex IssueCard_Tags_container bg-green-200 text-14 font-hairline ${
+                            STATE_OPTION[state] === 'Open'
+                                ? 'yellow'
+                                : STATE_OPTION[state] === 'In Progress'
+                                ? 'blue'
+                                : STATE_OPTION[state] === 'Ready To Test'
+                                ? 'green'
+                                : STATE_OPTION[state] === 'Resolved'
+                                ? 'red'
+                                : STATE_OPTION[state] === "Won't fix"
+                                ? 'purple'
+                                : STATE_OPTION[state] === 'Abandoned'
+                                ? 'gray'
+                                : null
+                        }`}
                     >
                         {STATE_OPTION[state]}
                     </div>
                     <div
-                        className="flex IssueCard_Tags_container bg-green-200 text-14"
-                        style={{
-                            'background-color':
-                                PRIORITY_OPTION[priority] === 'Wish List'
-                                    ? 'red'
-                                    : STATE_OPTION[state] === 'Low'
-                                    ? 'orange'
-                                    : STATE_OPTION[state] === 'Medium'
-                                    ? 'yellow'
-                                    : STATE_OPTION[state] === 'High'
-                                    ? 'green'
-                                    : STATE_OPTION[state] === 'Unbreak Now'
-                                    ? 'blue'
-                                    : null
-                        }}
+                        className={`flex IssueCard_Tags_container bg-green-200 text-14 font-hairline ${
+                            PRIORITY_OPTION[priority] === 'Wish List'
+                                ? 'purple'
+                                : STATE_OPTION[state] === 'Low'
+                                ? 'green'
+                                : STATE_OPTION[state] === 'Medium'
+                                ? 'yellow'
+                                : STATE_OPTION[state] === 'High'
+                                ? 'blue'
+                                : STATE_OPTION[state] === 'Unbreak Now'
+                                ? 'red'
+                                : null
+                        }`}
                     >
                         {PRIORITY_OPTION[priority]}
                     </div>
                     <div
-                        className="flex IssueCard_Tags_container bg-green-200 text-14"
-                        style={{
-                            'background-color':
-                                SEVERITY_OPTION[severity] === 'Critical'
-                                    ? 'red'
-                                    : STATE_OPTION[state] === 'Major'
-                                    ? 'orange'
-                                    : STATE_OPTION[state] === 'Moderate'
-                                    ? 'yellow'
-                                    : STATE_OPTION[state] === 'Minor'
-                                    ? 'green'
-                                    : STATE_OPTION[state] === 'Low'
-                                    ? 'blue'
-                                    : null
-                        }}
+                        className={`flex IssueCard_Tags_container bg-green-200 text-14 font-hairline ${
+                            SEVERITY_OPTION[severity] === 'Critical'
+                                ? 'red'
+                                : STATE_OPTION[state] === 'Major'
+                                ? 'purple'
+                                : STATE_OPTION[state] === 'Moderate'
+                                ? 'blue'
+                                : STATE_OPTION[state] === 'Minor'
+                                ? 'green'
+                                : STATE_OPTION[state] === 'Low'
+                                ? 'yellow'
+                                : null
+                        }`}
                     >
                         {SEVERITY_OPTION[severity]}
                     </div>

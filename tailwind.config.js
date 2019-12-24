@@ -25,8 +25,6 @@ module.exports = {
             borderWidth: { 5: '5px' }
         }
     },
-    variants: {
-        backgroundColor: ['responsive', 'hover', 'focus', 'active']
-    },
+    variants: {},
     plugins: []
 };

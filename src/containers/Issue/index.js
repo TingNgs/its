@@ -9,6 +9,7 @@ import IssueCard from '../../components/IssueCard';
 import { HIT_BOTTOM } from '../../utils/configConst';
 import { TITLE } from './constants';
 import './style.scss';
+import CardLayout from '../../components/CardLayout';
 
 const Issue = () => {
     const {
@@ -40,21 +41,25 @@ const Issue = () => {
         };
     });
     return (
-        <div className="issue_container w-full bg-gray-200">
-            <div className="issue_header w-full flex justify-between items-center">
-                <p className=" text-20 font-semibold">{TITLE}</p>
+        <>
+            <div className="issue_container w-full bg-gray-200">
+                <CardLayout>
+                    <div className="issue_header w-full flex justify-between items-center">
+                        <p className=" text-20 font-semibold">{TITLE}</p>
+                    </div>
+                    <div className="issue_list w-full">
+                        {issueList.map((e, i) => {
+                            return (
+                                <div key={`issueList${i}${e.id}`}>
+                                    <IssueCard key={`pit${e.id}`} issue={e} />
+                                </div>
+                            );
+                        })}
+                        {isFetchingIssue ? <LoadingSpinner /> : null}
+                    </div>{' '}
+                </CardLayout>
             </div>
-            <div className="issue_list w-full">
-                {issueList.map((e, i) => {
-                    return (
-                        <div key={`issueList${i}${e.id}`}>
-                            <IssueCard key={`pit${e.id}`} issue={e} />
-                        </div>
-                    );
-                })}
-                {isFetchingIssue ? <LoadingSpinner /> : null}
-            </div>
-        </div>
+        </>
     );
 };
 

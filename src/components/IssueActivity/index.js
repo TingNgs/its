@@ -74,7 +74,6 @@ const IssueActivity = ({ activity, handleEditComment }) => {
                 inputType: inputType.editor
             }
         ];
-
         console.log(activity.content);
         return (
             <>
@@ -82,13 +81,6 @@ const IssueActivity = ({ activity, handleEditComment }) => {
                     <div className="issueActivity_profileIcon flex  ">
                         <img src={PROFILE_IMAGE} className="" />
                     </div>
-                    {activity.assignList.map((e, i) => {
-                        return (
-                            <div key={`issueActivity_assign${e}_${i}`}>
-                                {e.username}
-                            </div>
-                        );
-                    })}
                     <div className="hll"></div>
                     <CardLayout>
                         <div className="flex justify-between">
@@ -121,9 +113,7 @@ const IssueActivity = ({ activity, handleEditComment }) => {
                                 </div>
                             ) : null}
                         </div>
-
                         <div className="issueActivity_hl"></div>
-
                         {showEditComment ? (
                             <>
                                 <FormInput inputList={inputList} />
@@ -187,7 +177,6 @@ const IssueActivity = ({ activity, handleEditComment }) => {
             </div>
         );
     }
-    console.log(activity.assignList);
     console.log(activity);
     if (activity.prevState === -1) {
         return (
