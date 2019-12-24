@@ -11,12 +11,14 @@ import NavSideBar from "./NavSideBar";
 const Layout = ({ history, children, location }) => {
   const { pathname } = location;
   const dispatch = useDispatch();
-  console.log(pathname);
+
   const isLogined =
     pathname !== PATH.LOGIN &&
     pathname !== PATH.REGISTER &&
+    pathname !== PATH.AUTH &&
     pathname !== "" &&
     pathname !== "/";
+  console.log(pathname, isLogined);
   useEffect(() => {
     if (isLogined) {
       if (!localStorage.getItem("sessionId")) {
@@ -28,14 +30,20 @@ const Layout = ({ history, children, location }) => {
         res => {
           actions.authSuccess(res.data)(dispatch);
         },
-        () => {
+        rej => {
+          if (rej.response) {
+            if (rej.response.status === 403) {
+              history.push("/auth");
+              return;
+            }
+          }
           actions.logout()(dispatch);
           history.push("/login");
           return;
         }
       );
     } else {
-      if (localStorage.getItem("sessionId")) {
+      if (localStorage.getItem("sessionId") && pathname !== PATH.AUTH) {
         history.push("/dashboard");
         return;
       }

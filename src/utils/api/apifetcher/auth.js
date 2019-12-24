@@ -51,4 +51,21 @@ AuthAPI.verifyUsername = username => {
   });
 };
 
+AuthAPI.unlock = (key, id) => {
+  const url = `${
+    apihost[process.env.REACT_APP_ENV]
+  }/session/verify?key=${key}&id=${id}`;
+  return api.fire({
+    url,
+    method: "GET"
+  });
+};
+AuthAPI.send = email => {
+  const url = `${apihost[process.env.REACT_APP_ENV]}/send?email=${email}`;
+  return api.fire({
+    url,
+    method: "GET"
+  });
+};
+
 export default AuthAPI;

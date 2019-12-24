@@ -9,6 +9,7 @@ import IssueDetail from "./components/IssueDetail";
 import Setting from "./components/Setting";
 import Projects from "./containers/Projects";
 import Issue from "./containers/Issue";
+import Auth from "./containers/Auth";
 import Layout from "./components/Layout";
 import { version } from "../package.json";
 
@@ -24,6 +25,7 @@ function App() {
         <Layout>
           <Route path={PATH.LOGIN} component={LoginFrom} />
           <Route path={PATH.REGISTER} component={RegisterFrom} />
+          <Route path={PATH.AUTH} component={Auth} />
           <Route path={PATH.DASHBOARD} component={Dashboard} />
           <Route path={PATH.PROJECT} component={Projects} />
           <Route path={PATH.ISSUE} component={Issue} />
