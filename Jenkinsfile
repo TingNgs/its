@@ -15,8 +15,8 @@ pipeline {
         HOME = '.'
       }
       steps {
-        sh 'rm -r ./.next'
-        sh 'rm -r ./node_modules'
+        sh 'rm -r ./.next || true'
+        sh 'rm -r ./node_modules || true'
         cleanWs()
         dir("${workspace}@tmp") {
           deleteDir()
