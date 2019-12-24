@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { toLocalTime } from '../../utils/generalUtils';
 import { ISSUE_DETAIL_LINK } from '../../utils/pathConst';
+import Tag from '../Tag';
 import OPEN_ICON from '../../utils/image/exclamation-mark.svg';
 import IN_PROGRESS_ICON from '../../utils/image/in_progress.svg';
 import READY_TO_TEST_ICON from '../../utils/image/ready_to_test.svg';
@@ -27,7 +28,9 @@ const IssueCard = ({ issue }) => {
         projectId,
         severity,
         state,
-        tags
+        tags,
+        projectName,
+        projectOwner
     } = issue;
 
     return (
