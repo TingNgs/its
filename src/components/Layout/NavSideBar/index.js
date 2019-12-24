@@ -12,10 +12,7 @@ const NavSideBar = props => {
                     <Link
                         key={`sliderBar_${item.name}`}
                         className={`nav_sidebar_link text-black font-bold text-20 hover:bg-gray-400
-                        ${showClosed ? 'active_line' : null}`}
-                        onClick={() => {
-                            setShowClosed(!showClosed);
-                        }}
+                         ${showClosed ? 'active_line' : null}`}
                         to={item.path}
                     >
                         {item.name}

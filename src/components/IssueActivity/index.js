@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import FormInput from '../FormInput';
 import CardLayout from '../CardLayout';
-
+import { toLocalTime } from '../../utils/generalUtils';
 import PROFILE_IMAGE from '../../utils/image/user_icon.svg';
 import LIGHT from '../../utils/image/light_bulb.svg';
 import ADD_MEMBER from '../../utils/image/add_member.svg';
@@ -94,7 +94,10 @@ const IssueActivity = ({ activity, handleEditComment }) => {
                                 <span className="font-bold">
                                     {activity.username}
                                 </span>
-                                &nbsp;added a comment
+                                &nbsp;added a comment&nbsp;
+                                <div className="text-14 text-gray-800">
+                                    ({`${toLocalTime(activity.create_time)}`})
+                                </div>
                             </div>
                             {!showEditComment &&
                             activity.userId ===
@@ -155,20 +158,32 @@ const IssueActivity = ({ activity, handleEditComment }) => {
                         {activity.assignList.map((e, i) => {
                             return e.isAdd ? (
                                 <div key={`issueActivity_assign${e}_${i}`}>
-                                    <span className="font-bold">
+                                    <span className="flex ">
                                         <span className="font-bold mr-2">
                                             {e.username}
                                         </span>
+                                        <div className="text-14 text-gray-800">
+                                            (
+                                            {`${toLocalTime(
+                                                activity.create_time
+                                            )}`}
+                                            )
+                                        </div>
                                     </span>
                                 </div>
                             ) : (
                                 <div
                                     key={`issueActivity_assign${e}_${i}`}
-                                    className="line-through"
+                                    className="flex"
                                 >
-                                    <span className="font-bold mr-2">
+                                    <span className="font-bold mr-2 line-through">
                                         {e.username}
                                     </span>
+                                    <div className="text-14 text-gray-800">
+                                        (
+                                        {`${toLocalTime(activity.create_time)}`}
+                                        )
+                                    </div>
                                 </div>
                             );
                         })}
@@ -191,14 +206,17 @@ const IssueActivity = ({ activity, handleEditComment }) => {
                 </div>
                 <div className="flex pl-5 justify-between ">
                     <div className="flex justify-start">
-                        <span className="font-bold">{activity.username}</span>
-                        &nbsp;created this issue with {
-                            type[activity.type - 1]
-                        }{' '}
-                        {typeValue[activity.type - 1][activity.nextState]}
+                        <span className="font-bold">
+                            {activity.username}&nbsp;
+                        </span>
+                        created this issue with {type[activity.type - 1]}&nbsp;
+                        <b>
+                            {typeValue[activity.type - 1][activity.nextState]}{' '}
+                        </b>
                     </div>
-                    <div className="flex justify-end">
-                        , {activity.create_time}
+                    &nbsp;
+                    <div className="text-14 text-gray-800">
+                        ({`${toLocalTime(activity.create_time)}`})
                     </div>
                 </div>
             </div>
@@ -216,9 +234,14 @@ const IssueActivity = ({ activity, handleEditComment }) => {
             </div>
             <div className="flex pl-5 ">
                 <span className="font-bold">{activity.username}</span>
-                &nbsp;changed {type[activity.type - 1]} from{' '}
-                {typeValue[activity.type - 1][activity.prevState]} to{' '}
-                {typeValue[activity.type - 1][activity.nextState]}
+                &nbsp;changed {type[activity.type - 1]} from&nbsp;
+                <b>{typeValue[activity.type - 1][activity.prevState]}</b>{' '}
+                &nbsp;to&nbsp;
+                <b>{typeValue[activity.type - 1][activity.nextState]}</b>
+                &nbsp;
+                <div className="text-14 text-gray-800">
+                    ({`${toLocalTime(activity.create_time)}`})
+                </div>
             </div>
         </div>
     );

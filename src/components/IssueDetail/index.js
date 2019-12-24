@@ -148,9 +148,9 @@ const IssueDetail = ({ issue }) => {
                     <div className=" ">Reporter: {issueDetail.reportUser}</div>
                     <div className=" ">
                         {issueDetail.assignList.length === 0 ? (
-                            <p>assign: None</p>
+                            <p>Assign To: None</p>
                         ) : (
-                            <p>assign: {issueDetail.assignList}</p>
+                            <p>Assign To: {issueDetail.assignList}</p>
                         )}
                     </div>
 

@@ -7,6 +7,7 @@ const AuthLayout = ({
     title,
     children,
     linkTo,
+    la,
     link,
     buttonEnable,
     handleSubmit,
@@ -19,6 +20,10 @@ const AuthLayout = ({
                     {title}
                 </div>
                 {children}
+                <Link
+                    className="auth_bottom_link text-blue-600 text-14 block"
+                    to={linkTo}
+                ></Link>
                 <Link
                     className="auth_bottom_link text-blue-600 text-14 block"
                     to={linkTo}
