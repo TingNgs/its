@@ -129,7 +129,7 @@ const IssueDetail = ({ issue }) => {
                                     }
                                 })()}
                             />
-                            <div className="flex text-28 font-bold">
+                            <div className="flex text-24 font-bold">
                                 {issueDetail.name}
                             </div>
                         </div>
@@ -145,12 +145,15 @@ const IssueDetail = ({ issue }) => {
                             </div>
                         ) : null}
                     </div>
-                    <div className=" text-28 font-bold">
-                        assign: {issueDetail.assignList}
+                    <div className=" ">Reporter: {issueDetail.reportUser}</div>
+                    <div className=" ">
+                        {issueDetail.assignList.length === 0 ? (
+                            <p>assign: None</p>
+                        ) : (
+                            <p>assign: {issueDetail.assignList}</p>
+                        )}
                     </div>
-                    <div className=" text-28 font-bold">
-                        report: {issueDetail.reportUser}
-                    </div>
+
                     <div className="hl" />
                     <div>
                         <div className="font-bold">Description</div>

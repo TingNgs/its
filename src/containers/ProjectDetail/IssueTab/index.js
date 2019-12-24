@@ -81,7 +81,7 @@ const IssueTab = ({}) => {
                 <div
                     className={`cursor-pointer IssueTab_title_border bg-${
                         showClosed
-                            ? 'white text-blue-600'
+                            ? 'white text-red-600'
                             : 'cancel-active border_closed text-white '
                     }`}
                     onClick={() => {
