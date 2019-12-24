@@ -5,6 +5,7 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import IssueCard from "../../../components/IssueCard";
 import LoadingSpinner from "../../../components/LoadingSpinner";
 import IssueApi from "../../../utils/api/apifetcher/issue";
+import Tag from "../../../components/Tag";
 
 import { CONST } from "../constants";
 import { HIT_BOTTOM } from "../../../utils/configConst";
@@ -49,18 +50,13 @@ const TagTab = ({}) => {
           <Link to={`/p/${user}/${project}?tab=tag`}>
             <div
               key={`TagTab_Tag_back`}
-              className="TagTab_Tags_container bg-green-200 cursor-pointer"
+              className="Tags_container bg-green-200 cursor-pointer hover:bg-green-100"
             >
               {"<- Show all tag"}
             </div>
           </Link>
           <Link to={`/p/${user}/${project}?tab=tag&tag=${tag}`}>
-            <div
-              key={`TagTab_Tag${tag}`}
-              className="TagTab_Tags_container bg-green-200 cursor-pointer"
-            >
-              {tag}
-            </div>
+            <Tag tag={tag} />
           </Link>
         </div>
         <div>
@@ -91,9 +87,7 @@ const TagTab = ({}) => {
             to={`/p/${user}/${project}?tab=tag&tag=${e}`}
             key={`TagTab_Tag${e}`}
           >
-            <div className="TagTab_Tags_container bg-green-200 cursor-pointer">
-              {e}
-            </div>
+            <Tag tag={e} />
           </Link>
         ))}
         {isFetchingProjectTag ? <LoadingSpinner /> : null}

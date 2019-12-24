@@ -15,8 +15,11 @@ const ProjectForm = ({
   projectDetail
 }) => {
   const [name, setName] = useState(projectDetail ? projectDetail.name : "");
+  const [lineId, setLineId] = useState(
+    projectDetail ? projectDetail.lineId || "" : ""
+  );
   const [description, setDescription] = useState(
-    projectDetail ? projectDetail.description : ""
+    projectDetail ? projectDetail.description || "" : ""
   );
   const [isPrivate, setIsPrivate] = useState(
     projectDetail ? (projectDetail.isPrivate ? 1 : 0) : 0
@@ -24,8 +27,9 @@ const ProjectForm = ({
 
   const handleSubmitForm = () => {
     handleSubmit({
-      name: name,
-      description: description,
+      name,
+      description,
+      lineId: lineId && lineId.length ? lineId : null,
       isPrivate: parseInt(isPrivate) === 1
     });
   };
@@ -40,6 +44,8 @@ const ProjectForm = ({
       case PROJECT_FORM_CONST.isPrivate:
         setIsPrivate(value);
         break;
+      case PROJECT_FORM_CONST.lineId:
+        setLineId(value);
       default:
         break;
     }
@@ -71,6 +77,14 @@ const ProjectForm = ({
       value: isPrivate,
       option: [PROJECT_FORM_CONST.public, PROJECT_FORM_CONST.private],
       inputType: inputType.radio
+    },
+    {
+      name: PROJECT_FORM_CONST.lineId,
+      type: "text",
+      value: lineId,
+      placeholder: PROJECT_FORM_CONST.line_placeholder,
+      title: PROJECT_FORM_CONST.line_placeholder,
+      inputType: inputType.text
     }
   ];
 

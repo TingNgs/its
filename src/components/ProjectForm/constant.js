@@ -5,6 +5,9 @@ export const PROJECT_FORM_CONST = {
   name: "name",
   name_placeholder: "Project Name",
 
+  lineId: "lineId",
+  line_placeholder: "Line Id",
+
   description: "description",
   description_placeholder: "Description",
 
