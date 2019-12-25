@@ -19,7 +19,6 @@ const Header = () => {
   const handleLogout = () => {
     AuthAPI.logout();
     action.logout()(dispatch);
-    window.location.href = "/#/login";
     dispatch({ type: RESET_DATA_FLOW });
   };
 
@@ -42,9 +41,11 @@ const Header = () => {
         <div className="bg-white flex justify-center items-center hover:bg-gray-100 text-gray-800 py-2 px-4 border-l border-gray-400">
           <Link to={PATH.SETTING}>Setting</Link>
         </div>
-        <div className="main_btn btn-active" onClick={handleLogout}>
-          Logout
-        </div>
+        <Link to={PATH.LOGIN}>
+          <div className="main_btn btn-active" onClick={handleLogout}>
+            Logout
+          </div>
+        </Link>
       </div>
     </div>
   );
