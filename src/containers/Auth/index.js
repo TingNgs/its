@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation, withRouter } from "react-router-dom";
+import { useLocation, withRouter, Link } from "react-router-dom";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 import AuthApi from "../../utils/api/apifetcher/auth";
+import { RESET_DATA_FLOW } from "./constants";
+import * as PATH from "../../utils/pathConst";
 import * as actions from "./actions";
 
 const useQuery = () => {
@@ -42,6 +44,12 @@ const Auth = props => {
     setEmail("");
   };
 
+  const handleLogout = () => {
+    AuthApi.logout();
+    actions.logout()(dispatch);
+    dispatch({ type: RESET_DATA_FLOW });
+  };
+
   if (authFail)
     return (
       <div className="w-full h-screen flex justify-center items-center text-28 flex-col">
@@ -52,8 +60,15 @@ const Auth = props => {
           value={email}
           onChange={handleInput}
         />
-        <div className="main_btn btn-active" onClick={handleSendEmail}>
-          Send again
+        <div className="flex">
+          <Link to={PATH.LOGIN}>
+            <div className="main_btn btn-cancel mx-2" onClick={handleLogout}>
+              Logout
+            </div>
+          </Link>
+          <div className="main_btn btn-active mx-2" onClick={handleSendEmail}>
+            Send again
+          </div>
         </div>
       </div>
     );
